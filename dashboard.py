@@ -80,18 +80,21 @@ def styled_chart(fig, height=420):
     fig.update_layout(
         paper_bgcolor=PLOT_BG,
         plot_bgcolor=PLOT_BG,
-        font=dict(color="#333333", size=14),
-        title_font=dict(size=15, color="#191E3A"),
+        font=dict(color="#222222", size=16),
+        title_font=dict(size=18, color="#191E3A", family="Montserrat, sans-serif"),
+        legend=dict(font=dict(size=15, color="#222222")),
         height=height,
-        margin=dict(l=20, r=20, t=48, b=28),
+        margin=dict(l=20, r=20, t=52, b=32),
     )
     fig.update_xaxes(
         gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR,
-        tickfont=dict(size=13), title_font=dict(size=14),
+        tickfont=dict(size=15, color="#222222"),
+        title_font=dict(size=16, color="#222222"),
     )
     fig.update_yaxes(
         gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR,
-        tickfont=dict(size=13), title_font=dict(size=14),
+        tickfont=dict(size=15, color="#222222"),
+        title_font=dict(size=16, color="#222222"),
     )
     return fig
 
@@ -1287,43 +1290,44 @@ with tab10:
         )
         st.plotly_chart(fig_plants, width='stretch')
 
-        st.divider()
-        col1, col2 = st.columns(2)
+        if not df_show.empty:
+            st.divider()
+            col1, col2 = st.columns(2)
 
-        with col1:
-            st.subheader("Generation by Fuel — EIA 2023")
-            fuel_gen = df_show.groupby("Primary Fuel")["Total MWh"].sum().sort_values(ascending=True)
-            fig_fuel_eia = go.Figure(go.Bar(
-                y=fuel_gen.index,
-                x=fuel_gen.values / 1e6,
-                orientation="h",
-                marker_color=[FUEL_COLORS.get(f, "#999999") for f in fuel_gen.index],
-                text=[f"{v/1e6:.1f} TWh" for v in fuel_gen.values],
-                textposition="outside",
-            ))
-            fig_fuel_eia.update_layout(xaxis_title="TWh", showlegend=False)
-            st.plotly_chart(styled_chart(fig_fuel_eia, height=360), width='stretch')
+            with col1:
+                st.subheader("Generation by Fuel — EIA 2023")
+                fuel_gen = df_show.groupby("Primary Fuel")["Total MWh"].sum().sort_values(ascending=True)
+                fig_fuel_eia = go.Figure(go.Bar(
+                    y=fuel_gen.index,
+                    x=fuel_gen.values / 1e6,
+                    orientation="h",
+                    marker_color=[FUEL_COLORS.get(f, "#999999") for f in fuel_gen.index],
+                    text=[f"{v/1e6:.1f} TWh" for v in fuel_gen.values],
+                    textposition="outside",
+                ))
+                fig_fuel_eia.update_layout(xaxis_title="TWh", showlegend=False)
+                st.plotly_chart(styled_chart(fig_fuel_eia, height=360), width='stretch')
 
-        with col2:
-            st.subheader("Plant Count by Fuel Type")
-            fuel_count = df_show.groupby("Primary Fuel").size().sort_values(ascending=True)
-            fig_count = go.Figure(go.Bar(
-                y=fuel_count.index,
-                x=fuel_count.values,
-                orientation="h",
-                marker_color=[FUEL_COLORS.get(f, "#999999") for f in fuel_count.index],
-                text=fuel_count.values,
-                textposition="outside",
-            ))
-            fig_count.update_layout(xaxis_title="Number of Plants", showlegend=False)
-            st.plotly_chart(styled_chart(fig_count, height=360), width='stretch')
+            with col2:
+                st.subheader("Plant Count by Fuel Type")
+                fuel_count = df_show.groupby("Primary Fuel").size().sort_values(ascending=True)
+                fig_count = go.Figure(go.Bar(
+                    y=fuel_count.index,
+                    x=fuel_count.values,
+                    orientation="h",
+                    marker_color=[FUEL_COLORS.get(f, "#999999") for f in fuel_count.index],
+                    text=fuel_count.values,
+                    textposition="outside",
+                ))
+                fig_count.update_layout(xaxis_title="Number of Plants", showlegend=False)
+                st.plotly_chart(styled_chart(fig_count, height=360), width='stretch')
 
-        st.divider()
-        st.subheader("Top 20 Operating Plants by Generation (2023)")
-        top20 = df_show.nlargest(20, "Total MWh")[["Plant Name", "State", "Primary Fuel", "Total MWh"]].copy()
-        top20["Total MWh"] = top20["Total MWh"].apply(lambda x: f"{x:,.0f}")
-        top20.columns = ["Plant Name", "State", "Fuel Type", "Net Generation (MWh)"]
-        st.dataframe(top20, use_container_width=True, hide_index=True)
+            st.divider()
+            st.subheader("Top 20 Operating Plants by Generation (2023)")
+            top20 = df_show.nlargest(20, "Total MWh")[["Plant Name", "State", "Primary Fuel", "Total MWh"]].copy()
+            top20["Total MWh"] = top20["Total MWh"].apply(lambda x: f"{x:,.0f}")
+            top20.columns = ["Plant Name", "State", "Fuel Type", "Net Generation (MWh)"]
+            st.dataframe(top20, use_container_width=True, hide_index=True)
 
         if not df_rtb.empty:
             st.divider()
