@@ -83,6 +83,11 @@ def styled_chart(fig, height=420):
         font=dict(color="#222222", size=16),
         title_font=dict(size=18, color="#191E3A", family="Montserrat, sans-serif"),
         legend=dict(font=dict(size=15, color="#222222")),
+        hoverlabel=dict(
+            font=dict(size=15, color="#222222"),
+            bgcolor="white",
+            bordercolor="#aaaaaa",
+        ),
         height=height,
         margin=dict(l=20, r=20, t=52, b=32),
     )
@@ -152,10 +157,10 @@ def load_plant_data():
     df["Longitude"] = pd.to_numeric(df["Longitude"], errors="coerce")
     df = df.dropna(subset=["Latitude", "Longitude"])
     # Sum generation by plant + fuel type
-    by_fuel = df.groupby(
-        ["Plant Code", "Plant Name", "State", "Latitude", "Longitude", "Fuel Type"],
-        as_index=False
-    )["Net Generation (MWh)"].sum()
+    group_cols = ["Plant Code", "Plant Name", "State", "Latitude", "Longitude", "Fuel Type"]
+    if "Utility Name" in df.columns:
+        group_cols.insert(2, "Utility Name")
+    by_fuel = df.groupby(group_cols, as_index=False)["Net Generation (MWh)"].sum()
     # Total gen per plant
     totals = by_fuel.groupby("Plant Code", as_index=False)["Net Generation (MWh)"].sum()
     totals = totals.rename(columns={"Net Generation (MWh)": "Total MWh"})
@@ -163,8 +168,32 @@ def load_plant_data():
     idx = by_fuel.groupby("Plant Code")["Net Generation (MWh)"].idxmax()
     dominant = by_fuel.loc[idx, ["Plant Code", "Fuel Type"]].rename(columns={"Fuel Type": "Primary Fuel"})
     # One row per plant
-    meta = by_fuel.drop_duplicates("Plant Code")[["Plant Code", "Plant Name", "State", "Latitude", "Longitude"]]
+    meta_cols = ["Plant Code", "Plant Name", "State", "Latitude", "Longitude"]
+    if "Utility Name" in by_fuel.columns:
+        meta_cols.insert(2, "Utility Name")
+    meta = by_fuel.drop_duplicates("Plant Code")[meta_cols]
     return meta.merge(totals, on="Plant Code").merge(dominant, on="Plant Code")
+
+@st.cache_data
+def load_company_rankings():
+    csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pjm_plants.csv")
+    try:
+        df = pd.read_csv(csv_path, dtype={"Plant Code": str})
+    except FileNotFoundError:
+        return pd.DataFrame()
+    if "Utility Name" not in df.columns:
+        return pd.DataFrame()
+    df["Fuel Type"] = df["Fuel Type"].map(EIA_FUEL_MAP).fillna("Other")
+    df["Net Generation (MWh)"] = pd.to_numeric(df["Net Generation (MWh)"], errors="coerce").fillna(0)
+    # Company totals
+    company = df.groupby("Utility Name", as_index=False)["Net Generation (MWh)"].sum()
+    company = company.sort_values("Net Generation (MWh)", ascending=False).reset_index(drop=True)
+    company["Rank"] = company.index + 1
+    company["GWh"] = company["Net Generation (MWh)"] / 1000
+    # Company x fuel breakdown
+    by_fuel = df.groupby(["Utility Name", "Fuel Type"], as_index=False)["Net Generation (MWh)"].sum()
+    by_fuel["GWh"] = by_fuel["Net Generation (MWh)"] / 1000
+    return company, by_fuel
 
 @st.cache_data
 def load_ready_to_build():
@@ -313,7 +342,7 @@ with st.sidebar:
     st.markdown("**Coverage:** DE, IL, IN, KY, MD, MI, NJ, NC, OH, PA, TN, VA, WV, DC")
 
 # ── Tabs ───────────────────────────────────────────────────────────────────────
-tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs([
     "📊 Overview",
     "⚡ Energy Market",
     "🔋 Generation Mix",
@@ -324,6 +353,7 @@ tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10 = st.tabs([
     "💬 Key Quotes",
     "🎯 Fun Facts",
     "🗺️ Generation Map",
+    "🏆 Power Rankings",
 ])
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -850,10 +880,10 @@ with tab6:
         cost_melt = pd.melt(cost_df, id_vars="Category", var_name="Year", value_name="Cost")
         fig_cost = px.bar(
             cost_melt, x="Category", y="Cost", color="Year",
-            barmode="group", text_auto=".2f",
+            barmode="group",
             color_discrete_map={"2024": "#007BEA", "2025": "#BD2066"},
         )
-        fig_cost.update_traces(texttemplate="$%{text}", textposition="outside")
+        fig_cost.update_traces(texttemplate="$%{y:.2f}", textposition="outside")
         fig_cost.update_layout(title="$/MWh by Component: 2024 vs 2025", yaxis_title="$/MWh")
         st.plotly_chart(styled_chart(fig_cost), width='stretch')
 
@@ -1366,6 +1396,94 @@ with tab10:
             ]
             st.dataframe(rtb_display, use_container_width=True, hide_index=True)
 
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TAB 11: POWER RANKINGS
+# ══════════════════════════════════════════════════════════════════════════════
+with tab11:
+    st.markdown("## 🏆 Power Rankings — Top Generators in PJM")
+    st.markdown(
+        "Which companies generated the most electricity in PJM? "
+        "Ranked by total net generation (MWh) reported to EIA in 2023. "
+        "Source: EIA Form 860/923."
+    )
+
+    rankings_result = load_company_rankings()
+
+    if not rankings_result or (isinstance(rankings_result, pd.DataFrame) and rankings_result.empty):
+        st.warning(
+            "Company data not available. Re-run `build_pjm_plants.py` to regenerate "
+            "`pjm_plants.csv` with Utility Name, then commit the updated CSV to the repo."
+        )
+    else:
+        company_df, fuel_df = rankings_result
+
+        top_n = st.slider("Show top N companies:", min_value=10, max_value=50, value=25, step=5)
+        top = company_df.head(top_n).copy()
+
+        # ── KPIs
+        col_a, col_b, col_c = st.columns(3)
+        col_a.metric("Total companies", f"{len(company_df):,}")
+        col_b.metric("Total generation (2023)", f"{company_df['GWh'].sum()/1000:.0f} TWh")
+        col_c.metric("Top company share", f"{top.iloc[0]['GWh'] / company_df['GWh'].sum() * 100:.1f}%")
+
+        # ── Main ranking bar chart
+        fig_rank = go.Figure(go.Bar(
+            y=top["Utility Name"],
+            x=top["GWh"],
+            orientation="h",
+            marker=dict(
+                color=top["GWh"],
+                colorscale=[[0, EA_DARK_BLUE], [1, EA_BLUE]],
+                showscale=False,
+            ),
+            text=[f"{v:,.0f} GWh" for v in top["GWh"]],
+            textposition="outside",
+            customdata=top[["Rank", "GWh"]].values,
+            hovertemplate="<b>#%{customdata[0]} %{y}</b><br>%{customdata[1]:,.0f} GWh<extra></extra>",
+        ))
+        fig_rank.update_layout(
+            title=f"Top {top_n} Power Generators in PJM — 2023 Net Generation (GWh)",
+            xaxis_title="GWh",
+            yaxis=dict(autorange="reversed"),
+        )
+        st.plotly_chart(styled_chart(fig_rank, height=max(400, top_n * 26)), width='stretch')
+
+        st.divider()
+
+        # ── Fuel mix for top 10 companies
+        st.subheader("Generation Mix — Top 10 Companies by Fuel Type")
+        top10_names = company_df.head(10)["Utility Name"].tolist()
+        fuel_top10 = fuel_df[fuel_df["Utility Name"].isin(top10_names)].copy()
+        fuel_top10 = fuel_top10[fuel_top10["GWh"] > 0]
+
+        fig_mix = px.bar(
+            fuel_top10,
+            y="Utility Name", x="GWh", color="Fuel Type",
+            orientation="h",
+            color_discrete_map=FUEL_COLORS,
+            text=fuel_top10["GWh"].apply(lambda x: f"{x:,.0f}"),
+        )
+        fig_mix.update_traces(textposition="inside", insidetextanchor="middle")
+        fig_mix.update_layout(
+            title="Top 10 Companies — Generation by Fuel (GWh, 2023)",
+            xaxis_title="GWh",
+            yaxis=dict(autorange="reversed", categoryorder="total ascending"),
+            legend=dict(orientation="h", y=-0.15),
+        )
+        st.plotly_chart(styled_chart(fig_mix, height=480), width='stretch')
+
+        st.divider()
+
+        # ── Full ranked table
+        st.subheader("Full Rankings Table")
+        table = company_df[["Rank", "Utility Name", "GWh"]].copy()
+        table["GWh"] = table["GWh"].apply(lambda x: f"{x:,.0f}")
+        table["Share of PJM Total"] = (
+            company_df["Net Generation (MWh)"] / company_df["Net Generation (MWh)"].sum() * 100
+        ).apply(lambda x: f"{x:.2f}%")
+        table.columns = ["Rank", "Company", "Net Generation (GWh)", "Share of PJM Total"]
+        st.dataframe(table, use_container_width=True, hide_index=True)
 
 st.divider()
 st.markdown(

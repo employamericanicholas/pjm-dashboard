@@ -90,6 +90,7 @@ def load_eia860_plants(zf: zipfile.ZipFile) -> pd.DataFrame:
     rename_map = {
         "Plant Code": "Plant Code",
         "Utility ID": "Utility ID",
+        "Utility Name": "Utility Name",
         "Plant Name": "Plant Name",
         "State": "State",
         "Latitude": "Latitude",
@@ -103,7 +104,7 @@ def load_eia860_plants(zf: zipfile.ZipFile) -> pd.DataFrame:
     df = df.rename(columns={k: v for k, v in rename_map.items() if k in df.columns})
 
     # Keep only useful columns that exist
-    keep = [c for c in ["Plant Code", "Plant Name", "State", "Latitude", "Longitude", "BA Code", "BA Name"] if c in df.columns]
+    keep = [c for c in ["Plant Code", "Utility Name", "Plant Name", "State", "Latitude", "Longitude", "BA Code", "BA Name"] if c in df.columns]
     df = df[keep].copy()
 
     # Drop rows with no Plant Code
