@@ -534,45 +534,41 @@ with tab3:
 
     with col1:
         st.subheader("Generation by Fuel Source — 2025 (GWh)")
-        fig_pie = px.pie(
-            gen_fuel, values="GWh_2025", names="Fuel",
-            color="Fuel", color_discrete_map=FUEL_COLORS,
-            hole=0.42,
-        )
-        fig_pie.update_traces(
-            textposition="inside",
-            textinfo="percent",
-            insidetextorientation="radial",
-            textfont=dict(size=12, color="white"),
-            hovertemplate="<b>%{label}</b><br>%{value:,.0f} GWh<br>%{percent}<extra></extra>"
-        )
-        fig_pie.update_layout(
-            title="Total: 873,339 GWh",
-            showlegend=True,
-            legend=dict(orientation="v", x=1.0, font=dict(size=12)),
-        )
-        st.plotly_chart(styled_chart(fig_pie, height=460), width='stretch')
+        total_gwh = gen_fuel["GWh_2025"].sum()
+        gen_pct = (gen_fuel["GWh_2025"] / total_gwh * 100).round(1)
+        fig_tree_gen = go.Figure(go.Treemap(
+            labels=gen_fuel["Fuel"],
+            parents=[""] * len(gen_fuel),
+            values=gen_fuel["GWh_2025"],
+            customdata=list(zip(gen_pct, gen_fuel["GWh_2025"])),
+            marker=dict(colors=[FUEL_COLORS.get(f, "#999999") for f in gen_fuel["Fuel"]]),
+            texttemplate="<b>%{label}</b><br><b>%{customdata[0]:.1f}%</b>",
+            textfont=dict(size=22, color="white", family="Montserrat, sans-serif"),
+            insidetextfont=dict(size=22, color="white", family="Montserrat, sans-serif"),
+            hovertemplate="<b>%{label}</b><br>%{customdata[1]:,.0f} GWh<br>%{customdata[0]:.1f}%<extra></extra>",
+            tiling=dict(packing="squarify", pad=3),
+        ))
+        fig_tree_gen.update_layout(title=f"Total: {total_gwh:,.0f} GWh", margin=dict(t=44, l=4, r=4, b=4))
+        st.plotly_chart(styled_chart(fig_tree_gen, height=480), width='stretch')
 
     with col2:
         st.subheader("Installed Capacity by Fuel — Dec 31, 2025 (MW)")
-        fig_cap = px.pie(
-            capacity_fuel, values="MW", names="Fuel",
-            color="Fuel", color_discrete_map=FUEL_COLORS,
-            hole=0.42,
-        )
-        fig_cap.update_traces(
-            textposition="inside",
-            textinfo="percent",
-            insidetextorientation="radial",
-            textfont=dict(size=12, color="white"),
-            hovertemplate="<b>%{label}</b><br>%{value:,.0f} MW<br>%{percent}<extra></extra>"
-        )
-        fig_cap.update_layout(
-            title="Total: 184,202 MW",
-            showlegend=True,
-            legend=dict(orientation="v", x=1.0, font=dict(size=12)),
-        )
-        st.plotly_chart(styled_chart(fig_cap, height=460), width='stretch')
+        total_mw = capacity_fuel["MW"].sum()
+        cap_pct = (capacity_fuel["MW"] / total_mw * 100).round(1)
+        fig_tree_cap = go.Figure(go.Treemap(
+            labels=capacity_fuel["Fuel"],
+            parents=[""] * len(capacity_fuel),
+            values=capacity_fuel["MW"],
+            customdata=list(zip(cap_pct, capacity_fuel["MW"])),
+            marker=dict(colors=[FUEL_COLORS.get(f, "#999999") for f in capacity_fuel["Fuel"]]),
+            texttemplate="<b>%{label}</b><br><b>%{customdata[0]:.1f}%</b>",
+            textfont=dict(size=22, color="white", family="Montserrat, sans-serif"),
+            insidetextfont=dict(size=22, color="white", family="Montserrat, sans-serif"),
+            hovertemplate="<b>%{label}</b><br>%{customdata[1]:,.0f} MW<br>%{customdata[0]:.1f}%<extra></extra>",
+            tiling=dict(packing="squarify", pad=3),
+        ))
+        fig_tree_cap.update_layout(title=f"Total: {total_mw:,.0f} MW", margin=dict(t=44, l=4, r=4, b=4))
+        st.plotly_chart(styled_chart(fig_tree_cap, height=480), width='stretch')
 
     st.divider()
 
