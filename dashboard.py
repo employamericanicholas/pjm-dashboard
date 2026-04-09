@@ -151,6 +151,11 @@ def load_plant_data():
         df = pd.read_csv(csv_path, dtype={"Plant Code": str})
     except FileNotFoundError:
         return pd.DataFrame()
+    # Strict PJM BA filter — the CSV also contains MISO, TVA, CPLE, DUK, etc.
+    # plants that were pulled in by the state-based fallback in the build script.
+    # Only plants with BA Code = "PJM" are actually within PJM's footprint.
+    if "BA Code" in df.columns:
+        df = df[df["BA Code"].str.strip().str.upper() == "PJM"]
     df["Fuel Type"] = df["Fuel Type"].map(EIA_FUEL_MAP).fillna("Other")
     df["Net Generation (MWh)"] = pd.to_numeric(df["Net Generation (MWh)"], errors="coerce").fillna(0)
     df["Latitude"] = pd.to_numeric(df["Latitude"], errors="coerce")
