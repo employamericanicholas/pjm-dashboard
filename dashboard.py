@@ -80,12 +80,19 @@ def styled_chart(fig, height=420):
     fig.update_layout(
         paper_bgcolor=PLOT_BG,
         plot_bgcolor=PLOT_BG,
-        font=dict(color="#333333", size=13),
+        font=dict(color="#333333", size=14),
+        title_font=dict(size=15, color="#191E3A"),
         height=height,
-        margin=dict(l=16, r=16, t=44, b=24),
+        margin=dict(l=20, r=20, t=48, b=28),
     )
-    fig.update_xaxes(gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR, tickfont=dict(size=12))
-    fig.update_yaxes(gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR, tickfont=dict(size=12))
+    fig.update_xaxes(
+        gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR,
+        tickfont=dict(size=13), title_font=dict(size=14),
+    )
+    fig.update_yaxes(
+        gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR,
+        tickfont=dict(size=13), title_font=dict(size=14),
+    )
     return fig
 
 def kpi(label, value, delta=None, delta_type="up"):
@@ -634,19 +641,17 @@ with tab4:
             showsubunits=True, subunitcolor="#aaaaaa",
             showcountries=False,
             bgcolor="#F9F7F5",
-            center=dict(lat=39.5, lon=-80.5),
+            center=dict(lat=39.5, lon=-81.0),
+            lataxis_range=[36.2, 42.8],
+            lonaxis_range=[-89.5, -73.5],
         )
         fig_map.update_layout(
-            geo=dict(
-                lataxis_range=[36.5, 42.5],
-                lonaxis_range=[-90, -73],
-            ),
             title="PJM Zones: Green = Net Exporter, Red = Net Importer (bubble = magnitude)",
             legend=dict(orientation="h", y=-0.05),
             paper_bgcolor=PLOT_BG,
             height=560,
             margin=dict(l=0, r=0, t=44, b=0),
-            font=dict(color="#333333", size=13),
+            font=dict(color="#333333", size=14),
         )
         st.plotly_chart(fig_map, width='stretch')
 
@@ -1062,7 +1067,7 @@ with tab8:
         col_q, col_ctx = st.columns([3, 2])
         with col_q:
             st.markdown(f"""
-            <div style="background:#f8f4ee;border-left:5px solid #EF8E48;border-radius:6px;
+            <div style="background:#E8F0FB;border-left:5px solid #104591;border-radius:6px;
                         padding:16px 20px;margin:8px 0;font-size:15px;color:#333;font-style:italic;">
                 "{q['text']}"
                 <div style="font-size:12px;color:#888;margin-top:10px;font-style:normal;">
@@ -1184,55 +1189,59 @@ with tab10:
         # Build scatter map — one trace per fuel type so legend works
         fig_plants = go.Figure()
         fuel_order = ["Gas", "Nuclear", "Coal", "Wind", "Solar", "Hydro", "Oil", "Waste", "Battery", "Biofuel", "Other"]
-        max_mwh = df_show["Total MWh"].max() if len(df_show) > 0 else 1
 
-        # Layer 1: operating plants (circles)
-        for fuel in fuel_order:
-            sub = df_show[df_show["Primary Fuel"] == fuel]
-            if sub.empty:
-                continue
-            color = FUEL_COLORS.get(fuel, "#999999")
-            sizes = (sub["Total MWh"].clip(lower=0) / max_mwh * 16 + 4)
-            fig_plants.add_trace(go.Scattergeo(
-                lat=sub["Latitude"],
-                lon=sub["Longitude"],
-                name=fuel,
-                legendgroup=fuel,
-                legendgrouptitle=dict(text="Operating Plants") if fuel == fuel_order[0] else None,
-                mode="markers",
-                marker=dict(
-                    size=sizes,
-                    color=color,
-                    symbol="circle",
-                    opacity=0.75,
-                    line=dict(color="white", width=0.5),
-                ),
-                customdata=sub[["Plant Name", "State", "Total MWh"]].values,
-                hovertemplate=(
-                    "<b>%{customdata[0]}</b> (%{customdata[1]})<br>"
-                    f"Fuel: {fuel}<br>"
-                    "Generation: %{customdata[2]:,.0f} MWh<extra></extra>"
-                ),
-            ))
+        # Layer 1: operating plants (circles) — only when df_show has data
+        if not df_show.empty:
+            max_mwh = df_show["Total MWh"].max() if df_show["Total MWh"].max() > 0 else 1
+            op_group_titled = False
+            for fuel in fuel_order:
+                sub = df_show[df_show["Primary Fuel"] == fuel]
+                if sub.empty:
+                    continue
+                color = FUEL_COLORS.get(fuel, "#999999")
+                sizes = (sub["Total MWh"].clip(lower=0) / max_mwh * 16 + 4)
+                group_title = dict(text="Operating Plants") if not op_group_titled else None
+                op_group_titled = True
+                fig_plants.add_trace(go.Scattergeo(
+                    lat=sub["Latitude"],
+                    lon=sub["Longitude"],
+                    name=fuel,
+                    legendgroup=fuel,
+                    legendgrouptitle=group_title,
+                    mode="markers",
+                    marker=dict(
+                        size=sizes,
+                        color=color,
+                        symbol="circle",
+                        opacity=0.75,
+                        line=dict(color="white", width=0.5),
+                    ),
+                    customdata=sub[["Plant Name", "State", "Total MWh"]].values,
+                    hovertemplate=(
+                        "<b>%{customdata[0]}</b> (%{customdata[1]})<br>"
+                        f"Fuel: {fuel}<br>"
+                        "Generation: %{customdata[2]:,.0f} MWh<extra></extra>"
+                    ),
+                ))
 
         # Layer 2: ready-to-build projects (stars)
         if not df_rtb_show.empty:
             max_mw = df_rtb_show["MW Capacity"].max() if df_rtb_show["MW Capacity"].max() > 0 else 1
-            shown_fuels_rtb = set()
+            rtb_group_titled = False
             for fuel in fuel_order:
                 sub = df_rtb_show[df_rtb_show["Fuel Category"] == fuel]
                 if sub.empty:
                     continue
                 color = FUEL_COLORS.get(fuel, "#999999")
                 sizes = (sub["MW Capacity"].clip(lower=0) / max_mw * 14 + 7)
-                first = fuel not in shown_fuels_rtb
-                shown_fuels_rtb.add(fuel)
+                group_title = dict(text="Ready to Build ★") if not rtb_group_titled else None
+                rtb_group_titled = True
                 fig_plants.add_trace(go.Scattergeo(
                     lat=sub["Latitude"],
                     lon=sub["Longitude"],
                     name=f"{fuel} (pipeline)",
                     legendgroup=f"rtb_{fuel}",
-                    legendgrouptitle=dict(text="Ready to Build ★") if first and fuel == list({f for f in fuel_order if not df_rtb_show[df_rtb_show["Fuel Category"]==f].empty})[0] else None,
+                    legendgrouptitle=group_title,
                     mode="markers",
                     marker=dict(
                         size=sizes,
@@ -1257,13 +1266,16 @@ with tab10:
             showsubunits=True, subunitcolor="#cccccc",
             showcoastlines=True, coastlinecolor="#aaaaaa",
             bgcolor="#F9F7F5",
+            center=dict(lat=39.5, lon=-81.5),
+            lataxis_range=[36.2, 43.2],
+            lonaxis_range=[-90.0, -73.5],
         )
         fig_plants.update_layout(
             title="PJM Power Plants — Operating (circles) & Ready-to-Build Pipeline (stars)",
             paper_bgcolor=PLOT_BG,
             height=640,
-            margin=dict(l=0, r=0, t=40, b=0),
-            font=dict(color="#333333"),
+            margin=dict(l=0, r=0, t=44, b=0),
+            font=dict(color="#333333", size=14),
             legend=dict(
                 title="Fuel Type",
                 orientation="v",
@@ -1272,7 +1284,6 @@ with tab10:
                 borderwidth=1,
                 groupclick="toggleitem",
             ),
-            geo=dict(lataxis_range=[36, 45], lonaxis_range=[-93, -72]),
         )
         st.plotly_chart(fig_plants, width='stretch')
 
