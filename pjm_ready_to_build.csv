@@ -1,0 +1,496 @@
+Project ID,Display Name,State,County,Fuel,Fuel Category,MW Capacity,MW Energy,Status,Transmission Owner,Projected In Service Date,Latitude,Longitude
+AE1-105,Maidsville CCGT,WV,Preston,Natural Gas,Gas,1235.0,1270.0,Engineering and Procurement,APS,5/30/2029,39.53477945165343,-79.6541216849201
+AB1-105,Trumbull Energy Center,OH,Trumbull,Natural Gas,Gas,850.0,940.0,Partially in Service - Under Construction,ATSI,1/29/2026,41.29170482554049,-80.79097454144603
+AD1-100,Heritage Prairie Wind,IL,Kankakee,Wind,Wind,150.0,850.0,Under Construction,ComEd,12/31/2028,41.22557350077874,-87.82331325571768
+AF1-124 - moved to TC1,"CVOW 2, OSS 2 – T2G07",VA,City of Chesapeake,Offshore Wind,Wind,254.1,836.0,Under Construction,Dominion,12/31/2032,,
+AF1-123 - moved to TC1,"CVOW 1, OSS 1 - T1L11",VA,City of Chesapeake,Offshore Wind,Wind,253.2,833.0,Under Construction,Dominion,12/31/2032,,
+AF1-125 - moved to TC1,"CVOW 3, OSS 3 – T3G15",VA,City of Chesapeake,Offshore Wind,Wind,249.3,820.0,Under Construction,Dominion,12/31/2032,,
+AE1-020,Ocean Wind,NJ,Ocean,Offshore Wind,Wind,229.3,816.0,Suspended,JCPL,2/28/2026,39.92834252847768,-74.1429431339829
+AE1-173,Blackwater Solar,VA,Sussex,Solar,Solar,480.0,800.0,Under Construction,Dominion,10/1/2029,36.99530043326647,-77.13341484081144
+AB1-087,Sullivan Generating Station 1,IN,Sullivan,Natural Gas,Gas,550.0,575.0,Under Construction,AEP,12/31/2028,38.99997227184213,-87.41475312244506
+AB1-088,Sullivan Generating Station 2,IN,Sullivan,Natural Gas,Gas,550.0,575.0,Engineering and Procurement,AEP,12/31/2028,39.077317625094935,-87.40976046557782
+AF1-128 - moved to TC1,Chesterfield CT Units 1 and 2,VA,Chesterfield,Natural Gas,Gas,569.0,569.0,Under Construction,Dominion,12/31/2029,37.347425525815815,-77.49588587677086
+AF1-129,Chesterfield CT Units 3&4,VA,Chesterfield,Natural Gas,Gas,569.0,569.0,Engineering and Procurement,Dominion,12/31/2029,37.48085759732366,-77.64151179247673
+AA2-119,Glen Falls Facility,WV,Harrison,Natural Gas,Gas,550.0,550.0,Engineering and Procurement,APS,1/31/2029,39.31370962881936,-80.28528329129648
+AF2-042 - moved to TC1,Randolph Solar ,VA,Halifax,Solar,Solar,300.0,500.0,Engineering and Procurement,Dominion,12/31/2032,36.843923787185,-78.94137150604477
+AG1-483 - moved to TC1,Fourth Quarter,MD,Montgomery,Storage,Battery,500.0,500.0,Engineering and Procurement,PEPCO,2/1/2030,39.123800407718555,-77.31830598269941
+AG1-226 - moved to TC1,Dequine-Eugene 345 kV,IN,Fountain,Solar,Solar,142.0,450.0,Engineering and Procurement,AEP,3/31/2029,40.055774293228346,-87.36325425587812
+AE1-104,Ocean Wind LLC,NJ,Cape May,Offshore Wind,Wind,121.4,432.0,Suspended,AEC,2/28/2026,39.098941348883805,-74.74375603668817
+AG1-500,West Lorain Power Plant 345 kV,OH,Lorain,Natural Gas,Gas,385.5,406.4,Engineering and Procurement,ATSI,6/1/2031,41.334121141465005,-82.31305162492794
+AG1-125,Oak Run Solar Project,OH,Madison,Solar,Solar,234.9,400.0,Engineering and Procurement,AEP,12/31/2030,39.975241481278225,-83.4667035691599
+AG1-126,Oak Run Solar Project,OH,Madison,Solar,Solar,234.9,400.0,Engineering and Procurement,AEP,12/31/2030,39.9282094557893,-83.45064798784954
+AE1-163,Panther Grove Wind,IL,Woodford,Wind,Wind,49.0,350.0,Engineering and Procurement,ComEd,2/1/2027,40.851728057620484,-89.30868866644252
+AD1-074,Macadamia Solar,NC,Washington,Solar,Solar,198.8,300.0,Engineering and Procurement,Dominion,3/31/2028,35.80979923235117,-76.6281229890594
+AE1-113,Panther Grove 2,IL,Woodford,Wind,Wind,66.0,300.0,Engineering and Procurement,ComEd,1/18/2028,40.902754525854775,-89.13777922998248
+AE2-094,Cassius Blue Solar,VA,Sussex,Solar; Storage,Solar,207.2,300.0,Engineering and Procurement,Dominion,8/1/2031,37.02099406911733,-77.40532714693198
+AE2-221,Yellow Wood Solar Energy Center,OH,Clinton,Solar,Solar,180.0,300.0,Under Construction,Dayton,12/31/2027,39.4834930392977,-83.70643097264379
+AF1-176 - moved to TC1,Three Lakes Solar,MI,St. Joseph,Solar; Storage,Solar,155.682,300.0,Engineering and Procurement,AEP,12/31/2029,41.83820128988447,-85.41590559292763
+AF2-041 - moved to TC1,Steward Creek Solar,IL,Lee,Solar,Solar,180.0,300.0,Engineering and Procurement,ComEd,3/31/2031,41.73946004089449,-89.33768352804253
+AF2-132,Mammoth Central Energy Center,IN,Pulaski,Solar,Solar,180.0,300.0,Under Construction,AEP,2/9/2027,40.935784903788935,-86.7964541302818
+AF2-133,Mammoth South Energy Center,IN,Pulaski,Solar,Solar,180.0,300.0,Under Construction,AEP,2/6/2027,40.96230147809621,-86.66228587761647
+AF2-182 - moved to TC1,Nelson-Lee County 345 kV II,IL,Lee,Solar,Solar,0.0,300.0,Engineering and Procurement,ComEd,12/31/2029,41.79137874877819,-89.41346023324053
+AF2-349 - moved to TC1,Pleasant Grove Solar,IL,McHenry,Solar,Solar,0.0,300.0,Engineering and Procurement,ComEd,9/30/2029,42.38304091741787,-88.49276919167653
+AG1-302,Mammoth Central II Energy Center,IN,Pulaski,Solar,Solar,180.0,300.0,Under Construction,AEP,1/15/2028,41.15747433578421,-86.5550092457297
+AG1-363,Jade Meadow III Solar Facility,MD,Garrett,Solar; Storage,Solar,220.0,300.0,Engineering and Procurement,APS,3/31/2028,39.50549708595316,-79.1259796582249
+AG1-374 - moved to TC1,Blue Mound 345 kV,IL,McLean,Solar,Solar,180.0,300.0,Engineering and Procurement,ComEd,2/28/2030,40.46346932944837,-88.76290753259362
+AG1-410 - moved to TC1,Butterfly Meadows,OH,Van Wert,Solar,Solar,180.0,300.0,Engineering and Procurement,AEP,2/15/2030,40.84821339470619,-84.64248654702376
+AE2-261 - moved to TC1,Black Diamond Solar,IL,Christian,Solar,Solar,179.4,299.0,Engineering and Procurement,ComEd,12/15/2030,39.47099712618023,-89.22329348525018
+AC2-103,Firelands Wind,OH,Erie,Wind,Wind,38.69,297.66,Engineering and Procurement,ATSI,6/30/2027,41.30532416128051,-82.5252130903548
+AC1-164,Chickahominy Solar 1 and 2,VA,Charles City,Solar,Solar,220.8,295.0,Partially in Service - Under Construction,Dominion,3/31/2025,,
+AG1-349,Mayapple Solar,IN,Pulaski,Solar,Solar,156.0,260.0,Engineering and Procurement,AEP,12/31/2027,40.97973024377221,-86.65027140962415
+AG1-553 - moved to TC1,Cordova 345 kV,IL,Rock Island,Solar,Solar,0.0,260.0,Engineering and Procurement,ComEd,1/15/2030,41.5091763587238,-90.7189067065073
+AF1-204 - moved to TC1,Vermilion Grove Wind,IN,Vermillion,Wind,Wind,63.75,255.0,Engineering and Procurement,AEP,3/31/2029,39.83896146052936,-87.54935370241932
+AG1-462 - moved to TC1,Cordova 345 kV,IL,Whiteside,Solar,Solar,153.0,255.0,Engineering and Procurement,ComEd,9/30/2029,41.83051576705388,-89.90347850910983
+AF2-111 - moved to TC1,Goldfinch Solar,KY,Mason,Solar,Solar,150.0,250.0,Engineering and Procurement,EKPC,6/30/2030,38.642200624480544,-83.9289996087225
+AF2-413,Woods Landing Energy Storage,NJ,Atlantic,Storage,Battery,250.0,250.0,Engineering and Procurement,JCPL,1/31/2030,39.42432299393169,-74.73398693963703
+AB1-056,Maryland Offshore Wind Energy Project (MOWEP),DE,Sussex,Offshore Wind,Wind,64.4,247.8,Suspended,DPL,12/31/2027,38.752969352334844,-75.23613271283493
+AC2-141,Sycamore Cross Solar,VA,Isle of Wight,Solar,Solar,168.2,240.0,Engineering and Procurement,Dominion,4/1/2026,36.97456144579923,-76.56082909919492
+AD2-093,Cadence Solar Energy Center,OH,Union,Solar,Solar,144.0,240.0,Partially in Service - Under Construction,AEP,3/20/2026,40.268895810967244,-83.35025117159147
+AE2-048,Eastern Cottontail Solar,OH,Fairfield,Solar,Solar,147.7,220.0,Engineering and Procurement,AEP,12/31/2028,39.69689274494326,-82.52496408073549
+AD2-100,Broomstick Solar Energy Centergy Center,IL,Christian,Solar,Solar,126.0,210.0,Suspended,ComEd,12/7/2028,39.589322920954,-89.13249650070212
+AE1-092 - moved to TC1,Fountain Point Solar,OH,Union,Solar,Solar,96.4,206.55,Engineering and Procurement,Dayton,4/30/2030,40.209441596066235,-83.47456323342936
+AD1-070,South Branch Solar,OH,Hancock,Solar,Solar,36.0,205.0,Suspended,AEP,12/31/2025,40.92819496859403,-83.6814733160237
+AB2-037,Cherrywood Solar I,MD,Caroline,Solar,Solar,76.7,202.0,Under Construction,DPL,9/1/2026,38.75329794474024,-75.86389018524741
+AE2-140,Axton Solar,VA,Henry,Solar,Solar,120.66,201.1,Suspended,AEP,12/31/2025,36.689473850600514,-80.10664721490615
+AC2-157,Trade Post Solar Energy Center,IN,Sullivan,Solar,Solar,76.0,200.0,Under Construction,AEP,6/30/2026,39.12878920558209,-87.33924394816157
+AD2-047,Lower Crossing Wind,IL,Kankakee,Wind,Wind,34.0,200.0,Suspended,ComEd,11/30/2026,41.188749690870324,-87.88098329180322
+AE1-205,Blooming Grove Solar Energy Center,IL,Livingston,Solar,Solar,84.0,200.0,Engineering and Procurement,ComEd,12/29/2028,40.961750967445276,-88.56205391974288
+AE2-045,Bottlebrush Solar ,IN,Lake,Solar,Solar,84.28,200.0,Engineering and Procurement,AEP,3/31/2028,41.4623867861292,-87.47913510785602
+AE2-214,Pleasant Prairie Solar Energy Center,OH,Franklin,Solar,Solar,120.0,200.0,Under Construction,AEP,3/30/2027,39.98637288702869,-83.10480800433074
+AF1-028,Prospect Power,VA,Rockingham,Storage,Battery,200.0,200.0,Under Construction,Dominion,2/1/2026,38.42113627955064,-78.76318991335314
+AF1-062,Flint Grid,OH,Licking,Storage,Battery,80.0,200.0,Engineering and Procurement,AEP,5/1/2027,39.998992217648635,-82.62004027330772
+AF1-090,Rolling Farms Wind Project,IL,Christian,Wind,Wind,35.2,200.0,Engineering and Procurement,ComEd,12/31/2029,39.58594071082971,-89.35973731451689
+AF1-119,Lake Trout Solar,IN,Blackford,Solar; Storage,Solar,140.0,200.0,Engineering and Procurement,AEP,1/31/2028,40.46573508947436,-85.38611220090564
+AF1-202,Blackford Wind Energy Project,IN,Blackford,Wind,Wind,34.0,200.0,Under Construction,AEP,9/15/2026,40.488328665555485,-85.32667073727953
+AF1-245,Hudson Energy Storage Facility,NJ,Hudson,Storage,Battery,80.0,200.0,Engineering and Procurement,PSEG,12/1/2028,40.794974725779845,-74.05266744809556
+AF1-280 - moved to TC1,South Dixon Solar,IL,Lee,Solar,Solar,0.0,200.0,Engineering and Procurement,ComEd,12/31/2029,41.779779396800144,-89.3013750072448
+AF1-322,Black Prairie Solar Park,IN,White,Solar,Solar,84.0,200.0,Engineering and Procurement,AEP,7/1/2027,40.763809056157925,-86.98905839963294
+AF2-018,Lynn Bark Energy Center,KY,Martin,Solar,Solar,133.9,200.0,Engineering and Procurement,AEP,3/30/2029,37.810983718578896,-82.5835227637833
+AF2-078,Honey Creek Solar,IN,White,Solar; Storage,Solar,120.0,200.0,Engineering and Procurement,AEP,12/31/2027,40.70389802353503,-86.76121648457124
+AF2-177 - moved to TC1,Teays River Wind Farm,IN,Blackford,Wind,Wind,26.0,200.0,Engineering and Procurement,AEP,9/17/2030,40.36006828029631,-85.28245338985646
+AF2-200 - moved to TC1,Steward Creek Solar,IL,Lee,Solar,Solar,120.0,200.0,Engineering and Procurement,ComEd,3/31/2031,41.73225917341577,-89.25461728495972
+AF2-205,Moss Creek Solar,IN,Pulaski,Solar,Solar,120.0,200.0,Engineering and Procurement,AEP,3/22/2028,40.97677232147669,-86.64147702339459
+AF2-388 - moved to TC1,Prairie Creek Wind,IN,Blackford,Wind,Wind,35.2,200.0,Engineering and Procurement,AEP,5/31/2029,40.450718874493916,-85.24485909428815
+AF2-396 - moved to TC1,Cass County Solar,MI,Cass,Solar; Storage,Solar,200.0,200.0,Engineering and Procurement,AEP,6/1/2029,42.00205973758436,-86.13270945548356
+AF2-441 - moved to TC1,Burnham 138kV,IL,Cook,Storage,Battery,80.0,200.0,Engineering and Procurement,ComEd,5/31/2030,41.83043947660769,-87.68547248452022
+AG1-237,Warren County Wind Energy Center,IN,,Wind,Wind,26.0,200.0,Engineering and Procurement,AEP,12/31/2029,,
+AF1-206,CG Fulton County ,OH,Fulton,Solar,Solar,119.4,199.0,Engineering and Procurement,ATSI,5/31/2028,41.54479613408528,-84.1727300550108
+AF1-296 - moved to TC1,Gipper Wind Farm,IL,Whiteside,Wind,Wind,33.6,190.89,Engineering and Procurement,ComEd,9/30/2029,41.701135501864,-89.80766133801384
+AF1-130,Martin County Solar Project,KY,Martin,Solar,Solar,133.9,190.0,Suspended,AEP,12/15/2028,37.835633963534455,-82.51185124742382
+AF1-233 - moved to TC1,Fleming Solar,KY,Fleming,Solar,Solar,113.1,188.5,Engineering and Procurement,EKPC,3/31/2029,38.381535716561906,-83.61861672316219
+AC1-086,Cherry Solar,NC,Northhampton,Solar,Solar,123.7,180.0,Under Construction,Dominion,8/31/2025,,
+AE2-217,Sloopy Solar Energy Center,OH,Clark,Solar,Solar,108.0,180.0,Engineering and Procurement,ATSI,9/30/2028,39.956467249678575,-83.78223855512896
+AF1-091,Sculpin Solar,IN,DeKalb,Solar,Solar,138.4,180.0,Engineering and Procurement,AEP,11/30/2028,41.37429284674562,-84.8798313268386
+AF1-207,Hoosier Line Solar,IN,White,Solar,Solar,34.0,180.0,Engineering and Procurement,AEP,9/15/2027,40.82631489231985,-86.83815581783891
+AD1-140,Kingwood Solar,OH,Greene,Solar,Solar,95.8,175.0,Engineering and Procurement,ATSI,9/30/2026,39.60755250077785,-83.78981171034988
+AF2-356,CPV Backbone Solar,MD,Garrett,Solar,Solar,105.0,175.0,Partially in Service - Under Construction,APS,3/15/2026,39.43274989755213,-79.32244176132254
+AF1-237,Lamberton Road Battery,NJ,Mercer,Storage,Battery,80.0,170.0,Engineering and Procurement,PSEG,8/11/2027,40.184114486586154,-74.70407891244055
+AF2-222 - moved to TC1,Courthouse Solar,VA,Charlotte,Solar,Solar,100.0,167.0,Engineering and Procurement,Dominion,3/1/2031,37.06240824414315,-78.64914468769862
+AE1-207,Golden Aster Solar Energy Center,IN,Grant,Solar,Solar,67.2,160.0,Suspended,AEP,5/31/2026,40.506608535260334,-85.77345208523117
+AE2-299,Erie East Energy,PA,Erie,Storage,Battery,32.0,160.0,Suspended,PENELEC,6/1/2026,42.03665722696807,-80.12682024798953
+AE2-089,Skycrest Solar Energy Center,IN,Jay,Solar,Solar,93.0,155.0,Engineering and Procurement,AEP,12/31/2026,40.435206746024804,-84.8771296982345
+AF1-228,Springwater Solar,OH,Madison,Solar,Solar,93.0,155.0,Under Construction,AEP,8/31/2027,39.81316490465116,-83.36163732789058
+AD1-025,Spring Grove Solar II,VA,Surry,Solar,Solar,94.2,150.0,Partially in Service - Under Construction,Dominion,12/28/2025,37.166877890018654,-76.97692002526891
+AD1-151,Wild Indigo Solar,VA,Surry,Solar,Solar,90.0,150.0,Suspended,Dominion,9/1/2026,37.10683850613776,-76.92851530931712
+AD2-038,Osagrove Flats Wind,IL,Lasalle,Wind,Wind,26.4,150.0,Under Construction,ComEd,10/30/2026,41.314786094263155,-88.97845009710119
+AD2-067,Harvey Solar I,OH,Licking,Solar,Solar,57.0,150.0,Engineering and Procurement,AEP,1/15/2028,40.04386790139549,-82.62598806046043
+AD2-077,Energy Mountain,PA,Bucks,Storage,Battery,100.0,150.0,Suspended,PPL,7/31/2029,40.36815482234853,-74.9788218624488
+AE1-072,Shawboro Solar,NC,Currituck,Solar,Solar,98.6,150.0,Under Construction,Dominion,12/1/2027,36.339009026532814,-75.95676180152294
+AE1-114 - moved to TC1,Leaf River Wind,IL,Ogle,Wind,Wind,34.0,150.0,Engineering and Procurement,ComEd,9/1/2029,41.942919980635864,-89.37791547827376
+AE1-166,Heritage Prairie Solar,IL,Kankakee,Solar,Solar,78.0,150.0,Engineering and Procurement,ComEd,12/31/2027,41.04783141650893,-87.83157384253268
+AE1-170,Wingstem Solar Energy Farm,MI,Cass,Solar,Solar,63.0,150.0,Suspended,AEP,12/31/2025,42.028098439491885,-86.14794766311209
+AE1-250,Blue Ridge Solar,VA,Pittsylvania,Solar,Solar,90.0,150.0,Under Construction,AEP,1/21/2028,36.919780365769824,-79.46509536801975
+AE2-051,Big Pine Solar,VA,Sussex,Solar,Solar,90.0,150.0,Engineering and Procurement,Dominion,8/1/2031,36.97457471211458,-77.19882196029033
+AE2-152,Heritage Prairie Solar,IL,Kankakee,Solar,Solar,90.0,150.0,Engineering and Procurement,ComEd,12/31/2027,41.08331879075028,-87.82098606807921
+AE2-223 - moved to TC1,Bright Stalk Generating Facility,IL,McLean,Wind,Wind,19.5,150.0,Engineering and Procurement,ComEd,12/31/2029,40.60716133056346,-88.69999721573724
+AF1-092,Bowfin Solar,IN,Huntington,Solar; Storage,Solar,115.0,150.0,Suspended,AEP,6/30/2028,40.893294216951794,-85.44248968710258
+AF1-223,Blackford Solar Energy Project,IN,Jay,Solar,Solar,90.0,150.0,Under Construction,AEP,12/31/2026,40.48700964539816,-85.00907923791168
+AF2-014,Wild Grains Solar,OH,Van Wert,Solar,Solar,90.0,150.0,Engineering and Procurement,AEP,12/31/2027,40.843366760514506,-84.5073452310448
+AF2-083,Gemstone Solar,MI,Cass,Solar,Solar,100.0,150.0,Under Construction,AEP,12/31/2028,41.862580974842835,-85.87914363841078
+AF2-106,Pulaski Solar,VA,Pulaski,Solar,Solar,90.0,150.0,Engineering and Procurement,AEP,2/28/2028,36.96651883091684,-80.6472352159845
+AF2-142 - moved to TC1,Otter Creek Solar,IL,Lasalle,Solar,Solar,90.0,150.0,Engineering and Procurement,ComEd,5/28/2029,41.439965575170525,-88.74696763293518
+AF2-143 - moved to TC1,Osagrove Flats Solar,IL,Lasalle,Solar,Solar,90.0,150.0,Engineering and Procurement,ComEd,5/28/2029,41.33272730956007,-88.80132944877855
+AF2-225 - moved to TC1,Bright Stalk Generating Facility,IL,McLean,Solar,Solar,63.0,150.0,Engineering and Procurement,ComEd,12/31/2029,40.42312620755086,-88.73449856852142
+AF2-316,Deep Lake Solar,WV,Nicholas,Solar,Solar,82.7,150.0,Engineering and Procurement,APS,2/28/2029,38.24486158979616,-80.91328377864491
+AF2-415,Two Rivers Storage,NJ,Hudson,Storage,Battery,150.0,150.0,Engineering and Procurement,PSEG,5/30/2028,40.750387696546056,-74.00887694910188
+AG1-107,Palomino Solar,OH,Highland,Solar,Solar,85.7,150.0,Engineering and Procurement,AEP,8/15/2027,39.10684746790541,-83.61933239014179
+AG1-354 - moved to TC1,Summershade-Green County 161 kV,KY,Green,Solar,Solar,90.0,150.0,Engineering and Procurement,EKPC,10/30/2028,37.36365242818217,-85.52199385927662
+AG1-548 - moved to TC1,Erie South-Union City 115 kV,PA,Erie,Solar; Storage,Solar,45.0,150.0,Engineering and Procurement,PENELEC,6/30/2029,42.179996687160454,-80.05015527715528
+AE1-108,Riverstone Solar,VA,Buckingham,Solar,Solar,89.7,149.5,Under Construction,AEP,11/30/2027,37.62659910942823,-78.38822446498833
+AE1-229,Pilesgrove Solar Project,NJ,Salem,Solar,Solar,89.0,149.3,Suspended,AEC,12/31/2027,39.557530329546026,-75.2119825755705
+AE1-153,Maroon Solar,VA,Culpeper,Solar,Solar,89.4,149.0,Suspended,Dominion,5/30/2027,38.51648412176859,-78.02000752635362
+AE2-033,Enclave Solar Energy Center,VA,Sussex,Solar,Solar,89.0,149.0,Suspended,Dominion,2/4/2027,36.94682851253906,-77.18960595076862
+AE2-194,Kensington Solar ,OH,Columbiana,Solar,Solar,84.0,145.0,Suspended,ATSI,1/2/2026,40.806036184373156,-80.70345993861942
+AF2-095 - moved to TC1,Kankakee Solar,IL,Kankakee,Solar,Solar,86.4,144.0,Engineering and Procurement,ComEd,3/31/2031,41.03977663707357,-87.90716914160608
+AE1-245,Grover Hill Wind Project,OH,Paulding,Wind,Wind,19.5,140.3,Partially in Service - Under Construction,AEP,2/5/2026,41.09874177652095,-84.69496406754074
+AE2-092,Woodridge Solar,VA,Albemarle,Solar,Solar,82.8,138.0,Engineering and Procurement,Dominion,6/30/2027,37.914171401726854,-78.69122191191428
+AG1-232,Magley Solar Energy Center ,IN,Adams,Solar,Solar,81.0,135.0,Engineering and Procurement,AEP,3/31/2029,40.744287796618686,-84.85293106174124
+AD2-033,Red Brick Solar,VA,Lunenburg,Solar,Solar,78.0,130.0,Under Construction,Dominion,7/12/2026,36.90472169095987,-78.24361807745493
+AE1-208,Meadow Forge Solar Energy Center,IN,Delaware,Solar,Solar,55.0,130.0,Suspended,AEP,11/30/2026,40.142228805327846,-85.25359994915152
+AF1-283,Highland 3 Solar,OH,Highland,Solar,Solar,78.0,130.0,Engineering and Procurement,Dayton,5/1/2030,39.08923871225341,-83.6118669631419
+AF2-375,South Branch Solar,OH,Hancock,Solar,Solar,77.76,129.6,Engineering and Procurement,AEP,2/28/2026,41.02125169732265,-83.52257190627785
+AG1-034,Harvey Solar I,OH,Licking,Solar,Solar,53.55,127.5,Engineering and Procurement,AEP,1/15/2029,40.01244731244885,-82.50996219934179
+AC1-194,Vinton Solar,OH,Vinton,Solar,Solar,47.5,125.0,Engineering and Procurement,AEP,1/31/2027,39.354070828410435,-82.39785635483202
+AE2-220,Riverstart Solar Park II,IN,Randolph,Solar,Solar,52.5,125.0,Engineering and Procurement,AEP,11/15/2027,40.183533673528096,-85.13034421830646
+AF1-049,Southern Virginia Solar,VA,Pittsylvania,Solar,Solar,75.0,125.0,Under Construction,AEP,3/30/2027,36.784969753088355,-79.38186348695866
+AF2-359,Bluestem Solar,IN,LaPorte,Solar,Solar,75.0,125.0,Engineering and Procurement,AEP,12/1/2027,41.57083271795554,-86.65412106390428
+AG1-285 - moved to TC1,Chase City-Central 115 kV,VA,Charlotte,Solar,Solar,75.0,125.0,Engineering and Procurement,Dominion,4/30/2031,36.894514929047126,-78.53115749983404
+AG1-436 - moved to TC1,Bluestem Solar,IN,LaPorte,Solar,Solar,75.0,125.0,Engineering and Procurement,AEP,12/1/2027,41.65906721117795,-86.64796407281477
+AE1-146,Border Basin,OH,Hancock,Solar,Solar,81.8,120.0,Under Construction,AEP,7/31/2026,40.99596982486629,-83.80485578183965
+AE1-157,CC Solar I,VA,Caroline,Solar,Solar,77.8,120.0,Suspended,Dominion,6/30/2025,38.09588945454007,-77.39192529760798
+AE2-019,New Road Storage,VA,Loudoun,Storage,Battery,120.0,120.0,Under Construction,Dominion,9/27/2027,38.98105519998139,-77.77428845830585
+AE2-027,Chester Solar,VA,Chesterfield,Solar,Solar,72.0,120.0,Under Construction,Dominion,10/29/2027,37.37523199940116,-77.70306231266564
+AE2-113,Ridgeway Solar,PA,McKean,Solar,Solar,61.9,120.0,Under Construction,PENELEC,8/10/2026,41.81235967864509,-78.51987131139975
+AF1-229,Tymochtee Solar,OH,Wyandot,Solar,Solar,72.0,120.0,Under Construction,AEP,8/31/2027,40.944860349193995,-83.2497035411065
+AF2-187,Canal Road,OH,Wayne,Solar,Solar,78.0,120.0,Engineering and Procurement,ATSI,11/30/2028,40.84687573257026,-81.80507779517451
+AG1-555,Rainbow Trout,IN,Tippecance,Solar; Storage,Solar,88.4,120.0,Engineering and Procurement,AEP,1/31/2029,,
+AC2-015,Sycamore Creek Solar,OH,Crawford,Solar,Solar,53.55,117.0,Partially in Service - Under Construction,AEP,12/16/2025,40.79259815914205,-82.85295355945705
+AE2-344,Shorebird Solar,PA,Crawford,Solar,Solar,69.9,116.5,Suspended,PENELEC,12/31/2025,41.647452559362215,-80.01753352236801
+AD2-066,Buffalo Solar,IL,Grundy,Solar,Solar,69.6,116.0,Under Construction,ComEd,9/30/2026,41.29737137659317,-88.53636488705301
+AE2-136,Appalachian Cottontail Solar,OH,Fairfield,Solar,Solar,83.2,114.0,Engineering and Procurement,AEP,12/31/2028,39.733032750473214,-82.7063244548676
+AE1-091,Strawhat Solar Energy Center,OH,Hardin,Solar,Solar,46.93,110.0,Suspended,AEP,1/14/2026,40.54560189917128,-83.62750766798743
+AF1-272,Hoodlebug Solar Energy Center,PA,Indiana,Solar,Solar,66.0,110.0,Engineering and Procurement,PENELEC,8/31/2027,40.72974206180665,-78.98010740861255
+AF1-086,Rogue's Wind,PA,Clearfield,Wind,Wind,20.54,109.9,Under Construction,PENELEC,9/1/2026,41.10194058524154,-78.6263739625181
+AD1-076,Macadamia Solar,NC,Washington,Solar,Solar,72.2,109.0,Engineering and Procurement,Dominion,3/31/2028,35.75837278135967,-76.5679021973651
+AF2-122,Union Ridge Solar,OH,Licking,Solar,Solar,64.62,107.7,Under Construction,AEP,1/31/2026,40.10447367444937,-82.43024878019068
+AG1-341 - moved to TC1,Summer Shade Solar,KY,Metcalfe,Solar; Storage,Solar,63.6,106.0,Engineering and Procurement,EKPC,12/31/2028,36.89848817787251,-85.77457381326141
+AD2-134,Shady Oaks Wind Power Project,IL,Lee,Wind,Wind,21.2,105.9,Partially in Service - Under Construction,ComEd,12/7/2027,41.78878462232956,-89.32895533273398
+AD1-039,Three Rivers Energy Center,IL,Grundy,Natural Gas,Gas,93.0,102.7,Partially in Service - Under Construction,ComEd,2/28/2025,41.23990610812136,-88.28236353558489
+AE2-291 - moved to TC1,Hillandale Solar,VA,Pittsylvania,Solar,Solar,61.2,102.0,Engineering and Procurement,Dominion,5/28/2030,36.859982432326056,-79.34701815734324
+AE2-139,Bradford Solar,PA,McKean,Solar,Solar,60.3,100.5,Engineering and Procurement,PENELEC,12/15/2027,41.86906870742885,-78.65116549099181
+AD2-020,Southwest Michigan Energy Center,MI,Van Buren,Solar,Solar,61.9,100.0,Engineering and Procurement,AEP,4/30/2027,42.34662539806024,-86.20024166111043
+AD2-071,Madison County Solar,IN,Madison,Solar,Solar,67.0,100.0,Suspended,AEP,9/30/2025,40.07206082702942,-85.76804457297715
+AE1-149,Bakers Pond Solar,VA,Prince George,Solar,Solar,60.0,100.0,Suspended,Dominion,7/1/2026,37.28716784283303,-77.11498959865679
+AE1-209,Headwaters Wind Farm III,IN,Randolph,Wind,Wind,13.0,100.0,Suspended,AEP,5/31/2026,40.09933035781477,-85.06610690466434
+AE1-210,Headwaters Wind Farm III,IN,Randolph,Wind,Wind,13.0,100.0,Suspended,AEP,5/31/2026,40.053058013482286,-84.97869392473505
+AE2-156 - moved to TC1,Yadkins Energy Center,VA,City of Chesapeake,Storage,Battery,100.0,100.0,Engineering and Procurement,Dominion,3/31/2031,,
+AE2-219,Riverstart Solar Park V,IN,Randolph,Solar,Solar,42.0,100.0,Suspended,AEP,5/31/2026,40.13310034812699,-85.07334248477349
+AE2-255,Panther Grove 2,IL,Woodford,Wind,Wind,25.0,100.0,Engineering and Procurement,ComEd,1/18/2027,40.868936538351775,-89.09461973134844
+AE2-259,Blue Rock Solar,VA,Buckingham,Solar,Solar,60.0,100.0,Engineering and Procurement,Dominion,12/31/2026,37.647908353295435,-78.62289089541815
+AE2-290,Nottingham Solar,OH,Harrison,Solar,Solar,60.0,100.0,Engineering and Procurement,AEP,12/15/2023,40.248431334277456,-81.21612152262928
+AE2-308 - moved to TC1,Madison Solar,KY,Madison,Solar,Solar,60.0,100.0,Engineering and Procurement,EKPC,1/31/2029,37.834206854816735,-84.3257839184363
+AE2-318,Clermont County Solar Project,OH,Clermont,Solar,Solar,67.2,100.0,Suspended,DEOK,12/31/2025,39.001874281153626,-84.08419325570753
+AE2-323,Elkhart County Solar Project,IN,Elkhart,Solar,Solar,67.1,100.0,Partially in Service - Under Construction,AEP,5/1/2026,41.60430671101561,-85.77175651820711
+AE2-333,Bedington Energy Facility,MD,Frederick,Solar,Solar,60.0,100.0,Suspended,APS,10/31/2025,39.41160862173622,-77.24801298897998
+AF1-114,Gibson Solar I,VA,King George,Solar,Solar,42.0,100.0,Engineering and Procurement,Dominion,12/31/2027,38.381830456811755,-77.22372738289666
+AF1-143,Rockdale Solar,PA,Somerset,Solar,Solar,60.0,100.0,Engineering and Procurement,PENELEC,12/31/2028,39.90080287621968,-79.05610341466061
+AF1-147,Dulles Solar and BESS,VA,Loudoun,Solar,Solar,60.0,100.0,Partially in Service - Under Construction,Dominion,10/31/2026,38.971978548654164,-77.7478516165911
+AF1-162,Threeforks Energy Storage,KY,Martin,Storage,Battery,60.0,100.0,Engineering and Procurement,AEP,5/31/2028,37.78119729440073,-82.4841614211131
+AF1-282,Nuthatch Solar 5,OH,Highland,Solar,Solar,60.0,100.0,Engineering and Procurement,Dayton,5/1/2030,39.3025921353734,-83.45208498882113
+AF1-285,Scioto Solar,OH,Hardin,Solar; Storage,Solar,56.0,100.0,Under Construction,AEP,12/31/2026,40.75441754390118,-83.60381269696381
+AF2-013,Harwood Power,VA,King George,Storage,Battery,100.0,100.0,Engineering and Procurement,Dominion,10/1/2029,38.33684592466967,-77.134072147876
+AF2-199 - moved to TC1,Steward Creek Solar,IL,Lee,Solar,Solar,60.0,100.0,Engineering and Procurement,ComEd,3/31/2031,41.84123719781085,-89.33165127212347
+AF2-224,Flatrock Creek Solar I,IN,Allen,Solar,Solar,42.0,100.0,Engineering and Procurement,AEP,12/31/2029,41.18633619352749,-84.94720137191433
+AF2-291,New Haven Solar,WV,Mason,Solar,Solar,60.0,100.0,Engineering and Procurement,AEP,1/31/2028,38.775440006492744,-82.02993202116089
+AF2-303,Swift Creek Solar,NC,Edgecombe,Solar; Storage,Solar,100.0,100.0,Engineering and Procurement,Dominion,9/1/2029,35.87289997243939,-77.71243192600609
+AF2-311,Nicholas Solar,WV,Nicholas,Solar,Solar,55.0,100.0,Engineering and Procurement,APS,2/28/2029,38.35671498370664,-80.83790146104026
+AF2-350 - moved to TC1,Grand Marsh Solar,IL,Kankakee,Solar,Solar,60.0,100.0,Engineering and Procurement,ComEd,6/30/2029,41.17830870316026,-87.99096699934566
+AG1-047,Sun Chief Solar Farm,IN,Jay,Solar,Solar,60.0,100.0,Engineering and Procurement,AEP,3/31/2027,40.40463385492969,-85.09173728869337
+AG1-152,Remington BESS,VA,Fauquier,Storage,Battery,40.0,100.0,Engineering and Procurement,Dominion,9/1/2029,38.64676800033476,-77.96619936570002
+AG1-365,Flatrock Creek Solar II,IN,Allen,Solar,Solar,60.0,100.0,Engineering and Procurement,AEP,12/31/2029,41.15113850672377,-85.08580702504996
+AG1-411 - moved to TC1,Maddox Creek-RP Mone 345 kV,OH,Van Wert,Storage,Battery,100.0,100.0,Engineering and Procurement,AEP,2/15/2030,40.798510523821484,-84.54541292051447
+AG1-433 - moved to TC1,Keystone-DeSoto 345 kV,IN,Blackford,Wind,Wind,17.6,100.0,Engineering and Procurement,AEP,5/31/2029,40.57750715612811,-85.37074226128632
+AC2-195,Marion County Solar Project,OH,Marion,Solar,Solar,62.1,99.96,Partially in Service - Under Construction,ATSI,12/31/2025,40.525866938001364,-83.19268846854841
+AC2-165,Cartersville Solar,VA,Powhatan,Solar,Solar,57.0,99.9,Suspended,Dominion,5/17/2026,37.45886590377876,-77.77509221814663
+AE1-106,Brandonville Solar,WV,Preston,Solar,Solar,59.0,99.6,Suspended,APS,12/31/2026,39.54849704130997,-79.59327606352753
+AE2-226,Rippon,WV,Jefferson,Solar,Solar,59.4,99.0,Engineering and Procurement,APS,12/31/2026,39.224186235989876,-77.85096300891651
+AD2-022,Firefly Solar ,VA,Pittsylvania,Solar,Solar,60.0,96.0,Engineering and Procurement,AEP,1/30/2026,36.74474539395786,-79.46313973746645
+AE1-143,Northern Bobwhite Solar,KY,Marion,Solar,Solar,64.163,96.0,Engineering and Procurement,EKPC,3/15/2027,37.576455869965,-85.14985996036809
+AG1-127 - moved to TC1,Crego Rd 138 kV,IL,DeKalb,Solar,Solar,57.1,95.1,Engineering and Procurement,ComEd,5/31/2028,41.984506889801,-88.8484618649358
+AG1-090 - moved to TC1,Philipsburg 115 kV,PA,Centre,Solar; Storage,Solar,30.0,95.0,Engineering and Procurement,PENELEC,6/30/2029,40.8364663197715,-77.90006418084499
+AF2-366,Red Maple Solar,IL,Adams,Solar,Solar,56.94,94.9,Engineering and Procurement,ComEd,2/7/2028,39.940529681496024,-91.07224155567312
+AF1-069,Cassius Blue Solar,VA,Sussex,Solar; Storage,Solar,67.7,94.0,Engineering and Procurement,Dominion,8/1/2031,36.99322216117788,-77.25086938341448
+AB2-036,Waypost Solar Project,MD,Caroline,Solar,Solar,34.9,92.0,Suspended,DPL,12/31/2026,38.98476934225463,-75.7589666151746
+AE1-212,Raleigh Solar Project,WV,Raliegh,Solar,Solar,53.3,90.0,Suspended,AEP,6/25/2025,,
+AE2-166,Rocky Ford Solar Energy Center,VA,Henry,Solar,Solar,54.0,90.0,Suspended,AEP,12/31/2026,36.5351474006123,-79.93463023729714
+AE2-316,Squab Solar,PA,Jefferson,Solar,Solar,41.2,90.0,Under Construction,PENELEC,12/31/2027,41.02137270904997,-79.07260401254554
+AG1-105 - moved to TC1,Mount Laurel-Barnes Junction 115 kV,VA,Halifax,Solar,Solar,54.0,90.0,Engineering and Procurement,Dominion,5/28/2030,36.70157844719972,-79.017202381512
+AG1-124 - moved to TC1,Wild Rose Solar Project,VA,Nelson,Solar,Solar,53.01,90.0,Engineering and Procurement,AEP,11/15/2030,37.70071633226877,-78.9366922958494
+AF2-304,Bear Island Solar,VA,Surry,Solar; Storage,Solar,89.0,89.0,Engineering and Procurement,Dominion,9/1/2028,37.16239908166708,-76.98353953077498
+AF2-150,Blossom Solar,OH,Morrow,Solar,Solar,36.96,88.0,Under Construction,ATSI,7/31/2027,40.43450580111085,-82.68543469041276
+AD2-074,Waller Solar I,VA,Lancaster,Solar,Solar,32.68,86.0,Under Construction,Dominion,12/31/2027,37.70636218358895,-76.47768892002496
+AC2-079,Windsor PVI,VA,Isle of Wight,Solar,Solar,32.3,85.0,Under Construction,Dominion,6/1/2023,36.94804098455429,-76.68912218167569
+AF1-084,Murch Solar,MI,Van Buren,Solar,Solar,54.1,85.0,Under Construction,AEP,1/15/2027,42.30161798621302,-86.2184836724576
+AG1-024,Harvey Solar I,OH,Licking,Solar,Solar,35.7,85.0,Engineering and Procurement,AEP,1/15/2029,40.01945115639841,-82.39828776718728
+AG1-207,Prairie Flyer Energy Storage,OH,Montgomery,Storage,Battery,85.0,85.0,Engineering and Procurement,Dayton,6/1/2028,39.82672588628375,-84.30907512242474
+AF2-371,Carnation,OH,Fairfield,Solar,Solar,50.4,84.0,Engineering and Procurement,AEP,3/31/2028,39.799391711107795,-82.63380780742398
+AE2-262,MPG Solar,PA,Centre,Solar,Solar,50.0,83.6,Engineering and Procurement,APS,7/31/2028,40.966678160939736,-77.69925647531949
+AF1-268,Hawthorn Solar,IN,Delaware,Solar,Solar,57.1,83.0,Engineering and Procurement,AEP,12/31/2028,40.13899686037375,-85.34688275690628
+AG1-320 - moved to TC1,Stonecrop Solar,KY,Hardin,Solar,Solar,54.8,82.0,Engineering and Procurement,EKPC,12/31/2029,37.60553691287608,-85.86879146706464
+AC1-189,Pitt Solar,NC,Pitt,Solar,Solar,53.4,80.0,Under Construction,Dominion,11/17/2026,35.69510501224156,-77.25197280923423
+AC1-191,Springfield Solar,VA,Hanover,Solar,Solar,53.4,80.0,Engineering and Procurement,Dominion,3/31/2027,37.735633766517985,-77.40504004913119
+AC1-208,Halifax County Solar,NC,Halifax,Solar,Solar,55.4,80.0,Under Construction,Dominion,8/9/2026,36.20366568602743,-77.73928819651393
+AC2-111,Angelina Solar I,OH,Preble,Solar,Solar,30.4,80.0,Engineering and Procurement,AEP,4/1/2027,39.73607017088437,-84.62610677987873
+AD1-022,Sumac Solar,NC,Bertie,Solar,Solar,51.8,80.0,Engineering and Procurement,Dominion,7/1/2028,36.09813041106326,-77.08179575280563
+AD1-088,Seven Bridges Solar,VA,Mecklenburg,Solar,Solar,54.0,80.0,Suspended,Dominion,12/31/2026,36.79660558169127,-78.3230823620308
+AD1-125,Short Mountain Wind Energy,WV,Hardy,Wind,Wind,11.76,80.0,Suspended,APS,12/31/2024,38.96010809445169,-78.70512417154366
+AE2-175,Swiftwater Solar,PA,Monroe,Solar,Solar,48.0,80.0,Partially in Service - Under Construction,PPL,12/31/2025,41.15819402303489,-75.32524538070997
+AF1-098,Wilson Solar,PA,Erie,Solar,Solar,48.0,80.0,Engineering and Procurement,PENELEC,1/29/2028,42.003918277932705,-80.11649425213966
+AF2-081 - moved to TC1,Currituck Solar,NC,Currituck,Solar,Solar,56.0,80.0,Engineering and Procurement,Dominion,3/31/2031,36.38542153015844,-76.08047117457455
+AF2-149,Frasier Solar,OH,Knox,Solar,Solar,32.0,80.0,Engineering and Procurement,AEP,1/31/2028,40.43577402680346,-82.28446064330123
+AF2-361,Walker Solar Two,PA,Juniata,Solar,Solar,35.0,80.0,Under Construction,PPL,9/19/2026,40.43608837690018,-77.51953719476094
+AF2-408,Fall Creek Energy Storage,IN,Madison,Storage,Battery,80.0,80.0,Engineering and Procurement,AEP,1/15/2028,40.07988450329534,-85.86013027200855
+AG1-066,Bright Mountain Solar,KY,Perry,Solar,Solar,48.0,80.0,Engineering and Procurement,AEP,1/27/2027,37.22186943663591,-83.29395201654852
+AG1-307,Franklintown Farm Solar and BESS,WV,Jefferson,Solar; Storage,Solar,56.0,80.0,Engineering and Procurement,APS,7/30/2028,39.41929365891436,-77.99356086982448
+AE1-129,Strinestown Solar Project,PA,York,Solar,Solar,47.0,79.6,Suspended,ME,1/7/2027,39.94480121277625,-76.74235364727646
+AC1-168,Hickory Wind,IL,Putnam,Wind,Wind,10.2,78.65,Suspended,ComEd,10/31/2025,41.30288657318405,-89.29352065962287
+AE2-263,MPG Solar,PA,Centre,Solar,Solar,47.0,78.38,Engineering and Procurement,APS,7/31/2028,40.98236861974711,-77.90389601529142
+AA1-038,Rocky Forge Wind ,VA,Botetourt,Wind,Wind,10.1,78.2,Under Construction,Dominion,12/31/2026,37.55765358437327,-79.93225785522753
+AE2-305,Hillclimber Solar,OH,Champaign,Solar,Solar,46.8,78.0,Engineering and Procurement,Dayton,9/30/2029,40.20111822782053,-83.88412388952524
+AC1-034,Edgecome Solar Energy Center,NC,Edgecombe,Solar,Solar,42.75,75.0,Engineering and Procurement,Dominion,12/31/2025,35.80135782815448,-77.63739068660303
+AD1-075,Macadamia Solar,NC,Washington,Solar,Solar,49.7,75.0,Engineering and Procurement,Dominion,3/31/2028,35.750907559223776,-76.70413246475205
+AF2-382,Buchanan County Solar,VA,Buchanan,Solar,Solar,45.0,75.0,Engineering and Procurement,AEP,9/30/2028,37.34718286757186,-81.97869408231702
+AG1-153 - moved to TC1,Brunswick Battery Storage,VA,Brunswick,Storage,Battery,30.0,75.0,Under Construction,Dominion,7/28/2031,36.83544010119804,-77.94937683754256
+AG1-414,BR Solar Sheriff 1,IN,Grant,Solar,Solar,45.0,75.0,Engineering and Procurement,AEP,4/20/2028,40.45159177807194,-85.7143245293649
+AG1-536 - moved to TC1,Garner-Northern Neck 115 kV,VA,Richmond,Storage,Battery,32.0,75.0,Engineering and Procurement,Dominion,5/31/2031,37.95027870174378,-76.76232326684656
+AD1-105,Sweet Sue Solar,VA,King William,Solar,Solar,44.4,74.0,Under Construction,Dominion,12/31/2026,37.73370379696801,-77.11607111007926
+AC1-188,Dixon Solar,OH,Jackson,Solar,Solar,46.6,70.0,Engineering and Procurement,AEP,2/28/2028,39.10173434890624,-82.76364378769756
+AC2-029,Circleville Solar Energy,OH,Pickaway,Solar,Solar,26.6,70.0,Suspended,AEP,12/31/2027,39.67369271776129,-83.16920588870039
+AD2-048,Blue Moon Solar,KY,Harrison,Solar,Solar,46.7,70.0,Under Construction,EKPC,12/31/2026,38.42359517662568,-84.22530163087774
+AE2-345,Granite Hill Solar,PA,Adams,Solar,Solar,42.0,70.0,Suspended,ME,2/1/2026,39.83927517041772,-77.36736008124643
+AF1-320,Harmony Plains Solar and Storage Facility,NJ,Warren,Solar; Storage,Solar,42.0,70.0,Engineering and Procurement,JCPL,12/28/2026,40.83570270072964,-75.00704779325613
+AF2-048,Dixon Solar,OH,Jackson,Solar,Solar,46.6,70.0,Engineering and Procurement,AEP,2/28/2028,39.049940446139196,-82.61729139804784
+AF1-122,Morrow County Solar II,OH,Morrow,Solar,Solar,26.88,64.0,Suspended,ATSI,3/31/2026,40.61346375162056,-82.84780075169681
+AF2-120 - moved to TC1,Cerulean Solar and Mulberry BESS,VA,Richmond,Solar,Solar,37.2,62.0,Under Construction,Dominion,5/31/2031,37.93182925169832,-76.75116289395606
+AC1-120,Cricket Solar,VA,Culpeper,Solar,Solar,39.6,60.0,Engineering and Procurement,Dominion,2/28/2029,38.42541149510833,-77.87230165874202
+AD1-056,Sweetleaf Solar,NC,Halifax,Solar,Solar,38.9,60.0,Suspended,Dominion,1/28/2027,36.18823696711942,-77.54248088813551
+AD1-106,Chestnut Solar,OH,Marion,Solar,Solar,22.8,60.0,Engineering and Procurement,AEP,12/31/2028,40.64707742725843,-83.24069843697542
+AD2-194,Jackson Generation,IL,Will,Natural Gas,Gas,120.0,60.0,Partially in Service - Under Construction,ComEd,1/1/2027,41.524450503221736,-88.03170886770968
+AE2-034,Albemarle Beach Solar,NC,Washington,Solar,Solar,42.0,60.0,Partially in Service - Under Construction,Dominion,12/31/2026,35.74997973916499,-76.6495461440915
+AE2-185 - moved to TC1,Pigeon Run Solar and Storage,VA,Campbell,Solar,Solar,36.0,60.0,Engineering and Procurement,Dominion,3/1/2031,37.10612612566924,-79.10146897983468
+AE2-322,Mark Center Solar Project,OH,Defiance,Solar,Solar,40.3,60.0,Under Construction,AEP,9/30/2026,41.34434307930155,-84.43145549270236
+AF1-038,Mt Olive Creek Solar,KY,Russell,Solar,Solar,36.0,60.0,Under Construction,EKPC,9/30/2026,36.905668578606246,-85.13647413736098
+AF1-050,Horseshoe Bend Solar,KY,Green,Solar,Solar,36.0,60.0,Engineering and Procurement,EKPC,11/30/2026,37.35598440570952,-85.58870427738354
+AG1-135 - moved to TC1,Moon Corner Solar,VA,Richmond,Solar,Solar,36.0,60.0,Under Construction,Dominion,3/1/2031,37.89737432174178,-76.60144561472325
+AG1-156,Mora Solar,PA,Carbon,Solar,Solar,39.5,60.0,Engineering and Procurement,PPL,12/31/2027,40.83289626391308,-75.84046821304591
+AG1-351,Carnation,OH,Fairfield,Solar,Solar,34.8,58.0,Engineering and Procurement,AEP,3/31/2028,39.84872691339699,-82.63845411842813
+AG1-039,Blossom Solar,OH,Morrow,Solar,Solar,23.52,56.0,Under Construction,ATSI,7/31/2027,40.44499361345647,-82.73426158752098
+AE2-211,Dover Solar,PA,York,Solar,Solar,23.1,55.0,Engineering and Procurement,ME,9/7/2027,39.870083819761106,-76.83375279653275
+AE2-216,Hardin Energy Center – Storage II,OH,Hardin,Storage,Battery,55.0,55.0,Suspended,AEP,12/31/2026,40.57728221484609,-83.79986479399837
+AE2-236,Dover Solar Facility,IN,Whitley,Solar,Solar,38.5,55.0,Suspended,AEP,7/29/2026,41.04414361527969,-85.61043038850843
+AF1-083,Flat Run Solar,KY,Barren,Solar,Solar,33.0,55.0,Engineering and Procurement,EKPC,12/15/2026,36.84788052392075,-85.80646104194079
+AG1-447 - moved to TC1,Bluestem Solar,IN,LaPorte,Storage,Battery,55.0,55.0,Engineering and Procurement,AEP,12/1/2027,41.442307898199424,-86.89196106545366
+AD2-023,Firefly Solar,VA,Pittsylvania,Solar,Solar,95.0,54.0,Engineering and Procurement,AEP,1/30/2026,36.7436349530246,-79.49200540755659
+AG1-471 - moved to TC1,Barrelhead,KY,Wayne,Solar,Solar,32.4,54.0,Engineering and Procurement,EKPC,1/15/2029,36.69358366383052,-84.9672049461295
+AE2-283 - moved to TC1,Gladys Solar,VA,Campbell,Solar,Solar,28.0,53.0,Engineering and Procurement,Dominion,3/1/2031,37.232026515866636,-79.21223915973134
+AE2-326,Wythe County Solar Project,VA,Wythe,Storage,Battery,31.32,52.2,Engineering and Procurement,AEP,6/15/2027,36.94323948643188,-81.04696521401151
+AF1-045,Clermont County Solar Project,OH,Clermont,Storage,Battery,31.3,52.2,Suspended,DEOK,12/31/2025,39.02652530963969,-84.22699332737827
+AB2-092,Bergen Generating Station,NJ,Bergen,Natural Gas,Gas,51.1,51.1,Partially in Service - Under Construction,PSEG,6/1/2027,40.9160158632685,-74.0539633848708
+AD2-085,Knoxville Solar,VA,Isle of Wight,Solar,Solar,19.38,51.0,Engineering and Procurement,Dominion,12/1/2027,36.90250429688533,-76.68051038517017
+AE2-160,Hawks Nest Hydro,WV,Fayette,Hydro,Hydro,30.0,51.0,Engineering and Procurement,AEP,9/30/2028,38.12094918613631,-80.98123940007308
+AC1-065,Walnut Solar I,VA,King and Queen,Solar,Solar,19.0,50.0,Under Construction,Dominion,7/14/2026,37.80204359043733,-77.05415858212643
+AC1-101,Pike County Solar,KY,Pike,Solar,Solar,19.0,50.0,Engineering and Procurement,AEP,12/1/2028,37.37646501488307,-82.30490116219728
+AC1-102,Pike County Solar,KY,Pike,Solar,Solar,19.0,50.0,Engineering and Procurement,AEP,12/1/2028,37.40959061830316,-82.3751762740719
+AC1-190,New Market Solar,MD,Dorchester,Solar,Solar,35.0,50.0,Suspended,DPL,7/1/2028,38.36601476906505,-76.1486099541685
+AC2-154,Staley Solar,IL,Kankakee,Solar,Solar,19.0,50.0,Engineering and Procurement,ComEd,9/30/2027,41.07936301819973,-87.77923578355941
+AD2-091,Hardin Energy Center – Storage I,OH,Hardin,Storage,Battery,50.0,50.0,Suspended,AEP,12/31/2025,40.677510836418264,-83.55742953746282
+AD2-096,Cadence Energy Storage,OH,Union,Storage,Battery,50.0,50.0,Suspended,AEP,3/20/2026,40.27580398216877,-83.44076295487375
+AD2-131,Broomstick Solar Energy Centergy Center,IL,Christian,Solar,Solar,8.3,50.0,Suspended,ComEd,12/7/2028,39.43734498878262,-89.1539548957292
+AE2-029,Sunridge Solar,VA,Rockingham,Solar,Solar,30.0,50.0,Under Construction,Dominion,3/14/2026,38.477252393230295,-78.8989837709104
+AE2-047,Henry County Solar Facility ,VA,Henry,Solar,Solar,32.4,50.0,Engineering and Procurement,AEP,8/31/2027,36.626312707692236,-79.9496346637
+AE2-276,Trade Post Energy Storage,IN,Sullivan,Storage,Battery,50.0,50.0,Engineering and Procurement,AEP,12/31/2028,38.99362625669689,-87.2704481399147
+AE2-281,Panther Grove Wind,IL,Woodford,Wind,Wind,7.0,50.0,Engineering and Procurement,ComEd,2/1/2027,40.86981705290925,-89.25212617640824
+AE2-285,MC Solar I,PA,Mercer,Solar,Solar,30.0,50.0,Under Construction,ATSI,1/29/2027,41.192484847951626,-80.15883819625397
+AF1-064,Juliet Energy,OH,Wood,Solar,Solar,33.4,50.0,Under Construction,ATSI,5/29/2027,41.46214504856433,-83.67716226465146
+AF1-161 - moved to TC1,Decatur Battery Storage,MI,Van Buren,Storage,Battery,25.0,50.0,Engineering and Procurement,AEP,4/30/2029,42.18593715397917,-86.21631194332755
+AF1-238 - moved to TC1,South Orchard,NJ,Cumberland,Storage,Battery,20.0,50.0,Engineering and Procurement,AEC,6/1/2028,39.41089198838346,-75.0914078243412
+AF1-275,Pleasant Prairie Solar Energy Center,OH,Franklin,Solar,Solar,30.0,50.0,Under Construction,AEP,12/31/2027,40.06651175454263,-83.09417929143238
+AF2-027,Zion Energy Center - BESS,IL,Lake,Storage,Battery,20.0,50.0,Engineering and Procurement,ComEd,8/25/2027,42.301064963340785,-87.83173117186323
+AF2-050 - moved to TC1,Maple Hill-Fiddlers 1 SP (Bear Rock) ,PA,Cambria,Solar,Solar,30.0,50.0,Engineering and Procurement,PENELEC,1/31/2029,40.582695211265666,-78.76519730969093
+AF2-226 - moved to TC1,Top Crop Generating Facility,IL,Lasalle,Storage,Battery,20.0,50.0,Engineering and Procurement,ComEd,3/31/2029,41.41041560978512,-89.01249848207588
+AF2-252,Twin Groves Storage I,IL,McLean,Storage,Battery,20.0,50.0,Engineering and Procurement,ComEd,1/28/2028,40.52875498623894,-88.98558856897009
+AF2-319 - moved to TC1,Top Crop Generating Facility,IL,Lasalle,Storage,Battery,20.0,50.0,Engineering and Procurement,ComEd,3/31/2029,41.41030012509875,-88.93198740337785
+AF2-352,Twin Groves Storage II,IL,McLean,Storage,Battery,20.0,50.0,Engineering and Procurement,ComEd,1/28/2028,40.40685153001916,-88.98882875565475
+AF2-376 - moved to TC1,Paulding Storage II,OH,Paulding,Storage,Battery,20.0,50.0,Engineering and Procurement,AEP,12/31/2029,41.127604328627434,-84.68247867272547
+AF2-377,Timber Road Storage III,OH,Paulding,Storage,Battery,20.0,50.0,Engineering and Procurement,AEP,3/17/2029,41.122361488845705,-84.51457000374475
+AF2-440,Palomino Solar,OH,Highland,Solar,Solar,25.0,50.0,Engineering and Procurement,AEP,8/15/2027,39.27023931458941,-83.53893162929492
+AG1-221,Dulles Solar and BESS,VA,Loudoun,Storage,Battery,20.0,50.0,Under Construction,Dominion,10/31/2027,39.07227184774245,-77.56732388406279
+AG1-366,Flatrock Creek Storage I,IN,Allen,Storage,Battery,20.0,50.0,Engineering and Procurement,AEP,12/31/2029,41.06433047906408,-85.126645048661
+AG1-415,Beckett Solar,VA,Clarke,Solar,Solar,25.0,50.0,Engineering and Procurement,APS,12/31/2028,39.148802185096905,-77.87374216286469
+AG1-517,MEA NUG,WV,Monongalia,Oil,Oil,50.0,50.0,Engineering and Procurement,APS,1/31/2028,39.577596196200204,-80.03092483559146
+AG1-554,Scioty Solar,OH,Hardin,Solar,Solar,32.7,49.99,Engineering and Procurement,AEP,10/1/2027,40.57395941862895,-83.77626909747602
+AC1-167,Mark Center Solar Project,OH,Defiance,Solar,Solar,33.6,49.9,Under Construction,AEP,9/30/2026,41.3163695457657,-84.59331740156334
+AC2-067,Eaton OH Solar,OH,Preble,Solar,Solar,18.9,49.9,Engineering and Procurement,Dayton,1/28/2027,39.71886344846277,-84.58682937192108
+AE2-298,White Trillium,OH,Van Wert,Solar,Solar,29.9,49.9,Engineering and Procurement,AEP,12/30/2027,40.79133678572693,-84.68389181906737
+AF2-298,Gem City Solar,OH,Montgomery,Solar,Solar,29.9,49.9,Engineering and Procurement,Dayton,1/2/2028,39.72193883442763,-84.2884031895254
+AG1-369,Timber Road Solar Park III,OH,Paulding,Solar,Solar,29.94,49.9,Engineering and Procurement,AEP,3/17/2029,41.0868821879583,-84.43459265722139
+AD2-014,Steubenville Solar,OH,Jefferson,Solar,Solar,20.79,49.5,Suspended,AEP,12/31/2027,40.357982935459006,-80.91232471858
+AE1-227,Recreation Solar,OH,Guernsey,Solar,Solar,30.69,49.5,Suspended,AEP,12/15/2025,40.02773637913447,-81.64290105943073
+AE2-104,Switchgrass Solar 1,VA,Accomack,Solar,Solar,18.92,49.0,Suspended,Dominion,10/31/2025,37.81052240290943,-75.60988162542085
+AE2-267,Woodsdale Renewable Energy Center,OH,Butler,Solar,Solar,28.6,49.0,Engineering and Procurement,DEOK,6/1/2026,39.390997353897106,-84.54034234975975
+AC1-082,Great Bend,OH,Meigs,Solar,Solar,29.0,48.0,Partially in Service - Under Construction,AEP,10/31/2025,39.19753290241168,-82.14032400734445
+AC2-023,Porter Mill Solar,MD,Wicomico,Solar,Solar,26.5,45.8,Suspended,DPL,9/30/2026,38.46729352468916,-75.51289234007376
+AB2-133,Morgnec Road Solar,MD,Kent,Solar,Solar,19.8,45.0,Under Construction,DPL,7/31/2026,39.23669750279202,-76.01187290996168
+AD2-192,Glen Falls Facility,WV,Harrison,Natural Gas,Gas,20.0,45.0,Engineering and Procurement,APS,1/31/2029,39.237988689201124,-80.37563787606659
+AF1-042,Waller Solar I,VA,Lancaster,Solar,Solar,17.1,45.0,Engineering and Procurement,Dominion,12/31/2027,37.7133473495592,-76.37612539104177
+AF2-162,Lake Trout Solar,IN,Blackford,Solar,Solar,30.0,45.0,Engineering and Procurement,AEP,1/31/2028,40.55632651730567,-85.39177384254974
+AG1-038,Waller Solar I,VA,Lancaster,Solar,Solar,18.9,45.0,Engineering and Procurement,Dominion,12/31/2027,37.74146396173442,-76.54750709108839
+AB2-175,Peach Bottom Units #2 & #3,PA,York,Nuclear,Nuclear,44.0,44.0,Partially in Service - Under Construction,PECO,12/31/2018,39.9948050387073,-76.70051871733274
+AE1-093,Vinton Energy Storage,OH,Vinton,Storage,Battery,42.0,42.0,Suspended,AEP,12/31/2026,39.25989534625578,-82.54753444203918
+AF1-302,Squab Solar,PA,Jefferson,Solar,Solar,18.0,42.0,Under Construction,PENELEC,12/31/2027,41.16992823102423,-78.96333268600189
+AD1-013,Rochelle Solar,IL,Ogle,Solar,Solar,15.4,40.0,Engineering and Procurement,ComEd,5/27/2028,41.991041347403794,-89.21930244694722
+AE1-103,Ho-Fel Solar,VA,Isle of Wight,Solar,Solar,16.8,40.0,Suspended,Dominion,10/19/2026,36.95779235895447,-76.85212083682569
+AE2-041,Drake Storage,VA,Middlesex,Storage,Battery,40.0,40.0,Engineering and Procurement,Dominion,12/26/2026,37.535552102350174,-76.49936786759427
+AE2-172,Golden Aster Solar Energy Center,IN,Grant,Storage,Battery,40.0,40.0,Suspended,AEP,5/31/2026,40.56250955091644,-85.73556183809394
+AE2-339,Grassy Plains,KY,Fayette,Solar,Solar,26.8,40.0,Under Construction,EKPC,6/30/2027,38.12725057639821,-84.34610545062885
+AE2-342,Woodstock Solar,OH,Champaign,Solar,Solar,26.8,40.0,Suspended,Dayton,7/6/2026,40.04447968095237,-83.84150464803146
+AF1-018,Drake Storage,VA,Middlesex,Storage,Battery,40.0,40.0,Engineering and Procurement,Dominion,3/1/2026,37.63442613773006,-76.49485096002937
+AF1-053,Hillclimber Solar,OH,Champaign,Storage,Battery,16.0,40.0,Engineering and Procurement,Dayton,9/30/2029,40.035597979575186,-83.75154174797312
+AF1-205,Henry County Solar,OH,Henry,Solar,Solar,24.0,40.0,Suspended,AMPT,8/1/2026,41.385755750785144,-84.10005004998223
+AF2-234,Washington West Solar,PA,Snyder,Solar; Storage,Solar,24.0,40.0,Engineering and Procurement,PPL,12/30/2026,40.65569037251765,-77.01973377092006
+AG1-054,Green Meadows Solar,PA,Lawrence,Solar,Solar,25.2,40.0,Engineering and Procurement,ATSI,5/31/2027,41.097360557448155,-80.26671510958536
+AG1-324,New Jay PV & BESS,IN,Jay,Solar; Storage,Solar,27.9,39.0,Engineering and Procurement,AEP,9/17/2028,40.347933903209075,-84.98224966140418
+AF1-054,Hillclimber Solar,OH,Champaign,Solar,Solar,23.1,38.5,Engineering and Procurement,Dayton,9/30/2029,40.242906259018184,-83.69007732884458
+AG1-254,Fenwick Creek Solar,NJ,Atlantic,Solar; Storage,Solar,25.3,38.0,Engineering and Procurement,AEC,9/1/2028,39.541567202260424,-74.48873387720212
+AB1-109,Mountaineer #1,WV,Unknown,Coal,Coal,36.0,36.0,Partially in Service - Under Construction,AEP,6/1/2021,,
+AG1-342 - moved to TC1,Dryburg 115 kV,VA,Halifax,Solar,Solar,21.6,36.0,Engineering and Procurement,Dominion,5/31/2030,36.834290785111094,-78.93523908443434
+AE2-074,Potter Solar,PA,Potter,Solar,Solar,15.11,35.0,Under Construction,APS,7/31/2026,41.81941456135594,-78.04069503661763
+AE2-234,Maple Solar,IN,Huntington,Solar,Solar,24.1,35.0,Engineering and Procurement,AEP,12/31/2028,40.93344049507616,-85.38978843310689
+AF1-226,Cottontail Solar 7,PA,Columbia,Solar,Solar,14.7,35.0,Suspended,PPL,11/30/2028,40.9863290049214,-76.3981909798862
+AF2-091,Gibson Solar I,VA,King George,Solar,Solar,14.28,34.0,Engineering and Procurement,Dominion,12/31/2027,38.298798214886,-77.19024757089184
+AD1-057,Sweetleaf Solar,NC,Halifax,Solar,Solar,21.7,33.0,Suspended,Dominion,1/28/2027,36.154249807415454,-77.76662041107318
+AE2-169,Meadow Forge Solar Energy Center,IN,Delaware,Solar,Solar,33.0,33.0,Suspended,AEP,11/30/2026,40.255422768005786,-85.28236507349737
+AF2-004,West Lorain Power Plant 345 kV,OH,Lorain,Natural Gas,Gas,33.0,33.0,Engineering and Procurement,ATSI,6/1/2031,41.35991491298227,-82.21121982798783
+AC1-055,Glen Falls Facility,WV,Harrison,Natural Gas,Gas,30.0,30.0,Engineering and Procurement,APS,1/31/2029,39.294770146753386,-80.33172352053724
+AE2-306,Scioto Solar,OH,Hardin,Solar,Solar,18.0,30.0,Under Construction,AEP,12/28/2026,40.67779832336812,-83.76926475308956
+AF1-239,South Orchard,NJ,Cumberland,Storage,Battery,12.0,30.0,Engineering and Procurement,AEC,6/1/2028,39.3202704367155,-74.98316311113769
+AG1-045,Redbud-Gaylord 34.5 kV,VA,Frederick,Solar,Solar,18.0,30.0,Suspended,APS,3/31/2026,39.20909162612315,-78.36029647145345
+AG1-460 - moved to TC1,Black Diamond Solar,IL,Christian,Storage,Battery,12.0,30.0,Engineering and Procurement,ComEd,12/15/2030,39.60886561360158,-89.36973040213016
+AE1-102,Blue Creek Wind Farm,OH,Van Wert,Solar,Solar,15.6,26.0,Suspended,AEP,11/30/2024,40.92733873196289,-84.47808014183268
+AC1-121,Cricket Solar,VA,Culpeper,Solar,Solar,13.6,20.0,Engineering and Procurement,Dominion,2/28/2029,38.48404677173811,-77.83270117675741
+AC2-044,Blue Creek Wind Farm,OH,Van Wert,Solar,Solar,7.6,20.0,Suspended,AEP,11/30/2024,40.87942242596542,-84.672130777743
+AC2-068,Eaton OH Solar,OH,Preble,Solar,Solar,7.6,20.0,Engineering and Procurement,Dayton,1/28/2027,39.84230669656562,-84.65381773354754
+AC2-110,Walnut Solar I,VA,King and Queen,Solar,Solar,7.6,20.0,Under Construction,Dominion,7/14/2026,37.626508061240266,-76.83553252863115
+AC2-184,Cedar Creek Solar,DE,Kent,Solar,Solar,7.6,20.0,Suspended,DPL,5/30/2027,39.00519285581603,-75.38947227985676
+AC2-185,Cedar Creek Solar,DE,Kent,Solar,Solar,7.6,20.0,Suspended,DPL,5/30/2027,38.99813816285858,-75.5392661914888
+AC2-187,Raceway Solar,DE,Kent,Solar,Solar,7.6,20.0,Under Construction,DPL,3/1/2025,39.134975188409726,-75.49787615394517
+AC2-188,Raceway Solar,DE,Kent,Solar,Solar,7.6,20.0,Under Construction,DPL,3/1/2025,39.07755399218969,-75.43046707684408
+AD2-039,Walnut Solar I,VA,King and Queen,Solar,Solar,7.6,20.0,Under Construction,Dominion,7/14/2026,37.78360913987404,-76.83624020700415
+AD2-060,Staley Solar,IL,Kankakee,Solar,Solar,20.0,20.0,Engineering and Procurement,ComEd,6/28/2024,41.18060553919406,-87.77622896099217
+AE1-004,Walnut Solar I,VA,King and Queen,Solar,Solar,7.6,20.0,Under Construction,Dominion,7/14/2026,37.677845061998774,-76.88460085440754
+AE1-074,Winterpock I,VA,Chesterfield,Solar,Solar,13.3,20.0,Under Construction,Dominion,2/4/2025,37.474041971366766,-77.70446247095857
+AE1-183,Jackson Center Solar Facility,PA,Mercer,Solar,Solar,12.0,20.0,Under Construction,ATSI,7/31/2026,41.36302171529695,-80.13159401273658
+AE1-243,Warren Glen Storage,NJ,Warren,Storage,Battery,0.0,20.0,Partially in Service - Under Construction,JCPL,12/31/2024,40.79841938581844,-74.89982623820369
+AE2-001,Confer Solar I,PA,Centre,Solar,Solar,12.0,20.0,Suspended,APS,5/30/2026,40.876728084265295,-77.7582377692545
+AE2-005,Walnut Solar I,VA,King and Queen,Solar,Solar,7.6,20.0,Under Construction,Dominion,7/14/2026,37.67323759524902,-77.02562225685178
+AE2-110,Montour 1,PA,Columbia,Solar,Solar,8.4,20.0,Suspended,PPL,2/28/2025,40.96334379567,-76.49294078987556
+AE2-117,HU-Pauls ,PA,Huntingdon,Solar,Solar,12.0,20.0,Suspended,PENELEC,3/31/2027,40.33777900941013,-77.8955148904677
+AE2-118,HU-Logging,PA,Huntingdon,Solar,Solar,12.0,20.0,Suspended,PENELEC,8/31/2024,40.52698159121018,-78.1116529716254
+AE2-131,UN-Kylertown,PA,Westmoreland,Solar,Solar,12.0,20.0,Under Construction,PENELEC,3/1/2027,40.2961649689277,-79.32292060988782
+AE2-212,Harrowgate 1,VA,Chesterfield,Solar,Solar,12.0,20.0,Engineering and Procurement,Dominion,6/30/2027,37.350430757466576,-77.6227035958933
+AE2-241,Mountain Holly,PA,Columbia,Solar,Solar,8.4,20.0,Suspended,PPL,6/1/2027,41.100641570082566,-76.33846623989275
+AE2-247,Knoxville Solar,VA,Isle of Wight,Solar,Solar,8.4,20.0,Engineering and Procurement,Dominion,12/1/2027,36.91413633566069,-76.5912976734536
+AF1-003,Charles County Solar II,MD,Charles,Solar,Solar,9.5,20.0,Suspended,SMECO,9/30/2027,38.57752659684123,-77.04703803355498
+AF1-005,Charles County Solar I,MD,Charles,Solar,Solar,9.9,20.0,Suspended,SMECO,9/30/2028,38.540125358538255,-77.0696872534201
+AF1-017,Knoxville Solar,VA,Isle of Wight,Solar,Solar,7.6,20.0,Engineering and Procurement,Dominion,12/1/2027,36.89646669538989,-76.67494666133054
+AF1-040,Momentum Gratz,PA,Dauphin,Storage,Battery,1.0,20.0,Suspended,PPL,9/6/2024,40.3828912736354,-76.76833718787559
+AF1-057,Dover Solar,PA,York,Solar,Solar,8.4,20.0,Engineering and Procurement,ME,10/14/2026,40.038542570781836,-76.75614700671255
+AF1-093,Jackson Center Solar II,PA,Mercer,Solar,Solar,12.0,20.0,Under Construction,ATSI,7/31/2026,41.35227645664087,-80.22225357323968
+AF1-094,Franklin Solar,PA,Crawford,Solar,Solar,12.0,20.0,Engineering and Procurement,PENELEC,9/20/2026,41.79616271840092,-79.97718058913004
+AF1-134,CL-Green Acres,PA,Clearfield,Solar,Solar,12.0,20.0,Under Construction,PENELEC,12/1/2027,40.91529685853209,-78.48743192301201
+AF1-153,Jakes Hollow Solar,PA,Elk,Solar,Solar,12.0,20.0,Suspended,APS,12/29/2027,41.51146008300579,-78.74491434577482
+AF1-254,FR-Williamsport,PA,Franklin,Solar,Solar,12.0,20.0,Under Construction,APS,12/31/2025,39.95966973215789,-77.7613592051351
+AF1-291,Chester Solar Technology Park,VA,Chesterfield,Solar,Solar,12.0,20.0,Engineering and Procurement,Dominion,6/30/2027,37.28769520280043,-77.61761490522207
+AF1-321,SunEast Hooversville Solar,PA,Somerset,Solar,Solar,12.0,20.0,Suspended,PENELEC,8/1/2026,40.00247891999261,-79.13915339209214
+AF1-325,Houses Corner Storage,NJ,Sussex,Storage,Battery,0.0,20.0,Engineering and Procurement,JCPL,1/1/2026,41.18212412762531,-74.79305254983363
+AF1-328,Mansfield #3,NJ,Warren,Storage,Battery,0.0,20.0,Engineering and Procurement,JCPL,10/31/2025,40.73644364461326,-74.95412937798189
+AF1-331,Rochelle Solar,IL,Ogle,Solar,Solar,20.0,20.0,Engineering and Procurement,ComEd,5/27/2028,42.03092031084202,-89.36833267373733
+AF1-333,Limestone Solar,PA,Union,Solar,Solar,12.0,20.0,Engineering and Procurement,PPL,9/30/2027,41.040274882687115,-76.91900548244325
+AF1-337,Limestone Solar,PA,Union,Solar,Solar,12.0,20.0,Engineering and Procurement,PPL,9/30/2027,40.91306516608258,-77.13239597639242
+AF1-338,Limestone Solar,PA,Union,Solar,Solar,12.0,20.0,Engineering and Procurement,PPL,9/30/2027,40.95223053963165,-77.17579764846856
+AF1-339,Limestone Solar,PA,Union,Solar,Solar,12.0,20.0,Engineering and Procurement,PPL,9/30/2027,40.94833439049629,-76.97942363109992
+AF2-001,SunEast Hooversville Solar,PA,Somerset,Solar,Solar,12.0,20.0,Suspended,PENELEC,8/1/2026,39.9337595739462,-78.91417518442464
+AF2-019,Middle Battery Storage,NJ,Cape May,Storage,Battery,8.0,20.0,Engineering and Procurement,AEC,4/30/2028,39.18626705492373,-74.91291999293855
+AF2-025 - moved to TC1,Missouri Avenue Battery Storage Project,NJ,Atlantic,Storage,Battery,8.0,20.0,Engineering and Procurement,AEC,4/30/2028,39.536865568503565,-74.72313256950635
+AF2-029,Fayette Energy Facility,PA,Fayette,Storage,Battery,8.0,20.0,Engineering and Procurement,APS,10/31/2028,39.82544821863906,-79.73438915953868
+AF2-030,Ontelaunee Power Generating Plant,PA,Berks,Storage,Battery,8.0,20.0,Engineering and Procurement,ME,3/1/2029,40.53324531788102,-75.92025630959004
+AF2-031,Calumet BESS,IL,Cook,Storage,Battery,8.0,20.0,Engineering and Procurement,ComEd,12/31/2028,41.98530200583386,-87.65493000762596
+AF2-032,Kincaid PV,IL,Christian,Solar,Solar,13.6,20.0,Engineering and Procurement,ComEd,12/9/2028,39.49366202508737,-89.35176104804364
+AF2-110,Switchgrass Solar 1,VA,Accomack,Solar,Solar,7.72,20.0,Suspended,Dominion,10/31/2025,37.84679917911862,-75.89425506490318
+AF2-229,Gobbler Knob,PA,Cumberland,Solar,Solar,10.9,20.0,Engineering and Procurement,PENELEC,11/30/2027,40.07034568764913,-77.26899459790211
+AF2-233,Washington East Solar,PA,Snyder,Solar; Storage,Solar,12.0,20.0,Engineering and Procurement,PPL,12/30/2026,40.87519713531382,-76.93522029570931
+AF2-238,Farmers Valley Solar,PA,Bradford,Solar,Solar,12.0,20.0,Engineering and Procurement,PENELEC,7/31/2028,41.83126833666557,-76.4563672397742
+AF2-296 - moved to TC1,CL- Belsena Solar,PA,Clearfield,Solar,Solar,12.0,20.0,Engineering and Procurement,PENELEC,12/31/2028,41.04289200373411,-78.4790720330114
+AF2-417,WA-Cochecton 2,PA,Adams,Solar,Solar,12.0,20.0,Engineering and Procurement,PPL,12/31/2027,39.77117677447619,-77.33452237779112
+AF2-421,Club Ford Energy Center,PA,Adams,Solar,Solar,12.0,20.0,Engineering and Procurement,PPL,3/1/2028,39.96475901573519,-77.29199911283513
+AF2-424,Shamrock Energy Center,PA,Northumberland,Solar,Solar,12.0,20.0,Engineering and Procurement,PPL,2/1/2027,40.73848388076907,-76.77144481512764
+AF2-425,Shamrock Energy Center,PA,Adams,Solar,Solar,12.0,20.0,Engineering and Procurement,PPL,2/1/2027,39.80726973392987,-77.13828893421783
+AF2-433,Frosty Valley Energy Center,PA,Columbia,Solar,Solar,12.0,20.0,Engineering and Procurement,PPL,1/15/2027,40.95984225003999,-76.29124676082061
+AF2-434,Frosty Valley Energy Center,PA,Columbia,Solar,Solar,12.0,20.0,Engineering and Procurement,PPL,1/15/2027,41.11194130576613,-76.28376744393006
+AG1-040,Nichols Solar,PA,Crawford,Solar,Solar,12.0,20.0,Engineering and Procurement,PENELEC,12/31/2026,41.6154450145311,-79.96242441752477
+AG1-100,Henry Solar,PA,Crawford,Solar,Solar,12.0,20.0,Engineering and Procurement,PENELEC,12/31/2027,41.78642917451142,-79.96308499506864
+AG1-164,Club Ford Energy Center,PA,Luzerne,Solar,Solar,12.0,20.0,Engineering and Procurement,PPL,3/1/2028,41.21058256943859,-75.8401532601696
+AG1-165,Club Ford Energy Center,PA,Luzerne,Solar,Solar,12.0,20.0,Engineering and Procurement,PPL,3/1/2028,41.06175705051872,-76.10450635784913
+AG1-281,BL-Hileman Hollow,PA,Blair,Solar,Solar,12.0,20.0,Engineering and Procurement,PENELEC,12/31/2027,40.37998616019089,-78.41825893922166
+AG1-377 - moved to TC1,Black Moshannon Solar,PA,Centre,Solar,Solar,6.0,20.0,Engineering and Procurement,PENELEC,6/30/2029,40.80171990008346,-77.90632704205719
+AG1-378 - moved to TC1,Black Moshannon Solar,PA,Centre,Solar,Solar,6.0,20.0,Engineering and Procurement,PENELEC,6/30/2029,40.93474404263546,-77.83179752378066
+AG1-558,Horsepen Branch Solar,VA,Louisa,Solar; Storage,Solar,13.3,20.0,Engineering and Procurement,Dominion,10/29/2027,38.04505963460626,-78.08070163338836
+AG1-559,Reedy Creek,VA,Hanover,Solar; Storage,Solar,13.3,20.0,Engineering and Procurement,Dominion,10/29/2027,37.69746767695057,-77.38757791265935
+AH1-124 - moved to TC2,Vint Hill 34.5kV,VA,Prince William,Storage,Battery,,20.0,Under Construction,Dominion,2/26/2029,38.784977122301534,-77.4445521462768
+AH1-125 - moved to TC2,Sycoline 34.5kV,VA,Loudoun,Storage,Battery,,20.0,Under Construction,Dominion,2/25/2029,38.974935665636785,-77.62618867930934
+AH1-127 - moved to TC2,Railroad 34.5kV,VA,Prince William,Storage,Battery,,20.0,Under Construction,Dominion,2/28/2029,38.773350324874,-77.57998560298981
+AH1-128 - moved to TC2,Railroad 34.5kV,VA,Prince William,Storage,Battery,,20.0,Under Construction,Dominion,2/26/2029,38.803789903241345,-77.55360235767994
+AE1-079,"Welcome Solar, LLC",PA,Mercer,Solar; Storage,Solar,13.5,19.9,Under Construction,ATSI,2/24/2027,41.36532001578505,-80.35469239250533
+AE1-237,Welcome Solar II,PA,Crawford,Solar; Storage,Solar,13.5,19.9,Under Construction,ATSI,8/29/2026,41.735424988154875,-80.00221505266155
+AF1-014,Walnut Solar I,VA,King and Queen,Solar,Solar,7.2,19.9,Under Construction,Dominion,7/14/2026,37.798887252477286,-76.88031264198163
+AG1-478,Wilmington Solar Energy Project,IL,Will,Solar; Storage,Solar,15.9,19.9,Engineering and Procurement,ComEd,12/31/2027,41.33811031189129,-87.9079171717441
+AC1-091,Cedar Creek Solar,DE,New Castle,Solar,Solar,7.5,19.8,Suspended,DPL,5/30/2027,39.50434270657257,-75.70532214112698
+AC1-092,Cedar Creek Solar,DE,New Castle,Solar,Solar,7.5,19.8,Suspended,DPL,5/30/2027,39.48589668303335,-75.68275620887351
+AG1-188,Lacey Sand Solar,NJ,Ocean,Solar,Solar,8.316,19.8,Engineering and Procurement,JCPL,6/30/2028,39.866756437646316,-74.28740751067204
+AG1-495,Ridge Road Solar Farm,NJ,Hunterdon,Solar,Solar,8.316,19.8,Engineering and Procurement,JCPL,10/1/2028,40.624128150798924,-74.83396450847678
+AF2-086,Stoneybrook Solar,PA,Columbia,Solar,Solar,11.8,19.6,Engineering and Procurement,PPL,12/31/2027,41.07671984269833,-76.32255410369763
+AC1-093,Cedar Creek Solar,DE,New Castle,Solar,Solar,7.1,18.8,Suspended,DPL,5/30/2027,39.660186463942864,-75.73208794174579
+AF1-071,Angelina Solar I,OH,Preble,Solar,Solar,6.84,18.0,Engineering and Procurement,AEP,4/1/2028,39.65606111818586,-84.51229634297857
+AF2-299 - moved to TC1,Jarratt Energy Facility 2,VA,Greensville,Solar,Solar,10.8,18.0,Engineering and Procurement,Dominion,1/31/2029,36.73664506206443,-77.67408039876689
+AE2-343,"Welcome Solar III, LLC",PA,Crawford,Solar; Storage,Solar,12.3,17.9,Under Construction,ATSI,8/29/2026,41.61420595780854,-79.9889583752729
+AF1-271A,G Morris Solar,PA,Dauphin,Solar,Solar,10.2,17.0,Suspended,PPL,4/15/2026,40.357547100316275,-76.91251530630507
+AF2-294,Thompson 34.5 kV,PA,Wayne,Solar,Solar,10.2,17.0,Suspended,PENELEC,3/31/2025,41.69697912734751,-75.3631310566546
+AF1-140,BL-Diamond Bear Rocks,PA,Adams,Solar,Solar,9.78,16.3,Engineering and Procurement,PENELEC,12/31/2026,39.98472014837568,-77.11378643917962
+AE2-248,CE-FILMORE,PA,Centre,Solar,Solar,9.6,16.0,Suspended,APS,12/31/2027,40.9360924654345,-77.94381937829617
+AC1-094,Cedar Creek Solar,DE,New Castle,Solar,Solar,6.0,15.9,Suspended,DPL,5/30/2027,39.46899507559791,-75.67006162060702
+AG1-259,Boyles Run Solar,PA,Northumberland,Solar,Solar,6.7,15.9,Engineering and Procurement,PPL,4/30/2028,40.879438152782605,-76.72491921001676
+AG1-260,Boyles Run Solar,PA,Northumberland,Solar,Solar,6.7,15.9,Engineering and Procurement,PPL,4/30/2028,40.74168813237924,-76.78629930809305
+AF1-136,FU-Hanks Solar,PA,Fulton,Solar,Solar,9.43,15.72,Suspended,APS,11/17/2026,40.00294497072804,-78.05954343959921
+AG1-191,South Combe,NJ,Morris,Solar,Solar,6.5,15.4,Partially in Service - Under Construction,JCPL,12/31/2025,40.90919478842415,-74.44189160517934
+AG1-223,Monmouth Solar 1,NJ,Monmouth,Solar,Solar,6.47,15.4,Under Construction,JCPL,12/31/2026,40.208598683141396,-74.04007345804332
+AF2-221,Stony Creek Solar,PA,Somerset,Solar,Solar,6.3,15.0,Suspended,PENELEC,10/1/2025,39.883310041397806,-79.07668935627903
+AG1-197,Morgan Street-Cochranton 34.5 kV,PA,Crawford,Solar,Solar,9.0,15.0,Suspended,PENELEC,3/31/2026,41.61192397493128,-80.09853988171365
+AF1-292,Jarratt Solar,VA,Greensville,Solar,Solar,8.94,14.9,Under Construction,Dominion,8/29/2027,36.795542523093005,-77.6357550788403
+AG1-469,Turkey Solar,VA,Louisa,Solar,Solar,9.36,14.04,Engineering and Procurement,Dominion,8/29/2027,37.96275855419004,-78.03635604953496
+AF1-167,CL-Route 58 B,PA,Clarion,Solar,Solar,8.109,13.515,Suspended,APS,1/31/2026,41.26633842760194,-79.52199278114442
+AF2-039,Shawville-Clearfield 34.5 kV,PA,Clearfield,Solar,Solar,8.1,13.5,Under Construction,PENELEC,9/1/2026,41.039600002105864,-78.34571829675774
+AG1-532,Fields 2,VA,Greensville,Solar,Solar,8.1,13.5,Under Construction,Dominion,1/31/2028,36.69771515599007,-77.44388035141833
+AF2-126 - moved to TC1,Juliet Energy,OH,Wood,Solar,Solar,8.0,12.0,Under Construction,ATSI,6/1/2028,41.27501426111961,-83.53947438600169
+AG1-189,Southern Ocean Waretown Solar,NJ,Ocean,Solar,Solar,5.1,12.0,Engineering and Procurement,JCPL,12/31/2028,39.97271486885394,-74.25356554361369
+AC2-136,East Hagerstown Solar,MD,Washington,Solar,Solar,5.5,11.8,Partially in Service - Under Construction,APS,5/1/2026,39.55594323180353,-77.81748862534644
+AG1-501,West Lorain 138 kV Power Plant,OH,Lorain,Natural Gas,Gas,10.0,11.3,Engineering and Procurement,ATSI,12/31/2028,41.45752913179381,-82.17079830014525
+AF2-354,Washington Solar PH II,NJ,Warren,Solar,Solar,4.62,11.0,Under Construction,JCPL,8/29/2025,40.901437226701375,-74.99852759592687
+AC2-186,Raceway Solar,DE,Kent,Solar,Solar,3.8,10.0,Under Construction,DPL,3/1/2025,39.132903957258875,-75.5226130745907
+AF2-002,SunEast Hooversville Solar,PA,Somerset,Solar,Solar,6.0,10.0,Suspended,PENELEC,8/1/2026,40.08703965832692,-79.13895955013238
+AF2-325,SBC Solar,MD,Dorchester,Solar; Storage,Solar,4.2,10.0,Engineering and Procurement,DPL,12/31/2027,38.34482135758081,-76.15973384413944
+AG1-499,Esky Solar Project,NJ,Gloucester,Solar,Solar,6.0,10.0,Under Construction,AEC,8/31/2026,39.72487965722727,-75.0100040852463
+AG1-513,Aurora Battery Storage,IL,Will,Storage,Battery,4.0,10.0,Suspended,ComEd,6/1/2028,41.42544225377778,-87.9838467721241
+AG1-007,Lillie Solar,NC,Edgecombe,Solar,Solar,6.0,9.4,Engineering and Procurement,Dominion,6/1/2028,35.91087749507583,-77.46678034252845
+AF2-060,Scout Storage I,VA,Accomack,Storage,Battery,9.0,9.0,Suspended,DPL,4/1/2026,37.674556206287455,-75.85873393668696
+AF2-005,West Lorain 138 kV Power Plant,OH,Lorain,Natural Gas,Gas,8.0,8.0,Engineering and Procurement,ATSI,12/31/2028,41.350987706369466,-82.16339703438801
+AF1-007,Maryland Offshore Wind Energy Project (MOWEP),DE,Sussex,Offshore Wind,Wind,1.9,7.3,Suspended,DPL,12/31/2027,38.6199651309875,-75.42470882399454
+AF2-192,Barbertown Solar,NJ,Hunterdon,Solar,Solar,3.4,7.0,Suspended,JCPL,6/30/2026,40.5184121049026,-74.98601361816202
+AF2-088,Shawville-Clearfield 34.5 kV II,PA,Clearfield,Solar,Solar,3.9,6.5,Under Construction,PENELEC,9/1/2026,40.98955877128352,-78.61870762637164
+AC1-010,National Park NJ ,NJ,Gloucester,Solar,Solar,2.2,6.0,Under Construction,PSEG,3/31/2026,39.74951201128879,-75.25999300677793
+AG1-037,NC3 Ahoskie South Solar Project,NC,Hertford,Solar; Storage,Solar,3.0,5.0,Engineering and Procurement,Dominion,8/29/2027,36.395827988180386,-76.85656147771124
+AG1-130,NAES,NJ,Burlington,Storage,Battery,2.0,5.0,Engineering and Procurement,PSEG,6/30/2027,39.854620615180536,-74.7165461025553
+AG1-362,Furnace View Farms,PA,Berks,Solar,Solar,3.2,5.0,Suspended,PPL,12/29/2023,40.39206494626289,-75.89442123642563
+AB1-176,Cedar Lane Solar,MD,Queen Anne's,Solar,Solar,1.5,4.0,Engineering and Procurement,DPL,4/1/2026,38.97292384640727,-76.09290076040321
+AG1-253,Greenfield CSG 1,PA,Erie,Solar,Solar,2.7,4.0,Suspended,PENELEC,5/30/2025,42.13914549961817,-80.12625062642641
+AF2-379,RHC Solar,MD,Somerset,Solar; Storage,Solar,1.638,3.9,Under Construction,DPL,12/1/2024,38.030539818716136,-75.84375717259618
+AG1-251,Springfield CSG 1,PA,Delaware,Solar,Solar,1.9,3.88,Suspended,ATSI,8/31/2024,39.80533936022657,-75.4926463166154
+AF2-378,GGC Solar,MD,Dorchester,Solar; Storage,Solar,1.11,2.65,Engineering and Procurement,DPL,3/31/2024,38.40961201059764,-75.90085183044413
+AG1-140,Great Lake Growers,PA,Erie,Solar,Solar,1.7,2.62,Suspended,PENELEC,12/31/2024,42.111743842021646,-80.00089363938883
+AD2-135,Monroe-Sicklerville Road LF Solar,NJ,Gloucester,Solar,Solar,0.6,1.62,Partially in Service - Under Construction,AEC,3/1/2025,39.65701728836901,-75.07319461018055
+AF2-404 - moved to TC1,Pigeon Run Solar and Storage,VA,Campbell,Storage,Battery,0.0,0.0,Engineering and Procurement,Dominion,3/1/2031,37.22754190394931,-79.10480021089582
+AG1-076,South Branch Solar,OH,Hancock,Solar,Solar,46.0,0.0,Suspended,AEP,12/31/2025,41.01600225610366,-83.7700838633621
+AG1-109 - moved to TC1,Decatur Battery Storage,MI,Van Buren,Storage,Battery,25.0,0.0,Engineering and Procurement,AEP,4/30/2029,42.33063052346649,-86.17987624251793
+AG2-476 - moved to TC2,Hokes-Grantley 69 kV II,PA,York,Solar,Solar,0.1,0.0,Engineering and Procurement,ME,5/31/2028,39.957258635728294,-76.77647287978547
+AG2-477 - moved to TC2,Hokes-Jackson 69 kV III,PA,York,Solar,Solar,0.5,0.0,Engineering and Procurement,ME,5/31/2028,39.95833493356505,-76.86385699309092
+AG2-478 - moved to TC2,Hokes-Jackson 69 kV IV,PA,York,Solar,Solar,0.5,0.0,Engineering and Procurement,ME,8/31/2028,39.87764239643777,-76.7761678969568
+AH1-220 - moved to TC2,Remington CT 230 kV,VA,Fauquier,Storage,Battery,60.0,0.0,Engineering and Procurement,Dominion,9/1/2029,38.81307973327663,-77.73316289085123

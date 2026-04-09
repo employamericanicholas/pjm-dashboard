@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
@@ -19,11 +20,18 @@ st.markdown("""
 
     html, body, [class*="css"], .stApp, p, li, span, div {
         font-family: 'Lato', sans-serif !important;
+        color: #0A0A0A;
+    }
+    .stApp, [data-testid="stAppViewContainer"] {
+        background-color: #DFE7E9 !important;
+    }
+    [data-testid="stSidebar"], [data-testid="stSidebarContent"] {
+        background-color: #DFE7E9 !important;
     }
     h1, h2, h3, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
         font-family: 'Montserrat', sans-serif !important;
         font-weight: 700 !important;
-        color: #1B1E3A !important;
+        color: #191E3A !important;
     }
     .kpi-box {
         background: #ffffff;
@@ -34,29 +42,32 @@ st.markdown("""
         margin-bottom: 8px;
     }
     .kpi-label { font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; font-family: 'Montserrat', sans-serif !important; font-weight: 600; }
-    .kpi-value { font-size: 26px; font-weight: 700; color: #1B1E3A; line-height: 1.1; font-family: 'Montserrat', sans-serif !important; }
-    .kpi-delta-up { font-size: 12px; color: #EF7E30; margin-top: 4px; }
-    .kpi-delta-down { font-size: 12px; color: #3D9A66; margin-top: 4px; }
+    .kpi-value { font-size: 26px; font-weight: 700; color: #191E3A; line-height: 1.1; font-family: 'Montserrat', sans-serif !important; }
+    .kpi-delta-up { font-size: 12px; color: #EF8E48; margin-top: 4px; }
+    .kpi-delta-down { font-size: 12px; color: #008A6A; margin-top: 4px; }
     .kpi-delta-warn { font-size: 12px; color: #BD2066; margin-top: 4px; }
-    .callout { background: #EFF6FF; border-left: 4px solid #007BEA; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #1B1E3A; }
-    .callout-red { background: #FEF2F2; border-left: 4px solid #BD2066; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #1B1E3A; }
-    .callout-green { background: #F0FDF4; border-left: 4px solid #3D9A66; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #1B1E3A; }
+    .callout { background: #EFF6FF; border-left: 4px solid #007BEA; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #191E3A; }
+    .callout-red { background: #FEF2F2; border-left: 4px solid #BD2066; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #191E3A; }
+    .callout-green { background: #F0FDF4; border-left: 4px solid #008A6A; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #191E3A; }
     div[data-testid="stTab"] button { font-size: 14px; font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; }
 </style>
 """, unsafe_allow_html=True)
 
 CHART_THEME = "plotly_white"
-PLOT_BG = "#F8F7F5"
-GRID_COLOR = "#E5E7EB"
+PLOT_BG = "#FFFFFF"
+PAGE_BG = "#DFE7E9"
+GRID_COLOR = "#DFE7E9"
 
 # Employ America brand colors — primary
 EA_BLUE        = "#007BEA"
-EA_DARK_BLUE   = "#2048B1"
-EA_DEEP_BLUE   = "#1B1E3A"
-EA_GREEN       = "#3D9A66"
-EA_ORANGE      = "#EF7E30"
+EA_DARK_BLUE   = "#104591"
+EA_DEEP_BLUE   = "#191E3A"
+EA_GREEN       = "#008A6A"
+EA_ORANGE      = "#EF8E48"
+EA_WARM_WHITE  = "#F9F7F5"
 # Employ America brand colors — extended (data visualization)
-EA_LIGHT_BLUE  = "#40B2FF"
+EA_LIGHT_BLUE  = "#DFE7E9"  # primary palette light blue
+EA_VIZ_BLUE    = "#40B2FF"  # extended palette bright light blue
 EA_DARK_NAVY   = "#123466"
 EA_MED_BLUE    = "#296799"
 EA_DARK_PURPLE = "#2E2A73"
@@ -91,17 +102,71 @@ def kpi(label, value, delta=None, delta_type="up"):
 # ── Data ───────────────────────────────────────────────────────────────────────
 
 FUEL_COLORS = {
-    "Gas":     "#007BEA",  # EA Bright Blue
-    "Nuclear": "#123466",  # EA Dark Navy
-    "Coal":    "#1B1E3A",  # EA Deep Blue
-    "Wind":    "#3D9A66",  # EA Green
-    "Solar":   "#EF7E30",  # EA Orange
-    "Hydro":   "#40B2FF",  # EA Light Blue
-    "Oil":     "#2E2A73",  # EA Dark Purple
-    "Waste":   "#296799",  # EA Medium Blue
+    "Gas":     "#EF8E48",  # EA Orange
+    "Nuclear": "#007BEA",  # EA Bright Blue
+    "Coal":    "#0A0A0A",  # EA Black
+    "Wind":    "#008A6A",  # EA Green
+    "Solar":   "#EAC148",  # EA Yellow
+    "Hydro":   "#104591",  # EA Blue (dark blue)
+    "Oil":     "#FF591F",  # EA Bright Orange
+    "Waste":   "#BD2066",  # EA Pink
     "Battery": "#8A2B9C",  # EA Bright Purple
-    "Biofuel": "#EAC148",  # EA Yellow
+    "Biofuel": "#2E2A73",  # EA Dark Purple
+    "Other":   "#999999",
 }
+
+# EIA fuel code → display category
+EIA_FUEL_MAP = {
+    "NG": "Gas", "OG": "Gas", "BFG": "Gas", "PG": "Gas", "SG": "Gas", "LFG": "Biofuel",
+    "NUC": "Nuclear",
+    "BIT": "Coal", "SUB": "Coal", "LIG": "Coal", "RC": "Coal", "WC": "Coal", "PC": "Coal",
+    "WND": "Wind",
+    "SUN": "Solar",
+    "WAT": "Hydro", "GEO": "Hydro",
+    "DFO": "Oil", "RFO": "Oil", "JF": "Oil", "KER": "Oil",
+    "MWH": "Battery",
+    "AB": "Biofuel", "WDS": "Biofuel", "OBS": "Biofuel", "OBL": "Biofuel",
+    "MSW": "Waste", "TDF": "Waste", "WH": "Waste",
+}
+
+@st.cache_data
+def load_plant_data():
+    csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pjm_plants.csv")
+    try:
+        df = pd.read_csv(csv_path, dtype={"Plant Code": str})
+    except FileNotFoundError:
+        return pd.DataFrame()
+    df["Fuel Type"] = df["Fuel Type"].map(EIA_FUEL_MAP).fillna("Other")
+    df["Net Generation (MWh)"] = pd.to_numeric(df["Net Generation (MWh)"], errors="coerce").fillna(0)
+    df["Latitude"] = pd.to_numeric(df["Latitude"], errors="coerce")
+    df["Longitude"] = pd.to_numeric(df["Longitude"], errors="coerce")
+    df = df.dropna(subset=["Latitude", "Longitude"])
+    # Sum generation by plant + fuel type
+    by_fuel = df.groupby(
+        ["Plant Code", "Plant Name", "State", "Latitude", "Longitude", "Fuel Type"],
+        as_index=False
+    )["Net Generation (MWh)"].sum()
+    # Total gen per plant
+    totals = by_fuel.groupby("Plant Code", as_index=False)["Net Generation (MWh)"].sum()
+    totals = totals.rename(columns={"Net Generation (MWh)": "Total MWh"})
+    # Dominant fuel = highest-generation fuel type per plant
+    idx = by_fuel.groupby("Plant Code")["Net Generation (MWh)"].idxmax()
+    dominant = by_fuel.loc[idx, ["Plant Code", "Fuel Type"]].rename(columns={"Fuel Type": "Primary Fuel"})
+    # One row per plant
+    meta = by_fuel.drop_duplicates("Plant Code")[["Plant Code", "Plant Name", "State", "Latitude", "Longitude"]]
+    return meta.merge(totals, on="Plant Code").merge(dominant, on="Plant Code")
+
+@st.cache_data
+def load_ready_to_build():
+    csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pjm_ready_to_build.csv")
+    try:
+        df = pd.read_csv(csv_path)
+    except FileNotFoundError:
+        return pd.DataFrame()
+    df["Latitude"]    = pd.to_numeric(df["Latitude"],    errors="coerce")
+    df["Longitude"]   = pd.to_numeric(df["Longitude"],   errors="coerce")
+    df["MW Capacity"] = pd.to_numeric(df["MW Capacity"], errors="coerce").fillna(0)
+    return df.dropna(subset=["Latitude", "Longitude"])
 
 # Historical load-weighted LMP $/MWh (1998–2025) — Table 3-38
 lmp_historical = pd.DataFrame({
@@ -280,7 +345,7 @@ with tab1:
         fig.add_trace(go.Scatter(
             x=lmp_historical["Year"], y=lmp_historical["LMP"],
             mode="lines+markers", name="Annual Avg LMP",
-            line=dict(color="#EF7E30", width=2.5),
+            line=dict(color="#EF8E48", width=2.5),
             marker=dict(size=5),
             fill="tozeroy", fillcolor="rgba(244,162,97,0.12)",
             hovertemplate="<b>%{x}</b><br>$%{y:.2f}/MWh<extra></extra>"
@@ -288,7 +353,7 @@ with tab1:
         fig.add_trace(go.Scatter(
             x=[2025], y=[50.73],
             mode="markers", name="2025 (current)",
-            marker=dict(size=12, color="#EF7E30", symbol="star"),
+            marker=dict(size=12, color="#EF8E48", symbol="star"),
         ))
         fig.update_layout(title="Real-Time Load-Weighted Average LMP", showlegend=True)
         st.plotly_chart(styled_chart(fig), width='stretch')
@@ -365,11 +430,11 @@ with tab2:
         fig3 = go.Figure()
         fig3.add_trace(go.Bar(
             x=months, y=df_2025[df_2025["Type"] == "Off-Peak"]["LMP"].values,
-            name="Off-Peak", marker_color="#3D9A66",
+            name="Off-Peak", marker_color="#008A6A",
         ))
         fig3.add_trace(go.Bar(
             x=months, y=df_2025[df_2025["Type"] == "On-Peak"]["LMP"].values,
-            name="On-Peak", marker_color="#EF7E30",
+            name="On-Peak", marker_color="#EF8E48",
         ))
         fig3.update_layout(title="2025 Monthly LMP ($/MWh)", barmode="group", yaxis_title="$/MWh")
         st.plotly_chart(styled_chart(fig3), width='stretch')
@@ -383,9 +448,9 @@ with tab2:
         avg_2024 = [(a+b)/2 for a, b in zip(lmp_monthly_2024, lmp_monthly_2024_peak)]
         avg_2025 = [(a+b)/2 for a, b in zip(lmp_monthly_2025, lmp_monthly_2025_peak)]
         fig4.add_trace(go.Scatter(x=months, y=avg_2024, name="2024 Avg LMP",
-                                  line=dict(color="#3D9A66", width=2, dash="dash")))
+                                  line=dict(color="#008A6A", width=2, dash="dash")))
         fig4.add_trace(go.Scatter(x=months, y=avg_2025, name="2025 Avg LMP",
-                                  line=dict(color="#EF7E30", width=2.5),
+                                  line=dict(color="#EF8E48", width=2.5),
                                   fill="tonexty", fillcolor="rgba(244,162,97,0.1)"))
         fig4.update_layout(title="Avg Monthly LMP: 2024 vs 2025 ($/MWh)", yaxis_title="$/MWh")
         st.plotly_chart(styled_chart(fig4), width='stretch')
@@ -396,7 +461,7 @@ with tab2:
                         "$50–75","$75–100","$100–200",">$200"]
         pct_2025 = [0.1, 1.1, 6.2, 19.3, 19.6, 13.5, 21.5, 8.4, 7.5, 2.8]
         fig5 = go.Figure(go.Bar(
-            x=price_ranges, y=pct_2025, marker_color="#2048B1",
+            x=price_ranges, y=pct_2025, marker_color="#104591",
             hovertemplate="%{x}: %{y:.1f}%<extra></extra>"
         ))
         fig5.update_layout(title="2025 Hours by Price Range (%)", yaxis_title="% of Hours",
@@ -472,7 +537,7 @@ with tab3:
 
     st.subheader("Year-over-Year Generation Change by Fuel (2024 → 2025)")
     gen_sorted = gen_fuel.sort_values("Change_Pct")
-    colors_change = ["#BD2066" if x > 0 else "#3D9A66" for x in gen_sorted["Change_Pct"]]
+    colors_change = ["#BD2066" if x > 0 else "#008A6A" for x in gen_sorted["Change_Pct"]]
     fig_bar = go.Figure(go.Bar(
         x=gen_sorted["Change_Pct"], y=gen_sorted["Fuel"],
         orientation="h",
@@ -516,7 +581,7 @@ with tab4:
             textposition="top center",
             marker=dict(
                 size=exp["Abs_Net"] / 1500 + 10,
-                color="#3D9A66",
+                color="#008A6A",
                 opacity=0.85,
                 line=dict(color="white", width=1),
             ),
@@ -554,7 +619,7 @@ with tab4:
             showland=True, landcolor="#e4ede4",
             showsubunits=True, subunitcolor="#aaaaaa",
             showcountries=False,
-            bgcolor="#d0e4f0",
+            bgcolor="#DFE7E9",
             center=dict(lat=39.5, lon=-80.0),
         )
         fig_map.update_layout(
@@ -601,7 +666,7 @@ with tab4:
     fig_zone_bar.add_trace(go.Bar(
         y=zones_sorted["Zone"], x=zones_sorted["Load"],
         name="Load", orientation="h",
-        marker_color="#EF7E30",
+        marker_color="#EF8E48",
         hovertemplate="<b>%{y}</b> Load: %{x:,.0f} GWh<extra></extra>"
     ))
     fig_zone_bar.update_layout(
@@ -642,7 +707,7 @@ with tab5:
             textposition="outside",
             hovertemplate="<b>%{x}</b><br>$%{y:.2f}/MW-Day<extra></extra>"
         ))
-        fig_bra.add_hline(y=28.92, line_dash="dash", line_color="#3D9A66",
+        fig_bra.add_hline(y=28.92, line_dash="dash", line_color="#008A6A",
                           annotation_text="2024/25 low: $28.92", annotation_position="top left")
         fig_bra.update_layout(
             title="BRA Clearing Price Spike: $28.92 → $333.44/MW-Day",
@@ -689,7 +754,7 @@ with tab5:
         ))
         fig_cap_change.add_trace(go.Bar(
             x=cap_milestones["Fuel"], y=cap_milestones["Dec_31"] / 1000,
-            name="Dec 31, 2025", marker_color="#EF7E30", opacity=0.8
+            name="Dec 31, 2025", marker_color="#EF8E48", opacity=0.8
         ))
         fig_cap_change.update_layout(
             barmode="group", title="Installed Capacity Jan vs Dec 2025 (GW)",
@@ -714,7 +779,7 @@ with tab5:
                     {"range": [175000, 181017], "color": "#f0f0f0"},
                     {"range": [181017, 181427], "color": "#d8d8d8"},
                 ],
-                "threshold": {"line": {"color": "#3D9A66", "width": 3}, "value": required},
+                "threshold": {"line": {"color": "#008A6A", "width": 3}, "value": required},
             },
             number={"valueformat": ",.0f", "suffix": " MW"},
         ))
@@ -729,7 +794,7 @@ with tab5:
     })
     fig_cleared = go.Figure(go.Bar(
         x=cleared_mw["Delivery Year"], y=cleared_mw["Cleared UCAP (MW)"] / 1000,
-        marker_color="#2048B1",
+        marker_color="#104591",
         text=[f"{v/1000:.0f} GW" for v in cleared_mw["Cleared UCAP (MW)"]],
         textposition="outside",
         hovertemplate="<b>%{x}</b><br>%{y:.0f} GW cleared<extra></extra>"
@@ -775,7 +840,7 @@ with tab6:
         fig_pie_cost = px.pie(
             cost_df, values="2025", names="Category",
             color="Category",
-            color_discrete_map={"Energy": "#EF7E30", "Capacity": "#BD2066", "Transmission": "#007BEA"},
+            color_discrete_map={"Energy": "#EF8E48", "Capacity": "#BD2066", "Transmission": "#007BEA"},
             hole=0.5,
         )
         fig_pie_cost.update_traces(
@@ -816,7 +881,7 @@ with tab6:
         "Transmission": [15.13, 15.01, 15.48, 16.64, 17.01, 17.73, 18.53],
     })
     fig_hist_cost = go.Figure()
-    for col, color in [("Energy", "#EF7E30"), ("Capacity", "#BD2066"), ("Transmission", "#007BEA")]:
+    for col, color in [("Energy", "#EF8E48"), ("Capacity", "#BD2066"), ("Transmission", "#007BEA")]:
         fig_hist_cost.add_trace(go.Bar(
             x=hist_cost["Year"], y=hist_cost[col],
             name=col, marker_color=color,
@@ -845,7 +910,7 @@ with tab7:
         fig_lmp_hist.add_trace(go.Scatter(
             x=lmp_historical["Year"], y=lmp_historical["LMP"],
             mode="lines+markers", name="Annual Avg LMP",
-            line=dict(color="#EF7E30", width=2.5),
+            line=dict(color="#EF8E48", width=2.5),
             marker=dict(size=5),
             fill="tozeroy", fillcolor="rgba(244,162,97,0.12)",
             hovertemplate="<b>%{x}</b><br>$%{y:.2f}/MWh<extra></extra>"
@@ -878,7 +943,7 @@ with tab7:
             "Transmission": [15.13, 15.01, 15.48, 16.64, 17.01, 17.73, 18.53],
         })
         fig_cost_hist7 = go.Figure()
-        for col_name, color in [("Transmission", "#007BEA"), ("Capacity", "#BD2066"), ("Energy", "#EF7E30")]:
+        for col_name, color in [("Transmission", "#007BEA"), ("Capacity", "#BD2066"), ("Energy", "#EF8E48")]:
             fig_cost_hist7.add_trace(go.Bar(
                 x=hist_cost_7["Year"], y=hist_cost_7[col_name],
                 name=col_name, marker_color=color,
@@ -914,7 +979,7 @@ with tab7:
         x=reserve_proj["Year"], y=reserve_proj["Reserve_Margin_Pct"],
         mode="lines+markers+text",
         name="Projected Reserve Margin",
-        line=dict(color="#EF7E30", width=2.5),
+        line=dict(color="#EF8E48", width=2.5),
         marker=dict(size=10),
         text=[f"{v:.1f}%" for v in reserve_proj["Reserve_Margin_Pct"]],
         textposition="top center",
@@ -983,7 +1048,7 @@ with tab8:
         col_q, col_ctx = st.columns([3, 2])
         with col_q:
             st.markdown(f"""
-            <div style="background:#f8f4ee;border-left:5px solid #EF7E30;border-radius:6px;
+            <div style="background:#f8f4ee;border-left:5px solid #EF8E48;border-radius:6px;
                         padding:16px 20px;margin:8px 0;font-size:15px;color:#333;font-style:italic;">
                 "{q['text']}"
                 <div style="font-size:12px;color:#888;margin-top:10px;font-style:normal;">
@@ -1021,19 +1086,19 @@ with tab9:
          "color": "#4A4E69"},
         {"number": "+41%", "title": "Solar generation exploded in a single year",
          "detail": "Solar output jumped 41.2% year-over-year (17,548 → 24,782 GWh). Installed solar capacity grew 64% during 2025 alone — from 5,047 MW to 8,297 MW. Solar is still only 2.8% of PJM's total generation, but it's accelerating faster than any other fuel type.",
-         "color": "#EF7E30"},
+         "color": "#EF8E48"},
         {"number": "1st time", "title": "Energy costs beat capacity for the first time in PJM history",
          "detail": "Since the Reliability Pricing Model launched, capacity costs had always been the dominant component. In Q3 2025, energy costs crossed above capacity costs for the first time ever — a historic reversal caused by fuel price spikes and tight supply.",
-         "color": "#EF7E30"},
+         "color": "#EF8E48"},
         {"number": "1,053%", "title": "Capacity auction prices jumped 10× in two years",
          "detail": "BRA clearing prices went from $28.92/MW-day (2024/2025) to $333.44/MW-day (2027/2028) — a 1,053% increase. For context, $28.92 was itself at a historic low. The $333.44 price is among the highest PJM has ever cleared.",
-         "color": "#2048B1"},
+         "color": "#104591"},
         {"number": "$80.5B", "title": "PJM's total billings exceeded $80 billion in 2025",
          "detail": "PJM processed $80.49 billion in gross billings in 2025 — up $28.8 billion (55.7%) from $51.71 billion in 2024. That's roughly the annual GDP of a mid-sized U.S. state flowing through one grid operator's settlement system in a single year.",
-         "color": "#3D9A66"},
+         "color": "#008A6A"},
         {"number": "95.3%", "title": "The market was competitive on almost every day — despite the price spikes",
          "detail": "Even as prices reached record highs, PJM's energy market tested as competitive on 95.3% of days in 2025. The high prices were driven by real supply/demand conditions, not market power abuse. This is actually the market working — just painfully.",
-         "color": "#3D9A66"},
+         "color": "#008A6A"},
         {"number": "65M", "title": "PJM serves 65 million people across 13 states + DC",
          "detail": "PJM Interconnection is the world's largest competitive electricity market. It covers Delaware, Illinois, Indiana, Kentucky, Maryland, Michigan, New Jersey, North Carolina, Ohio, Pennsylvania, Tennessee, Virginia, West Virginia, and the District of Columbia.",
          "color": "#A8DADC"},
@@ -1067,97 +1132,205 @@ with tab9:
 # TAB 10: GENERATION MAP
 # ══════════════════════════════════════════════════════════════════════════════
 with tab10:
-    st.markdown("## Regional Generation Map")
+    st.markdown("## Individual Power Plant Map")
     st.markdown(
-        "PJM's 21 control zones, sized and colored by total generation output in 2025. "
-        "The report provides aggregate data by zone and fuel type — not individual plant coordinates."
+        "Each dot is one of ~3,800 power plants in the PJM region. "
+        "Color = primary fuel type. Size = annual net generation. "
+        "Source: EIA Form 860/923 (2023)."
     )
-    st.info("To map individual power plants, the EIA Form 860 dataset provides plant-level lat/lon, fuel type, and capacity that could be layered onto this visualization.", icon="ℹ️")
 
-    fig_gen_map = go.Figure()
-    fig_gen_map.add_trace(go.Scattergeo(
-        lat=zones["Lat"], lon=zones["Lon"],
-        text=zones["Zone"],
-        customdata=zones[["Full_Name", "Gen", "Load", "Net_Status"]].values,
-        mode="markers+text",
-        textposition="top center",
-        marker=dict(
-            size=zones["Gen"] / 5000 + 8,
-            color=zones["Gen"],
-            colorscale="Viridis",
-            showscale=True,
-            colorbar=dict(title="Generation<br>(GWh)", thickness=12),
-            opacity=0.85,
-            line=dict(color="white", width=1),
-        ),
-        hovertemplate=(
-            "<b>%{text}</b><br>%{customdata[0]}<br>"
-            "Generation: %{customdata[1]:,} GWh<br>"
-            "Load: %{customdata[2]:,} GWh<br>"
-            "Status: %{customdata[3]}<extra></extra>"
+    df_plants_map = load_plant_data()
+
+    if df_plants_map.empty:
+        st.warning("Plant data file (pjm_plants.csv) not found. Run build_pjm_plants.py to generate it, then commit it to the repo.")
+    else:
+        df_rtb = load_ready_to_build()
+
+        col_filters, col_toggle = st.columns([3, 1])
+        with col_filters:
+            all_fuels = sorted(df_plants_map["Primary Fuel"].unique())
+            sel_fuels = st.multiselect("Filter by fuel type:", all_fuels, default=all_fuels, key="plant_fuel_filter")
+        with col_toggle:
+            show_rtb = st.toggle("Show ready-to-build projects", value=True)
+
+        df_show = df_plants_map[df_plants_map["Primary Fuel"].isin(sel_fuels)] if sel_fuels else df_plants_map
+        df_rtb_show = df_rtb[df_rtb["Fuel Category"].isin(sel_fuels)] if (show_rtb and not df_rtb.empty and sel_fuels) else (df_rtb if show_rtb else pd.DataFrame())
+
+        col_a, col_b, col_c, col_d = st.columns(4)
+        col_a.metric("Operating plants", f"{len(df_show):,}")
+        col_b.metric("Generation (2023)", f"{df_show['Total MWh'].sum()/1e6:.0f} TWh")
+        col_c.metric("Ready-to-build projects", f"{len(df_rtb_show):,}" if not df_rtb_show.empty else "—")
+        col_d.metric("Ready-to-build capacity", f"{df_rtb_show['MW Capacity'].sum()/1000:.1f} GW" if not df_rtb_show.empty else "—")
+
+        # Build scatter map — one trace per fuel type so legend works
+        fig_plants = go.Figure()
+        fuel_order = ["Gas", "Nuclear", "Coal", "Wind", "Solar", "Hydro", "Oil", "Waste", "Battery", "Biofuel", "Other"]
+        max_mwh = df_show["Total MWh"].max() if len(df_show) > 0 else 1
+
+        # Layer 1: operating plants (circles)
+        for fuel in fuel_order:
+            sub = df_show[df_show["Primary Fuel"] == fuel]
+            if sub.empty:
+                continue
+            color = FUEL_COLORS.get(fuel, "#999999")
+            sizes = (sub["Total MWh"].clip(lower=0) / max_mwh * 16 + 4)
+            fig_plants.add_trace(go.Scattergeo(
+                lat=sub["Latitude"],
+                lon=sub["Longitude"],
+                name=fuel,
+                legendgroup=fuel,
+                legendgrouptitle=dict(text="Operating Plants") if fuel == fuel_order[0] else None,
+                mode="markers",
+                marker=dict(
+                    size=sizes,
+                    color=color,
+                    symbol="circle",
+                    opacity=0.75,
+                    line=dict(color="white", width=0.5),
+                ),
+                customdata=sub[["Plant Name", "State", "Total MWh"]].values,
+                hovertemplate=(
+                    "<b>%{customdata[0]}</b> (%{customdata[1]})<br>"
+                    f"Fuel: {fuel}<br>"
+                    "Generation: %{customdata[2]:,.0f} MWh<extra></extra>"
+                ),
+            ))
+
+        # Layer 2: ready-to-build projects (stars)
+        if not df_rtb_show.empty:
+            max_mw = df_rtb_show["MW Capacity"].max() if df_rtb_show["MW Capacity"].max() > 0 else 1
+            shown_fuels_rtb = set()
+            for fuel in fuel_order:
+                sub = df_rtb_show[df_rtb_show["Fuel Category"] == fuel]
+                if sub.empty:
+                    continue
+                color = FUEL_COLORS.get(fuel, "#999999")
+                sizes = (sub["MW Capacity"].clip(lower=0) / max_mw * 14 + 7)
+                first = fuel not in shown_fuels_rtb
+                shown_fuels_rtb.add(fuel)
+                fig_plants.add_trace(go.Scattergeo(
+                    lat=sub["Latitude"],
+                    lon=sub["Longitude"],
+                    name=f"{fuel} (pipeline)",
+                    legendgroup=f"rtb_{fuel}",
+                    legendgrouptitle=dict(text="Ready to Build ★") if first and fuel == list({f for f in fuel_order if not df_rtb_show[df_rtb_show["Fuel Category"]==f].empty})[0] else None,
+                    mode="markers",
+                    marker=dict(
+                        size=sizes,
+                        color=color,
+                        symbol="star",
+                        opacity=0.92,
+                        line=dict(color="white", width=1.2),
+                    ),
+                    customdata=sub[["Display Name", "State", "County", "MW Capacity", "Status"]].values,
+                    hovertemplate=(
+                        "<b>%{customdata[0]}</b> (%{customdata[1]}, %{customdata[2]} County)<br>"
+                        f"Fuel: {fuel}<br>"
+                        "Capacity: %{customdata[3]:,.0f} MW<br>"
+                        "Status: %{customdata[4]}<extra></extra>"
+                    ),
+                ))
+
+        fig_plants.update_geos(
+            scope="usa",
+            projection_type="albers usa",
+            showland=True, landcolor="#e8ede8",
+            showsubunits=True, subunitcolor="#cccccc",
+            showcoastlines=True, coastlinecolor="#aaaaaa",
+            bgcolor="#DFE7E9",
         )
-    ))
-    fig_gen_map.update_geos(
-        scope="usa",
-        projection_type="albers usa",
-        showland=True, landcolor="#e4ede4",
-        showsubunits=True, subunitcolor="#aaaaaa",
-        showcountries=False,
-        bgcolor="#d0e4f0",
-    )
-    fig_gen_map.update_layout(
-        title="PJM Zones — Bubble Size & Color = Total Generation Output (GWh, 2025)",
-        paper_bgcolor=PLOT_BG,
-        height=520,
-        margin=dict(l=0, r=0, t=40, b=0),
-        font=dict(color="#333333"),
-        geo=dict(lataxis_range=[36, 43], lonaxis_range=[-92, -72]),
-    )
-    st.plotly_chart(fig_gen_map, width='stretch')
-
-    st.divider()
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.subheader("Generation by Fuel Type — PJM Totals (2025)")
-        gen_sorted_map = gen_fuel.sort_values("GWh_2025", ascending=True)
-        fig_fuel_gen = px.bar(
-            gen_sorted_map, x="GWh_2025", y="Fuel", orientation="h",
-            color="Fuel", color_discrete_map=FUEL_COLORS,
-            text=[f"{v/1000:.1f} TWh" for v in gen_sorted_map["GWh_2025"]],
+        fig_plants.update_layout(
+            title="PJM Power Plants — Operating (circles) & Ready-to-Build Pipeline (stars)",
+            paper_bgcolor=PLOT_BG,
+            height=640,
+            margin=dict(l=0, r=0, t=40, b=0),
+            font=dict(color="#333333"),
+            legend=dict(
+                title="Fuel Type",
+                orientation="v",
+                bgcolor="rgba(255,255,255,0.88)",
+                bordercolor="#dddddd",
+                borderwidth=1,
+                groupclick="toggleitem",
+            ),
+            geo=dict(lataxis_range=[36, 45], lonaxis_range=[-93, -72]),
         )
-        fig_fuel_gen.update_traces(textposition="outside")
-        fig_fuel_gen.update_layout(title="Total Generation by Fuel (GWh)", xaxis_title="GWh", showlegend=False)
-        st.plotly_chart(styled_chart(fig_fuel_gen, height=400), width='stretch')
+        st.plotly_chart(fig_plants, width='stretch')
 
-    with col2:
-        st.subheader("Installed Capacity by Fuel — Dec 31, 2025")
-        cap_sorted_map = capacity_fuel.sort_values("MW", ascending=True)
-        fig_fuel_cap = px.bar(
-            cap_sorted_map, x="MW", y="Fuel", orientation="h",
-            color="Fuel", color_discrete_map=FUEL_COLORS,
-            text=[f"{v/1000:.1f} GW" for v in cap_sorted_map["MW"]],
-        )
-        fig_fuel_cap.update_traces(textposition="outside")
-        fig_fuel_cap.update_layout(title="Installed Capacity by Fuel (MW)", xaxis_title="MW", showlegend=False)
-        st.plotly_chart(styled_chart(fig_fuel_cap, height=400), width='stretch')
+        st.divider()
+        col1, col2 = st.columns(2)
 
-    st.divider()
-    st.subheader("Top Generating Zones (2025)")
-    top_zones = zones.sort_values("Gen", ascending=False).head(10)
-    fig_top = go.Figure(go.Bar(
-        y=top_zones["Zone"], x=top_zones["Gen"], orientation="h",
-        marker_color=["#3D9A66" if n > 0 else "#BD2066" for n in top_zones["Net"]],
-        text=[f"{g:,.0f} GWh" for g in top_zones["Gen"]],
-        textposition="outside",
-        customdata=top_zones["Full_Name"].values,
-        hovertemplate="<b>%{y}</b> — %{customdata}<br>%{x:,} GWh<extra></extra>",
-    ))
-    fig_top.update_layout(
-        title="Top 10 Zones by Total Generation — Green = Net Exporter, Red = Net Importer",
-        xaxis_title="GWh", yaxis=dict(autorange="reversed"),
-    )
-    st.plotly_chart(styled_chart(fig_top, height=400), width='stretch')
+        with col1:
+            st.subheader("Generation by Fuel — EIA 2023")
+            fuel_gen = df_show.groupby("Primary Fuel")["Total MWh"].sum().sort_values(ascending=True)
+            fig_fuel_eia = go.Figure(go.Bar(
+                y=fuel_gen.index,
+                x=fuel_gen.values / 1e6,
+                orientation="h",
+                marker_color=[FUEL_COLORS.get(f, "#999999") for f in fuel_gen.index],
+                text=[f"{v/1e6:.1f} TWh" for v in fuel_gen.values],
+                textposition="outside",
+            ))
+            fig_fuel_eia.update_layout(xaxis_title="TWh", showlegend=False)
+            st.plotly_chart(styled_chart(fig_fuel_eia, height=360), width='stretch')
+
+        with col2:
+            st.subheader("Plant Count by Fuel Type")
+            fuel_count = df_show.groupby("Primary Fuel").size().sort_values(ascending=True)
+            fig_count = go.Figure(go.Bar(
+                y=fuel_count.index,
+                x=fuel_count.values,
+                orientation="h",
+                marker_color=[FUEL_COLORS.get(f, "#999999") for f in fuel_count.index],
+                text=fuel_count.values,
+                textposition="outside",
+            ))
+            fig_count.update_layout(xaxis_title="Number of Plants", showlegend=False)
+            st.plotly_chart(styled_chart(fig_count, height=360), width='stretch')
+
+        st.divider()
+        st.subheader("Top 20 Operating Plants by Generation (2023)")
+        top20 = df_show.nlargest(20, "Total MWh")[["Plant Name", "State", "Primary Fuel", "Total MWh"]].copy()
+        top20["Total MWh"] = top20["Total MWh"].apply(lambda x: f"{x:,.0f}")
+        top20.columns = ["Plant Name", "State", "Fuel Type", "Net Generation (MWh)"]
+        st.dataframe(top20, use_container_width=True, hide_index=True)
+
+        if not df_rtb.empty:
+            st.divider()
+            st.subheader("Ready-to-Build Pipeline — PJM Interconnection Queue")
+            st.markdown(
+                "Projects with a signed interconnection agreement that are approved to build. "
+                "**Note:** PJM's queue data lists project names, not developer company names. "
+                "The 'Project Name' below is the developer's public commercial name. "
+                "'Grid Owner' is the incumbent transmission company at the interconnection point — not the generator owner."
+            )
+
+            # Summary by status
+            status_order = [
+                "Under Construction",
+                "Partially in Service - Under Construction",
+                "Engineering and Procurement",
+                "Suspended",
+            ]
+            status_summary = df_rtb.groupby("Status").agg(
+                Projects=("Display Name", "count"),
+                Total_MW=("MW Capacity", "sum"),
+            ).reindex(status_order).dropna()
+            status_summary["Total_MW"] = status_summary["Total_MW"].apply(lambda x: f"{x:,.0f} MW")
+            status_summary.columns = ["# Projects", "Total Capacity"]
+            st.dataframe(status_summary, use_container_width=True)
+
+            st.markdown("**Full project list (sorted by capacity):**")
+            rtb_display = df_rtb.sort_values("MW Capacity", ascending=False)[[
+                "Display Name", "State", "County", "Fuel", "MW Capacity", "Status",
+                "Transmission Owner", "Projected In Service Date",
+            ]].copy()
+            rtb_display["MW Capacity"] = rtb_display["MW Capacity"].apply(lambda x: f"{x:,.0f}")
+            rtb_display.columns = [
+                "Project Name", "State", "County", "Fuel", "MW Capacity",
+                "Status", "Grid Owner", "Projected In-Service",
+            ]
+            st.dataframe(rtb_display, use_container_width=True, hide_index=True)
 
 
 st.divider()
