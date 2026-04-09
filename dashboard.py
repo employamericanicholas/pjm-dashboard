@@ -180,9 +180,13 @@ def load_company_rankings():
     try:
         df = pd.read_csv(csv_path, dtype={"Plant Code": str})
     except FileNotFoundError:
-        return pd.DataFrame()
+        return None
     if "Utility Name" not in df.columns:
-        return pd.DataFrame()
+        return None
+    # Strict PJM BA filter — excludes TVA, MISO, Duke Carolinas, etc.
+    # that are in PJM-adjacent states but not PJM's balancing authority
+    if "BA Code" in df.columns:
+        df = df[df["BA Code"].str.strip().str.upper() == "PJM"]
     df["Fuel Type"] = df["Fuel Type"].map(EIA_FUEL_MAP).fillna("Other")
     df["Net Generation (MWh)"] = pd.to_numeric(df["Net Generation (MWh)"], errors="coerce").fillna(0)
     # Company totals
@@ -1410,7 +1414,7 @@ with tab11:
 
     rankings_result = load_company_rankings()
 
-    if not rankings_result or (isinstance(rankings_result, pd.DataFrame) and rankings_result.empty):
+    if rankings_result is None:
         st.warning(
             "Company data not available. Re-run `build_pjm_plants.py` to regenerate "
             "`pjm_plants.csv` with Utility Name, then commit the updated CSV to the repo."
