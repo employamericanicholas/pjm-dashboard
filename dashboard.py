@@ -23,10 +23,10 @@ st.markdown("""
         color: #0A0A0A;
     }
     .stApp, [data-testid="stAppViewContainer"] {
-        background-color: #DFE7E9 !important;
+        background-color: #F9F7F5 !important;
     }
     [data-testid="stSidebar"], [data-testid="stSidebarContent"] {
-        background-color: #DFE7E9 !important;
+        background-color: #F9F7F5 !important;
     }
     h1, h2, h3, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
         font-family: 'Montserrat', sans-serif !important;
@@ -55,8 +55,8 @@ st.markdown("""
 
 CHART_THEME = "plotly_white"
 PLOT_BG = "#FFFFFF"
-PAGE_BG = "#DFE7E9"
-GRID_COLOR = "#DFE7E9"
+PAGE_BG = "#F9F7F5"
+GRID_COLOR = "#EAE8E6"
 
 # Employ America brand colors — primary
 EA_BLUE        = "#007BEA"
@@ -80,12 +80,12 @@ def styled_chart(fig, height=420):
     fig.update_layout(
         paper_bgcolor=PLOT_BG,
         plot_bgcolor=PLOT_BG,
-        font=dict(color="#333333"),
+        font=dict(color="#333333", size=13),
         height=height,
-        margin=dict(l=16, r=16, t=40, b=16),
+        margin=dict(l=16, r=16, t=44, b=24),
     )
-    fig.update_xaxes(gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR)
-    fig.update_yaxes(gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR)
+    fig.update_xaxes(gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR, tickfont=dict(size=12))
+    fig.update_yaxes(gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR, tickfont=dict(size=12))
     return fig
 
 def kpi(label, value, delta=None, delta_type="up"):
@@ -493,28 +493,42 @@ with tab3:
         fig_pie = px.pie(
             gen_fuel, values="GWh_2025", names="Fuel",
             color="Fuel", color_discrete_map=FUEL_COLORS,
-            hole=0.45,
+            hole=0.42,
         )
         fig_pie.update_traces(
-            textposition="outside", textinfo="percent+label",
+            textposition="inside",
+            textinfo="percent",
+            insidetextorientation="radial",
+            textfont=dict(size=12, color="white"),
             hovertemplate="<b>%{label}</b><br>%{value:,.0f} GWh<br>%{percent}<extra></extra>"
         )
-        fig_pie.update_layout(title=f"Total: 873,339 GWh", showlegend=False)
-        st.plotly_chart(styled_chart(fig_pie, height=450), width='stretch')
+        fig_pie.update_layout(
+            title="Total: 873,339 GWh",
+            showlegend=True,
+            legend=dict(orientation="v", x=1.0, font=dict(size=12)),
+        )
+        st.plotly_chart(styled_chart(fig_pie, height=460), width='stretch')
 
     with col2:
         st.subheader("Installed Capacity by Fuel — Dec 31, 2025 (MW)")
         fig_cap = px.pie(
             capacity_fuel, values="MW", names="Fuel",
             color="Fuel", color_discrete_map=FUEL_COLORS,
-            hole=0.45,
+            hole=0.42,
         )
         fig_cap.update_traces(
-            textposition="outside", textinfo="percent+label",
+            textposition="inside",
+            textinfo="percent",
+            insidetextorientation="radial",
+            textfont=dict(size=12, color="white"),
             hovertemplate="<b>%{label}</b><br>%{value:,.0f} MW<br>%{percent}<extra></extra>"
         )
-        fig_cap.update_layout(title="Total: 184,202 MW", showlegend=False)
-        st.plotly_chart(styled_chart(fig_cap, height=450), width='stretch')
+        fig_cap.update_layout(
+            title="Total: 184,202 MW",
+            showlegend=True,
+            legend=dict(orientation="v", x=1.0, font=dict(size=12)),
+        )
+        st.plotly_chart(styled_chart(fig_cap, height=460), width='stretch')
 
     st.divider()
 
@@ -619,20 +633,20 @@ with tab4:
             showland=True, landcolor="#e4ede4",
             showsubunits=True, subunitcolor="#aaaaaa",
             showcountries=False,
-            bgcolor="#DFE7E9",
-            center=dict(lat=39.5, lon=-80.0),
+            bgcolor="#F9F7F5",
+            center=dict(lat=39.5, lon=-80.5),
         )
         fig_map.update_layout(
             geo=dict(
-                lataxis_range=[36, 43],
-                lonaxis_range=[-92, -72],
+                lataxis_range=[36.5, 42.5],
+                lonaxis_range=[-90, -73],
             ),
             title="PJM Zones: Green = Net Exporter, Red = Net Importer (bubble = magnitude)",
             legend=dict(orientation="h", y=-0.05),
             paper_bgcolor=PLOT_BG,
-            height=520,
-            margin=dict(l=0, r=0, t=40, b=0),
-            font=dict(color="#333333"),
+            height=560,
+            margin=dict(l=0, r=0, t=44, b=0),
+            font=dict(color="#333333", size=13),
         )
         st.plotly_chart(fig_map, width='stretch')
 
@@ -1146,21 +1160,26 @@ with tab10:
     else:
         df_rtb = load_ready_to_build()
 
-        col_filters, col_toggle = st.columns([3, 1])
-        with col_filters:
-            all_fuels = sorted(df_plants_map["Primary Fuel"].unique())
-            sel_fuels = st.multiselect("Filter by fuel type:", all_fuels, default=all_fuels, key="plant_fuel_filter")
-        with col_toggle:
-            show_rtb = st.toggle("Show ready-to-build projects", value=True)
+        view_mode = st.radio(
+            "Show on map:",
+            ["All (operating + pipeline)", "Operating plants only", "Ready-to-build only"],
+            horizontal=True, key="map_view_mode"
+        )
 
-        df_show = df_plants_map[df_plants_map["Primary Fuel"].isin(sel_fuels)] if sel_fuels else df_plants_map
+        all_fuels = sorted(df_plants_map["Primary Fuel"].unique())
+        sel_fuels = st.multiselect("Filter by fuel type:", all_fuels, default=all_fuels, key="plant_fuel_filter")
+
+        show_operating = view_mode != "Ready-to-build only"
+        show_rtb       = view_mode != "Operating plants only"
+
+        df_show = df_plants_map[df_plants_map["Primary Fuel"].isin(sel_fuels)] if (show_operating and sel_fuels) else (df_plants_map if show_operating else pd.DataFrame())
         df_rtb_show = df_rtb[df_rtb["Fuel Category"].isin(sel_fuels)] if (show_rtb and not df_rtb.empty and sel_fuels) else (df_rtb if show_rtb else pd.DataFrame())
 
         col_a, col_b, col_c, col_d = st.columns(4)
-        col_a.metric("Operating plants", f"{len(df_show):,}")
-        col_b.metric("Generation (2023)", f"{df_show['Total MWh'].sum()/1e6:.0f} TWh")
-        col_c.metric("Ready-to-build projects", f"{len(df_rtb_show):,}" if not df_rtb_show.empty else "—")
-        col_d.metric("Ready-to-build capacity", f"{df_rtb_show['MW Capacity'].sum()/1000:.1f} GW" if not df_rtb_show.empty else "—")
+        col_a.metric("Operating plants shown", f"{len(df_show):,}" if not df_show.empty else "—")
+        col_b.metric("Generation (2023)", f"{df_show['Total MWh'].sum()/1e6:.0f} TWh" if not df_show.empty else "—")
+        col_c.metric("Pipeline projects shown", f"{len(df_rtb_show):,}" if not df_rtb_show.empty else "—")
+        col_d.metric("Pipeline capacity", f"{df_rtb_show['MW Capacity'].sum()/1000:.1f} GW" if not df_rtb_show.empty else "—")
 
         # Build scatter map — one trace per fuel type so legend works
         fig_plants = go.Figure()
@@ -1237,7 +1256,7 @@ with tab10:
             showland=True, landcolor="#e8ede8",
             showsubunits=True, subunitcolor="#cccccc",
             showcoastlines=True, coastlinecolor="#aaaaaa",
-            bgcolor="#DFE7E9",
+            bgcolor="#F9F7F5",
         )
         fig_plants.update_layout(
             title="PJM Power Plants — Operating (circles) & Ready-to-Build Pipeline (stars)",
