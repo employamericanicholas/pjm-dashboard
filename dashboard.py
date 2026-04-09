@@ -15,34 +15,53 @@ st.set_page_config(
 # ── Styling ────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap');
+
+    html, body, [class*="css"], .stApp, p, li, span, div {
+        font-family: 'Lato', sans-serif !important;
+    }
+    h1, h2, h3, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
+        font-family: 'Montserrat', sans-serif !important;
+        font-weight: 700 !important;
+        color: #1B1E3A !important;
+    }
     .kpi-box {
-        background: #1e2130;
-        border: 1px solid #2e3250;
-        border-radius: 10px;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-left: 4px solid #007BEA;
+        border-radius: 8px;
         padding: 16px 20px;
         margin-bottom: 8px;
     }
-    .kpi-label { font-size: 12px; color: #9aa0b4; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-    .kpi-value { font-size: 28px; font-weight: 700; color: #f0f2f6; line-height: 1.1; }
-    .kpi-delta-up { font-size: 13px; color: #f4a261; margin-top: 4px; }
-    .kpi-delta-down { font-size: 13px; color: #52b788; margin-top: 4px; }
-    .kpi-delta-warn { font-size: 13px; color: #e07a5f; margin-top: 4px; }
-    .callout { background: #1e2130; border-left: 4px solid #f4a261; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #d0d3e0; }
-    .callout-red { background: #1e2130; border-left: 4px solid #e07a5f; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #d0d3e0; }
-    .callout-green { background: #1e2130; border-left: 4px solid #52b788; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #d0d3e0; }
-    div[data-testid="stTab"] button { font-size: 15px; }
+    .kpi-label { font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; font-family: 'Montserrat', sans-serif !important; font-weight: 600; }
+    .kpi-value { font-size: 26px; font-weight: 700; color: #1B1E3A; line-height: 1.1; font-family: 'Montserrat', sans-serif !important; }
+    .kpi-delta-up { font-size: 12px; color: #EF7E30; margin-top: 4px; }
+    .kpi-delta-down { font-size: 12px; color: #3D9A66; margin-top: 4px; }
+    .kpi-delta-warn { font-size: 12px; color: #DC2626; margin-top: 4px; }
+    .callout { background: #EFF6FF; border-left: 4px solid #007BEA; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #1B1E3A; }
+    .callout-red { background: #FEF2F2; border-left: 4px solid #DC2626; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #1B1E3A; }
+    .callout-green { background: #F0FDF4; border-left: 4px solid #3D9A66; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #1B1E3A; }
+    div[data-testid="stTab"] button { font-size: 14px; font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; }
 </style>
 """, unsafe_allow_html=True)
 
-CHART_THEME = "plotly_dark"
-PLOT_BG = "#0e1117"
-GRID_COLOR = "#2e3250"
+CHART_THEME = "plotly_white"
+PLOT_BG = "#F8F7F5"
+GRID_COLOR = "#E5E7EB"
+
+# Employ America brand colors
+EA_BLUE       = "#007BEA"
+EA_DARK_BLUE  = "#2048B1"
+EA_DEEP_BLUE  = "#1B1E3A"
+EA_GREEN      = "#3D9A66"
+EA_ORANGE     = "#EF7E30"
+EA_RED        = "#DC2626"
 
 def styled_chart(fig, height=420):
     fig.update_layout(
         paper_bgcolor=PLOT_BG,
         plot_bgcolor=PLOT_BG,
-        font=dict(color="#c9cdd8"),
+        font=dict(color="#333333"),
         height=height,
         margin=dict(l=16, r=16, t=40, b=16),
     )
@@ -64,16 +83,16 @@ def kpi(label, value, delta=None, delta_type="up"):
 # ── Data ───────────────────────────────────────────────────────────────────────
 
 FUEL_COLORS = {
-    "Gas": "#F4A261",
-    "Coal": "#4A4E69",
-    "Nuclear": "#E07A5F",
-    "Hydro": "#81B29A",
-    "Wind": "#52B788",
-    "Solar": "#FFD166",
-    "Oil": "#A8956A",
-    "Waste": "#8B8B8B",
-    "Battery": "#B5838D",
-    "Biofuel": "#A8DADC",
+    "Gas":     "#007BEA",
+    "Nuclear": "#2048B1",
+    "Coal":    "#1B1E3A",
+    "Wind":    "#3D9A66",
+    "Solar":   "#EF7E30",
+    "Hydro":   "#5BBFAD",
+    "Oil":     "#A08060",
+    "Waste":   "#8B9096",
+    "Battery": "#7C5CBF",
+    "Biofuel": "#41B883",
 }
 
 # Historical load-weighted LMP $/MWh (1998–2025) — Table 3-38
@@ -194,8 +213,10 @@ hist_load_df = pd.DataFrame({"Year": hist_load_years, "GWh": hist_load_gwh})
 
 # ── Sidebar ────────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.title("⚡ PJM Dashboard")
-    st.markdown("### 2025 State of the Market")
+    st.image("employ_america_logo.png")
+    st.markdown("---")
+    st.markdown("### PJM 2025 Market Dashboard")
+    st.markdown("#### 2025 State of the Market")
     st.markdown("**Published:** March 12, 2026")
     st.markdown("**Source:** Monitoring Analytics, LLC  \nIndependent Market Monitor for PJM")
     st.divider()
@@ -209,13 +230,17 @@ with st.sidebar:
     st.markdown("**Coverage:** DE, IL, IN, KY, MD, MI, NJ, NC, OH, PA, TN, VA, WV, DC")
 
 # ── Tabs ───────────────────────────────────────────────────────────────────────
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10 = st.tabs([
     "📊 Overview",
     "⚡ Energy Market",
     "🔋 Generation Mix",
     "🗺️ Zonal Analysis",
     "🏭 Capacity Market",
     "💰 Cost Analysis",
+    "📈 Historical Trends",
+    "💬 Key Quotes",
+    "🎯 Fun Facts",
+    "🗺️ Generation Map",
 ])
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -247,7 +272,7 @@ with tab1:
         fig.add_trace(go.Scatter(
             x=lmp_historical["Year"], y=lmp_historical["LMP"],
             mode="lines+markers", name="Annual Avg LMP",
-            line=dict(color="#F4A261", width=2.5),
+            line=dict(color="#EF7E30", width=2.5),
             marker=dict(size=5),
             fill="tozeroy", fillcolor="rgba(244,162,97,0.12)",
             hovertemplate="<b>%{x}</b><br>$%{y:.2f}/MWh<extra></extra>"
@@ -255,7 +280,7 @@ with tab1:
         fig.add_trace(go.Scatter(
             x=[2025], y=[50.73],
             mode="markers", name="2025 (current)",
-            marker=dict(size=12, color="#FFD166", symbol="star"),
+            marker=dict(size=12, color="#EF7E30", symbol="star"),
         ))
         fig.update_layout(title="Real-Time Load-Weighted Average LMP", showlegend=True)
         st.plotly_chart(styled_chart(fig), width='stretch')
@@ -319,7 +344,7 @@ with tab2:
         fig2.add_trace(go.Bar(
             x=hist_load_df["Year"], y=hist_load_df["GWh"] / 1000,
             name="Real-Time Load (TWh)",
-            marker_color="#4A90D9",
+            marker_color="#007BEA",
             opacity=0.85,
             hovertemplate="<b>%{x}</b><br>%{y:.0f} TWh<extra></extra>"
         ))
@@ -332,11 +357,11 @@ with tab2:
         fig3 = go.Figure()
         fig3.add_trace(go.Bar(
             x=months, y=df_2025[df_2025["Type"] == "Off-Peak"]["LMP"].values,
-            name="Off-Peak", marker_color="#52B788",
+            name="Off-Peak", marker_color="#3D9A66",
         ))
         fig3.add_trace(go.Bar(
             x=months, y=df_2025[df_2025["Type"] == "On-Peak"]["LMP"].values,
-            name="On-Peak", marker_color="#F4A261",
+            name="On-Peak", marker_color="#EF7E30",
         ))
         fig3.update_layout(title="2025 Monthly LMP ($/MWh)", barmode="group", yaxis_title="$/MWh")
         st.plotly_chart(styled_chart(fig3), width='stretch')
@@ -350,9 +375,9 @@ with tab2:
         avg_2024 = [(a+b)/2 for a, b in zip(lmp_monthly_2024, lmp_monthly_2024_peak)]
         avg_2025 = [(a+b)/2 for a, b in zip(lmp_monthly_2025, lmp_monthly_2025_peak)]
         fig4.add_trace(go.Scatter(x=months, y=avg_2024, name="2024 Avg LMP",
-                                  line=dict(color="#81B29A", width=2, dash="dash")))
+                                  line=dict(color="#3D9A66", width=2, dash="dash")))
         fig4.add_trace(go.Scatter(x=months, y=avg_2025, name="2025 Avg LMP",
-                                  line=dict(color="#F4A261", width=2.5),
+                                  line=dict(color="#EF7E30", width=2.5),
                                   fill="tonexty", fillcolor="rgba(244,162,97,0.1)"))
         fig4.update_layout(title="Avg Monthly LMP: 2024 vs 2025 ($/MWh)", yaxis_title="$/MWh")
         st.plotly_chart(styled_chart(fig4), width='stretch')
@@ -363,7 +388,7 @@ with tab2:
                         "$50–75","$75–100","$100–200",">$200"]
         pct_2025 = [0.1, 1.1, 6.2, 19.3, 19.6, 13.5, 21.5, 8.4, 7.5, 2.8]
         fig5 = go.Figure(go.Bar(
-            x=price_ranges, y=pct_2025, marker_color="#9B72CF",
+            x=price_ranges, y=pct_2025, marker_color="#2048B1",
             hovertemplate="%{x}: %{y:.1f}%<extra></extra>"
         ))
         fig5.update_layout(title="2025 Hours by Price Range (%)", yaxis_title="% of Hours",
@@ -439,7 +464,7 @@ with tab3:
 
     st.subheader("Year-over-Year Generation Change by Fuel (2024 → 2025)")
     gen_sorted = gen_fuel.sort_values("Change_Pct")
-    colors_change = ["#E07A5F" if x > 0 else "#52B788" for x in gen_sorted["Change_Pct"]]
+    colors_change = ["#DC2626" if x > 0 else "#3D9A66" for x in gen_sorted["Change_Pct"]]
     fig_bar = go.Figure(go.Bar(
         x=gen_sorted["Change_Pct"], y=gen_sorted["Fuel"],
         orientation="h",
@@ -483,7 +508,7 @@ with tab4:
             textposition="top center",
             marker=dict(
                 size=exp["Abs_Net"] / 1500 + 10,
-                color="#52B788",
+                color="#3D9A66",
                 opacity=0.85,
                 line=dict(color="white", width=1),
             ),
@@ -503,7 +528,7 @@ with tab4:
             textposition="top center",
             marker=dict(
                 size=imp["Abs_Net"] / 1500 + 10,
-                color="#E07A5F",
+                color="#DC2626",
                 opacity=0.85,
                 line=dict(color="white", width=1),
             ),
@@ -518,10 +543,10 @@ with tab4:
         fig_map.update_geos(
             scope="usa",
             projection_type="albers usa",
-            showland=True, landcolor="#1e2130",
-            showsubunits=True, subunitcolor="#2e3250",
+            showland=True, landcolor="#e4ede4",
+            showsubunits=True, subunitcolor="#aaaaaa",
             showcountries=False,
-            bgcolor=PLOT_BG,
+            bgcolor="#d0e4f0",
             center=dict(lat=39.5, lon=-80.0),
         )
         fig_map.update_layout(
@@ -534,7 +559,7 @@ with tab4:
             paper_bgcolor=PLOT_BG,
             height=520,
             margin=dict(l=0, r=0, t=40, b=0),
-            font=dict(color="#c9cdd8"),
+            font=dict(color="#333333"),
         )
         st.plotly_chart(fig_map, width='stretch')
 
@@ -562,13 +587,13 @@ with tab4:
     fig_zone_bar.add_trace(go.Bar(
         y=zones_sorted["Zone"], x=zones_sorted["Gen"],
         name="Generation", orientation="h",
-        marker_color="#4A90D9",
+        marker_color="#007BEA",
         hovertemplate="<b>%{y}</b> Gen: %{x:,.0f} GWh<extra></extra>"
     ))
     fig_zone_bar.add_trace(go.Bar(
         y=zones_sorted["Zone"], x=zones_sorted["Load"],
         name="Load", orientation="h",
-        marker_color="#F4A261",
+        marker_color="#EF7E30",
         hovertemplate="<b>%{y}</b> Load: %{x:,.0f} GWh<extra></extra>"
     ))
     fig_zone_bar.update_layout(
@@ -601,7 +626,7 @@ with tab5:
 
     with col1:
         st.subheader("BRA Clearing Prices — RTO System ($/MW-Day)")
-        colors_bra = ["#E07A5F" if y >= "2025" else "#4A90D9" for y in bra["Delivery_Year"]]
+        colors_bra = ["#DC2626" if y >= "2025" else "#007BEA" for y in bra["Delivery_Year"]]
         fig_bra = go.Figure(go.Bar(
             x=bra["Delivery_Year"], y=bra["Price"],
             marker_color=colors_bra,
@@ -609,7 +634,7 @@ with tab5:
             textposition="outside",
             hovertemplate="<b>%{x}</b><br>$%{y:.2f}/MW-Day<extra></extra>"
         ))
-        fig_bra.add_hline(y=28.92, line_dash="dash", line_color="#81B29A",
+        fig_bra.add_hline(y=28.92, line_dash="dash", line_color="#3D9A66",
                           annotation_text="2024/25 low: $28.92", annotation_position="top left")
         fig_bra.update_layout(
             title="BRA Clearing Price Spike: $28.92 → $333.44/MW-Day",
@@ -656,7 +681,7 @@ with tab5:
         ))
         fig_cap_change.add_trace(go.Bar(
             x=cap_milestones["Fuel"], y=cap_milestones["Dec_31"] / 1000,
-            name="Dec 31, 2025", marker_color="#F4A261", opacity=0.8
+            name="Dec 31, 2025", marker_color="#EF7E30", opacity=0.8
         ))
         fig_cap_change.update_layout(
             barmode="group", title="Installed Capacity Jan vs Dec 2025 (GW)",
@@ -676,16 +701,16 @@ with tab5:
             title={"text": "UCAP (MW) — 205 MW short of reliability target"},
             gauge={
                 "axis": {"range": [175000, 195000]},
-                "bar": {"color": "#E07A5F"},
+                "bar": {"color": "#DC2626"},
                 "steps": [
-                    {"range": [175000, 181017], "color": "#2e3250"},
-                    {"range": [181017, 181427], "color": "#4A4E69"},
+                    {"range": [175000, 181017], "color": "#f0f0f0"},
+                    {"range": [181017, 181427], "color": "#d8d8d8"},
                 ],
-                "threshold": {"line": {"color": "#52B788", "width": 3}, "value": required},
+                "threshold": {"line": {"color": "#3D9A66", "width": 3}, "value": required},
             },
             number={"valueformat": ",.0f", "suffix": " MW"},
         ))
-        fig_gauge.update_layout(paper_bgcolor=PLOT_BG, font=dict(color="#c9cdd8"), height=380)
+        fig_gauge.update_layout(paper_bgcolor=PLOT_BG, font=dict(color="#333333"), height=380)
         st.plotly_chart(fig_gauge, width='stretch')
 
     st.divider()
@@ -696,7 +721,7 @@ with tab5:
     })
     fig_cleared = go.Figure(go.Bar(
         x=cleared_mw["Delivery Year"], y=cleared_mw["Cleared UCAP (MW)"] / 1000,
-        marker_color="#9B72CF",
+        marker_color="#2048B1",
         text=[f"{v/1000:.0f} GW" for v in cleared_mw["Cleared UCAP (MW)"]],
         textposition="outside",
         hovertemplate="<b>%{x}</b><br>%{y:.0f} GW cleared<extra></extra>"
@@ -731,7 +756,7 @@ with tab6:
         fig_cost = px.bar(
             cost_melt, x="Category", y="Cost", color="Year",
             barmode="group", text_auto=".2f",
-            color_discrete_map={"2024": "#4A90D9", "2025": "#E07A5F"},
+            color_discrete_map={"2024": "#007BEA", "2025": "#DC2626"},
         )
         fig_cost.update_traces(texttemplate="$%{text}", textposition="outside")
         fig_cost.update_layout(title="$/MWh by Component: 2024 vs 2025", yaxis_title="$/MWh")
@@ -742,7 +767,7 @@ with tab6:
         fig_pie_cost = px.pie(
             cost_df, values="2025", names="Category",
             color="Category",
-            color_discrete_map={"Energy": "#F4A261", "Capacity": "#E07A5F", "Transmission": "#4A90D9"},
+            color_discrete_map={"Energy": "#EF7E30", "Capacity": "#DC2626", "Transmission": "#007BEA"},
             hole=0.5,
         )
         fig_pie_cost.update_traces(
@@ -783,7 +808,7 @@ with tab6:
         "Transmission": [15.13, 15.01, 15.48, 16.64, 17.01, 17.73, 18.53],
     })
     fig_hist_cost = go.Figure()
-    for col, color in [("Energy", "#F4A261"), ("Capacity", "#E07A5F"), ("Transmission", "#4A90D9")]:
+    for col, color in [("Energy", "#EF7E30"), ("Capacity", "#DC2626"), ("Transmission", "#007BEA")]:
         fig_hist_cost.add_trace(go.Bar(
             x=hist_cost["Year"], y=hist_cost[col],
             name=col, marker_color=color,
@@ -796,6 +821,336 @@ with tab6:
         legend=dict(orientation="h", y=-0.12),
     )
     st.plotly_chart(styled_chart(fig_hist_cost, height=400), width='stretch')
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TAB 7: HISTORICAL TRENDS
+# ══════════════════════════════════════════════════════════════════════════════
+with tab7:
+    st.markdown("## Historical Trends")
+    st.markdown("*Long-run perspective on PJM's evolution from 1998 to 2025.*")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("Load-Weighted Average LMP (1998–2025)")
+        fig_lmp_hist = go.Figure()
+        fig_lmp_hist.add_trace(go.Scatter(
+            x=lmp_historical["Year"], y=lmp_historical["LMP"],
+            mode="lines+markers", name="Annual Avg LMP",
+            line=dict(color="#EF7E30", width=2.5),
+            marker=dict(size=5),
+            fill="tozeroy", fillcolor="rgba(244,162,97,0.12)",
+            hovertemplate="<b>%{x}</b><br>$%{y:.2f}/MWh<extra></extra>"
+        ))
+        fig_lmp_hist.add_annotation(x=2022, y=80.14, text="2022 peak<br>$80.14", showarrow=True, arrowhead=2, ax=40, ay=-30, font=dict(size=11))
+        fig_lmp_hist.add_annotation(x=2025, y=50.73, text="2025<br>$50.73", showarrow=True, arrowhead=2, ax=-40, ay=-30, font=dict(size=11))
+        fig_lmp_hist.update_layout(title="Real-Time LMP ($/MWh) — 28-Year History", yaxis_title="$/MWh")
+        st.plotly_chart(styled_chart(fig_lmp_hist), width='stretch')
+
+    with col2:
+        st.subheader("Total Real-Time Load (2001–2025)")
+        fig_load_hist = go.Figure(go.Bar(
+            x=hist_load_df["Year"], y=hist_load_df["GWh"] / 1000,
+            marker_color="#007BEA", opacity=0.85,
+            hovertemplate="<b>%{x}</b><br>%{y:.0f} TWh<extra></extra>"
+        ))
+        fig_load_hist.add_annotation(x=2025, y=820, text="810.9 TWh (2025)", showarrow=True, arrowhead=2, ax=-50, ay=-30, font=dict(size=11))
+        fig_load_hist.update_layout(title="Annual Energy Delivered (TWh)", yaxis_title="TWh")
+        st.plotly_chart(styled_chart(fig_load_hist), width='stretch')
+
+    st.divider()
+    col3, col4 = st.columns(2)
+
+    with col3:
+        st.subheader("Total Wholesale Cost Components (2019–2025)")
+        hist_cost_7 = pd.DataFrame({
+            "Year": [2019, 2020, 2021, 2022, 2023, 2024, 2025],
+            "Energy":       [24.48, 19.57, 36.89, 73.53, 28.12, 32.59, 49.28],
+            "Capacity":     [5.89,  5.19,  3.72,  3.01,  4.44,  3.61,  13.09],
+            "Transmission": [15.13, 15.01, 15.48, 16.64, 17.01, 17.73, 18.53],
+        })
+        fig_cost_hist7 = go.Figure()
+        for col_name, color in [("Transmission", "#007BEA"), ("Capacity", "#DC2626"), ("Energy", "#EF7E30")]:
+            fig_cost_hist7.add_trace(go.Bar(
+                x=hist_cost_7["Year"], y=hist_cost_7[col_name],
+                name=col_name, marker_color=color,
+                hovertemplate=f"<b>{col_name}</b> %{{x}}: $%{{y:.2f}}/MWh<extra></extra>"
+            ))
+        fig_cost_hist7.update_layout(
+            barmode="stack", title="Total Wholesale Cost Stack ($/MWh)",
+            yaxis_title="$/MWh", legend=dict(orientation="h", y=-0.12)
+        )
+        st.plotly_chart(styled_chart(fig_cost_hist7), width='stretch')
+
+    with col4:
+        st.subheader("BRA Capacity Prices by Delivery Year")
+        colors_bra7 = ["#007BEA" if y < "2025" else "#DC2626" for y in bra["Delivery_Year"]]
+        fig_bra7 = go.Figure(go.Bar(
+            x=bra["Delivery_Year"], y=bra["Price"],
+            marker_color=colors_bra7,
+            text=[f"${p:.0f}" for p in bra["Price"]],
+            textposition="outside",
+            hovertemplate="<b>%{x}</b><br>$%{y:.2f}/MW-Day<extra></extra>"
+        ))
+        fig_bra7.update_layout(title="BRA Clearing Price by Delivery Year ($/MW-Day)", yaxis_title="$/MW-Day")
+        st.plotly_chart(styled_chart(fig_bra7), width='stretch')
+
+    st.divider()
+    st.subheader("Projected Reserve Margins (2025–2030)")
+    reserve_proj = pd.DataFrame({
+        "Year": ["2025/2026", "2026/2027", "2027/2028", "2028/2029", "2029/2030"],
+        "Reserve_Margin_Pct": [19.9, 20.6, 17.6, 18.2, 14.4],
+    })
+    fig_reserve = go.Figure()
+    fig_reserve.add_trace(go.Scatter(
+        x=reserve_proj["Year"], y=reserve_proj["Reserve_Margin_Pct"],
+        mode="lines+markers+text",
+        name="Projected Reserve Margin",
+        line=dict(color="#EF7E30", width=2.5),
+        marker=dict(size=10),
+        text=[f"{v:.1f}%" for v in reserve_proj["Reserve_Margin_Pct"]],
+        textposition="top center",
+        hovertemplate="<b>%{x}</b><br>%{y:.1f}%<extra></extra>"
+    ))
+    fig_reserve.add_hline(y=17.8, line_dash="dash", line_color="#DC2626",
+                          annotation_text="Required: 17.8%", annotation_position="bottom right")
+    fig_reserve.update_layout(
+        title="Projected Reserve Margin vs. Required (%) — Falling Below Target by 2029/30",
+        yaxis_title="Reserve Margin (%)", yaxis_range=[10, 25]
+    )
+    st.plotly_chart(styled_chart(fig_reserve, height=380), width='stretch')
+
+    st.divider()
+    st.subheader("Year-Over-Year Key Metrics Summary")
+    hist_summary = pd.DataFrame({
+        "Metric": ["Avg LMP ($/MWh)", "Total Load (TWh)", "Total Cost/MWh ($)", "Capacity Cost/MWh ($)", "Congestion Cost ($M)", "Uplift Credits ($M)", "Gross Billings ($B)"],
+        "2024": ["$33.74", "784.2", "$55.52", "$3.61", "$1,754", "$269", "$51.71"],
+        "2025": ["$50.73", "810.9", "$82.67", "$13.09", "$3,174", "$765", "$80.49"],
+        "YoY Change": ["+50.4%", "+3.4%", "+48.9%", "+262.3%", "+80.9%", "+183.4%", "+55.7%"],
+    })
+    st.dataframe(hist_summary, width='stretch', hide_index=True)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TAB 8: KEY QUOTES
+# ══════════════════════════════════════════════════════════════════════════════
+with tab8:
+    st.markdown("## Key Quotes from the 2025 PJM State of the Market Report")
+    st.markdown("*Direct quotes from Monitoring Analytics' independent assessment of PJM markets.*")
+
+    quotes = [
+        {"text": "The amount that PJM is short capacity grew from 208.7 MW in the 2026/2027 BRA to 6,516.6 MW in the 2027/2028 BRA.",
+         "context": "Demonstrates the exponential growth of capacity shortfalls in a single year, driven by data center load forecasts.",
+         "source": "Vol. 1 — Capacity Market"},
+        {"text": "The total cost per MWh of wholesale power increased by $27.15 from $55.52 in 2024 to $82.67 in 2025, an increase of 48.9 percent.",
+         "context": "The largest single-year cost increase since 2022, affecting every electricity consumer in the PJM footprint.",
+         "source": "Vol. 1 — Table 9"},
+        {"text": "In 2025, PJM had gross billings of $80.49 billion, an increase of 55.7 percent from $51.71 billion in 2024.",
+         "context": "Nearly $29 billion added to the market's total settlement value in a single year — reflecting structural, not temporary, stress.",
+         "source": "Vol. 1"},
+        {"text": "Data center load growth is the core reliability issue facing PJM and the energy markets.",
+         "context": "The explicit root cause identified by the Independent Market Monitor for almost every major market stress trend in 2025.",
+         "source": "Vol. 1"},
+        {"text": "Total Uplift Credits increased by $495.0 million, or 183.4 percent, from $268.6 million in 2024 to $764.8 million in 2025.",
+         "context": "Uplift credits are payments to units that must run for reliability reasons despite being out-of-market. A near-tripling signals significant grid stress.",
+         "source": "Vol. 1 — Table 1"},
+        {"text": "In 2025, generation from coal units increased 19.0 percent, generation from natural gas units decreased 0.6 percent, generation from wind units increased 2.5 percent, and generation from solar units increased 41.2 percent compared to 2024.",
+         "context": "Coal's unexpected resurgence alongside solar's explosion — two opposite energy trends happening simultaneously in the same market.",
+         "source": "Vol. 1"},
+        {"text": "The Polar Vortex 2025 (January 19–23, 2025) resulted in 44.3 percent of uplift credits in 2025.",
+         "context": "A single five-day weather event in January generated 44% of the entire year's grid stress payments — $338 million in five days.",
+         "source": "Vol. 2"},
+        {"text": "The capacity market was short of meeting its reliability objective in the most recent capacity auctions.",
+         "context": "A direct statement that PJM's auctions — the core mechanism designed to ensure future reliability — are failing their fundamental purpose.",
+         "source": "Vol. 1"},
+        {"text": "For the first time since the introduction of the RPM, wholesale power exceeded the cost of capacity. In the third quarter of 2025, significant increases in energy market costs resulted in the cost of transmission per MWh of wholesale power increasing above the cost of capacity for the first time.",
+         "context": "A historic market reversal. Since PJM's capacity market launched, capacity had always been the dominant cost driver. Not anymore.",
+         "source": "Vol. 1"},
+        {"text": "PJM triggered shortage pricing on 147 five-minute intervals in 2025, across 28 days.",
+         "context": "Shortage pricing is a rare emergency signal. At 28 days, it was occurring nearly every two weeks — a sign of structural grid adequacy stress.",
+         "source": "Vol. 1"},
+    ]
+
+    for i, q in enumerate(quotes):
+        col_q, col_ctx = st.columns([3, 2])
+        with col_q:
+            st.markdown(f"""
+            <div style="background:#f8f4ee;border-left:5px solid #EF7E30;border-radius:6px;
+                        padding:16px 20px;margin:8px 0;font-size:15px;color:#333;font-style:italic;">
+                "{q['text']}"
+                <div style="font-size:12px;color:#888;margin-top:10px;font-style:normal;">
+                    — {q['source']}
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        with col_ctx:
+            st.markdown(f"""
+            <div style="background:#f0f5ff;border:1px solid #c5d8f0;border-radius:6px;
+                        padding:14px 18px;margin:8px 0;font-size:13px;color:#444;">
+                <b>Why it matters:</b><br>{q['context']}
+            </div>
+            """, unsafe_allow_html=True)
+        if i < len(quotes) - 1:
+            st.markdown("---")
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TAB 9: FUN FACTS
+# ══════════════════════════════════════════════════════════════════════════════
+with tab9:
+    st.markdown("## Fun Facts & Hidden Gems")
+    st.markdown("*The most surprising findings buried in 500+ pages of market analysis — things you'd miss unless you read every word.*")
+
+    facts = [
+        {"number": "31×", "title": "Capacity shortage multiplied 31-fold in one year",
+         "detail": "The shortfall grew from 208.7 MW to 6,516.6 MW between the 2026/2027 and 2027/2028 Base Residual Auctions. One year. Thirty-one times larger. Data center developers submitted massive new load forecasts that suddenly changed how much generation PJM needed to procure.",
+         "color": "#DC2626"},
+        {"number": "5 days", "title": "One polar vortex caused 44% of the entire year's grid stress payments",
+         "detail": "The Polar Vortex of January 19–23, 2025 generated $338 million in uplift credits — 44.3% of the full year's $764.8M total. Five days in January cost as much as the remaining 360 days combined.",
+         "color": "#007BEA"},
+        {"number": "+19%", "title": "Coal made a major comeback",
+         "detail": "After years of steady decline, coal generation surged 19% in 2025. High natural gas prices made coal economically competitive again. Coal's share of generation rose from 14.5% to 16.7%. The 'coal is dead' narrative got complicated.",
+         "color": "#4A4E69"},
+        {"number": "+41%", "title": "Solar generation exploded in a single year",
+         "detail": "Solar output jumped 41.2% year-over-year (17,548 → 24,782 GWh). Installed solar capacity grew 64% during 2025 alone — from 5,047 MW to 8,297 MW. Solar is still only 2.8% of PJM's total generation, but it's accelerating faster than any other fuel type.",
+         "color": "#EF7E30"},
+        {"number": "1st time", "title": "Energy costs beat capacity for the first time in PJM history",
+         "detail": "Since the Reliability Pricing Model launched, capacity costs had always been the dominant component. In Q3 2025, energy costs crossed above capacity costs for the first time ever — a historic reversal caused by fuel price spikes and tight supply.",
+         "color": "#EF7E30"},
+        {"number": "1,053%", "title": "Capacity auction prices jumped 10× in two years",
+         "detail": "BRA clearing prices went from $28.92/MW-day (2024/2025) to $333.44/MW-day (2027/2028) — a 1,053% increase. For context, $28.92 was itself at a historic low. The $333.44 price is among the highest PJM has ever cleared.",
+         "color": "#2048B1"},
+        {"number": "$80.5B", "title": "PJM's total billings exceeded $80 billion in 2025",
+         "detail": "PJM processed $80.49 billion in gross billings in 2025 — up $28.8 billion (55.7%) from $51.71 billion in 2024. That's roughly the annual GDP of a mid-sized U.S. state flowing through one grid operator's settlement system in a single year.",
+         "color": "#3D9A66"},
+        {"number": "95.3%", "title": "The market was competitive on almost every day — despite the price spikes",
+         "detail": "Even as prices reached record highs, PJM's energy market tested as competitive on 95.3% of days in 2025. The high prices were driven by real supply/demand conditions, not market power abuse. This is actually the market working — just painfully.",
+         "color": "#3D9A66"},
+        {"number": "65M", "title": "PJM serves 65 million people across 13 states + DC",
+         "detail": "PJM Interconnection is the world's largest competitive electricity market. It covers Delaware, Illinois, Indiana, Kentucky, Maryland, Michigan, New Jersey, North Carolina, Ohio, Pennsylvania, Tennessee, Virginia, West Virginia, and the District of Columbia.",
+         "color": "#A8DADC"},
+        {"number": "147", "title": "Shortage pricing triggered nearly every 2 weeks",
+         "detail": "PJM triggered shortage pricing (prices spike to signal scarcity) on 147 five-minute intervals across 28 separate days in 2025. Shortage events are supposed to be rare emergencies. At 28 days, they happened roughly every other week — a sign of structural grid stress.",
+         "color": "#DC2626"},
+    ]
+
+    for i in range(0, len(facts), 2):
+        cols = st.columns(2)
+        for j, col in enumerate(cols):
+            if i + j < len(facts):
+                f = facts[i + j]
+                with col:
+                    st.markdown(f"""
+                    <div style="background:#fafafa;border:1px solid #e0e0e0;border-radius:10px;
+                                padding:20px;margin:8px 0;min-height:190px;">
+                        <div style="font-size:38px;font-weight:800;color:{f['color']};
+                                    line-height:1.1;margin-bottom:6px;">{f['number']}</div>
+                        <div style="font-size:15px;font-weight:600;color:#222;margin-bottom:10px;">
+                            {f['title']}
+                        </div>
+                        <div style="font-size:13px;color:#555;line-height:1.5;">
+                            {f['detail']}
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TAB 10: GENERATION MAP
+# ══════════════════════════════════════════════════════════════════════════════
+with tab10:
+    st.markdown("## Regional Generation Map")
+    st.markdown(
+        "PJM's 21 control zones, sized and colored by total generation output in 2025. "
+        "The report provides aggregate data by zone and fuel type — not individual plant coordinates."
+    )
+    st.info("To map individual power plants, the EIA Form 860 dataset provides plant-level lat/lon, fuel type, and capacity that could be layered onto this visualization.", icon="ℹ️")
+
+    fig_gen_map = go.Figure()
+    fig_gen_map.add_trace(go.Scattergeo(
+        lat=zones["Lat"], lon=zones["Lon"],
+        text=zones["Zone"],
+        customdata=zones[["Full_Name", "Gen", "Load", "Net_Status"]].values,
+        mode="markers+text",
+        textposition="top center",
+        marker=dict(
+            size=zones["Gen"] / 5000 + 8,
+            color=zones["Gen"],
+            colorscale="Viridis",
+            showscale=True,
+            colorbar=dict(title="Generation<br>(GWh)", thickness=12),
+            opacity=0.85,
+            line=dict(color="white", width=1),
+        ),
+        hovertemplate=(
+            "<b>%{text}</b><br>%{customdata[0]}<br>"
+            "Generation: %{customdata[1]:,} GWh<br>"
+            "Load: %{customdata[2]:,} GWh<br>"
+            "Status: %{customdata[3]}<extra></extra>"
+        )
+    ))
+    fig_gen_map.update_geos(
+        scope="usa",
+        projection_type="albers usa",
+        showland=True, landcolor="#e4ede4",
+        showsubunits=True, subunitcolor="#aaaaaa",
+        showcountries=False,
+        bgcolor="#d0e4f0",
+    )
+    fig_gen_map.update_layout(
+        title="PJM Zones — Bubble Size & Color = Total Generation Output (GWh, 2025)",
+        paper_bgcolor=PLOT_BG,
+        height=520,
+        margin=dict(l=0, r=0, t=40, b=0),
+        font=dict(color="#333333"),
+        geo=dict(lataxis_range=[36, 43], lonaxis_range=[-92, -72]),
+    )
+    st.plotly_chart(fig_gen_map, width='stretch')
+
+    st.divider()
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("Generation by Fuel Type — PJM Totals (2025)")
+        gen_sorted_map = gen_fuel.sort_values("GWh_2025", ascending=True)
+        fig_fuel_gen = px.bar(
+            gen_sorted_map, x="GWh_2025", y="Fuel", orientation="h",
+            color="Fuel", color_discrete_map=FUEL_COLORS,
+            text=[f"{v/1000:.1f} TWh" for v in gen_sorted_map["GWh_2025"]],
+        )
+        fig_fuel_gen.update_traces(textposition="outside")
+        fig_fuel_gen.update_layout(title="Total Generation by Fuel (GWh)", xaxis_title="GWh", showlegend=False)
+        st.plotly_chart(styled_chart(fig_fuel_gen, height=400), width='stretch')
+
+    with col2:
+        st.subheader("Installed Capacity by Fuel — Dec 31, 2025")
+        cap_sorted_map = capacity_fuel.sort_values("MW", ascending=True)
+        fig_fuel_cap = px.bar(
+            cap_sorted_map, x="MW", y="Fuel", orientation="h",
+            color="Fuel", color_discrete_map=FUEL_COLORS,
+            text=[f"{v/1000:.1f} GW" for v in cap_sorted_map["MW"]],
+        )
+        fig_fuel_cap.update_traces(textposition="outside")
+        fig_fuel_cap.update_layout(title="Installed Capacity by Fuel (MW)", xaxis_title="MW", showlegend=False)
+        st.plotly_chart(styled_chart(fig_fuel_cap, height=400), width='stretch')
+
+    st.divider()
+    st.subheader("Top Generating Zones (2025)")
+    top_zones = zones.sort_values("Gen", ascending=False).head(10)
+    fig_top = go.Figure(go.Bar(
+        y=top_zones["Zone"], x=top_zones["Gen"], orientation="h",
+        marker_color=["#3D9A66" if n > 0 else "#DC2626" for n in top_zones["Net"]],
+        text=[f"{g:,.0f} GWh" for g in top_zones["Gen"]],
+        textposition="outside",
+        customdata=top_zones["Full_Name"].values,
+        hovertemplate="<b>%{y}</b> — %{customdata}<br>%{x:,} GWh<extra></extra>",
+    ))
+    fig_top.update_layout(
+        title="Top 10 Zones by Total Generation — Green = Net Exporter, Red = Net Importer",
+        xaxis_title="GWh", yaxis=dict(autorange="reversed"),
+    )
+    st.plotly_chart(styled_chart(fig_top, height=400), width='stretch')
+
 
 st.divider()
 st.markdown(
