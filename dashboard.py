@@ -37,9 +37,9 @@ st.markdown("""
     .kpi-value { font-size: 26px; font-weight: 700; color: #1B1E3A; line-height: 1.1; font-family: 'Montserrat', sans-serif !important; }
     .kpi-delta-up { font-size: 12px; color: #EF7E30; margin-top: 4px; }
     .kpi-delta-down { font-size: 12px; color: #3D9A66; margin-top: 4px; }
-    .kpi-delta-warn { font-size: 12px; color: #DC2626; margin-top: 4px; }
+    .kpi-delta-warn { font-size: 12px; color: #BD2066; margin-top: 4px; }
     .callout { background: #EFF6FF; border-left: 4px solid #007BEA; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #1B1E3A; }
-    .callout-red { background: #FEF2F2; border-left: 4px solid #DC2626; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #1B1E3A; }
+    .callout-red { background: #FEF2F2; border-left: 4px solid #BD2066; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #1B1E3A; }
     .callout-green { background: #F0FDF4; border-left: 4px solid #3D9A66; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #1B1E3A; }
     div[data-testid="stTab"] button { font-size: 14px; font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; }
 </style>
@@ -49,13 +49,21 @@ CHART_THEME = "plotly_white"
 PLOT_BG = "#F8F7F5"
 GRID_COLOR = "#E5E7EB"
 
-# Employ America brand colors
-EA_BLUE       = "#007BEA"
-EA_DARK_BLUE  = "#2048B1"
-EA_DEEP_BLUE  = "#1B1E3A"
-EA_GREEN      = "#3D9A66"
-EA_ORANGE     = "#EF7E30"
-EA_RED        = "#DC2626"
+# Employ America brand colors — primary
+EA_BLUE        = "#007BEA"
+EA_DARK_BLUE   = "#2048B1"
+EA_DEEP_BLUE   = "#1B1E3A"
+EA_GREEN       = "#3D9A66"
+EA_ORANGE      = "#EF7E30"
+# Employ America brand colors — extended (data visualization)
+EA_LIGHT_BLUE  = "#40B2FF"
+EA_DARK_NAVY   = "#123466"
+EA_MED_BLUE    = "#296799"
+EA_DARK_PURPLE = "#2E2A73"
+EA_YELLOW      = "#EAC148"
+EA_BRIGHT_ONG  = "#FF591F"
+EA_PINK        = "#BD2066"
+EA_PURPLE      = "#8A2B9C"
 
 def styled_chart(fig, height=420):
     fig.update_layout(
@@ -83,16 +91,16 @@ def kpi(label, value, delta=None, delta_type="up"):
 # ── Data ───────────────────────────────────────────────────────────────────────
 
 FUEL_COLORS = {
-    "Gas":     "#007BEA",
-    "Nuclear": "#2048B1",
-    "Coal":    "#1B1E3A",
-    "Wind":    "#3D9A66",
-    "Solar":   "#EF7E30",
-    "Hydro":   "#5BBFAD",
-    "Oil":     "#A08060",
-    "Waste":   "#8B9096",
-    "Battery": "#7C5CBF",
-    "Biofuel": "#41B883",
+    "Gas":     "#007BEA",  # EA Bright Blue
+    "Nuclear": "#123466",  # EA Dark Navy
+    "Coal":    "#1B1E3A",  # EA Deep Blue
+    "Wind":    "#3D9A66",  # EA Green
+    "Solar":   "#EF7E30",  # EA Orange
+    "Hydro":   "#40B2FF",  # EA Light Blue
+    "Oil":     "#2E2A73",  # EA Dark Purple
+    "Waste":   "#296799",  # EA Medium Blue
+    "Battery": "#8A2B9C",  # EA Bright Purple
+    "Biofuel": "#EAC148",  # EA Yellow
 }
 
 # Historical load-weighted LMP $/MWh (1998–2025) — Table 3-38
@@ -464,7 +472,7 @@ with tab3:
 
     st.subheader("Year-over-Year Generation Change by Fuel (2024 → 2025)")
     gen_sorted = gen_fuel.sort_values("Change_Pct")
-    colors_change = ["#DC2626" if x > 0 else "#3D9A66" for x in gen_sorted["Change_Pct"]]
+    colors_change = ["#BD2066" if x > 0 else "#3D9A66" for x in gen_sorted["Change_Pct"]]
     fig_bar = go.Figure(go.Bar(
         x=gen_sorted["Change_Pct"], y=gen_sorted["Fuel"],
         orientation="h",
@@ -528,7 +536,7 @@ with tab4:
             textposition="top center",
             marker=dict(
                 size=imp["Abs_Net"] / 1500 + 10,
-                color="#DC2626",
+                color="#BD2066",
                 opacity=0.85,
                 line=dict(color="white", width=1),
             ),
@@ -626,7 +634,7 @@ with tab5:
 
     with col1:
         st.subheader("BRA Clearing Prices — RTO System ($/MW-Day)")
-        colors_bra = ["#DC2626" if y >= "2025" else "#007BEA" for y in bra["Delivery_Year"]]
+        colors_bra = ["#BD2066" if y >= "2025" else "#007BEA" for y in bra["Delivery_Year"]]
         fig_bra = go.Figure(go.Bar(
             x=bra["Delivery_Year"], y=bra["Price"],
             marker_color=colors_bra,
@@ -701,7 +709,7 @@ with tab5:
             title={"text": "UCAP (MW) — 205 MW short of reliability target"},
             gauge={
                 "axis": {"range": [175000, 195000]},
-                "bar": {"color": "#DC2626"},
+                "bar": {"color": "#BD2066"},
                 "steps": [
                     {"range": [175000, 181017], "color": "#f0f0f0"},
                     {"range": [181017, 181427], "color": "#d8d8d8"},
@@ -756,7 +764,7 @@ with tab6:
         fig_cost = px.bar(
             cost_melt, x="Category", y="Cost", color="Year",
             barmode="group", text_auto=".2f",
-            color_discrete_map={"2024": "#007BEA", "2025": "#DC2626"},
+            color_discrete_map={"2024": "#007BEA", "2025": "#BD2066"},
         )
         fig_cost.update_traces(texttemplate="$%{text}", textposition="outside")
         fig_cost.update_layout(title="$/MWh by Component: 2024 vs 2025", yaxis_title="$/MWh")
@@ -767,7 +775,7 @@ with tab6:
         fig_pie_cost = px.pie(
             cost_df, values="2025", names="Category",
             color="Category",
-            color_discrete_map={"Energy": "#EF7E30", "Capacity": "#DC2626", "Transmission": "#007BEA"},
+            color_discrete_map={"Energy": "#EF7E30", "Capacity": "#BD2066", "Transmission": "#007BEA"},
             hole=0.5,
         )
         fig_pie_cost.update_traces(
@@ -808,7 +816,7 @@ with tab6:
         "Transmission": [15.13, 15.01, 15.48, 16.64, 17.01, 17.73, 18.53],
     })
     fig_hist_cost = go.Figure()
-    for col, color in [("Energy", "#EF7E30"), ("Capacity", "#DC2626"), ("Transmission", "#007BEA")]:
+    for col, color in [("Energy", "#EF7E30"), ("Capacity", "#BD2066"), ("Transmission", "#007BEA")]:
         fig_hist_cost.add_trace(go.Bar(
             x=hist_cost["Year"], y=hist_cost[col],
             name=col, marker_color=color,
@@ -870,7 +878,7 @@ with tab7:
             "Transmission": [15.13, 15.01, 15.48, 16.64, 17.01, 17.73, 18.53],
         })
         fig_cost_hist7 = go.Figure()
-        for col_name, color in [("Transmission", "#007BEA"), ("Capacity", "#DC2626"), ("Energy", "#EF7E30")]:
+        for col_name, color in [("Transmission", "#007BEA"), ("Capacity", "#BD2066"), ("Energy", "#EF7E30")]:
             fig_cost_hist7.add_trace(go.Bar(
                 x=hist_cost_7["Year"], y=hist_cost_7[col_name],
                 name=col_name, marker_color=color,
@@ -884,7 +892,7 @@ with tab7:
 
     with col4:
         st.subheader("BRA Capacity Prices by Delivery Year")
-        colors_bra7 = ["#007BEA" if y < "2025" else "#DC2626" for y in bra["Delivery_Year"]]
+        colors_bra7 = ["#007BEA" if y < "2025" else "#BD2066" for y in bra["Delivery_Year"]]
         fig_bra7 = go.Figure(go.Bar(
             x=bra["Delivery_Year"], y=bra["Price"],
             marker_color=colors_bra7,
@@ -912,7 +920,7 @@ with tab7:
         textposition="top center",
         hovertemplate="<b>%{x}</b><br>%{y:.1f}%<extra></extra>"
     ))
-    fig_reserve.add_hline(y=17.8, line_dash="dash", line_color="#DC2626",
+    fig_reserve.add_hline(y=17.8, line_dash="dash", line_color="#BD2066",
                           annotation_text="Required: 17.8%", annotation_position="bottom right")
     fig_reserve.update_layout(
         title="Projected Reserve Margin vs. Required (%) — Falling Below Target by 2029/30",
@@ -1004,7 +1012,7 @@ with tab9:
     facts = [
         {"number": "31×", "title": "Capacity shortage multiplied 31-fold in one year",
          "detail": "The shortfall grew from 208.7 MW to 6,516.6 MW between the 2026/2027 and 2027/2028 Base Residual Auctions. One year. Thirty-one times larger. Data center developers submitted massive new load forecasts that suddenly changed how much generation PJM needed to procure.",
-         "color": "#DC2626"},
+         "color": "#BD2066"},
         {"number": "5 days", "title": "One polar vortex caused 44% of the entire year's grid stress payments",
          "detail": "The Polar Vortex of January 19–23, 2025 generated $338 million in uplift credits — 44.3% of the full year's $764.8M total. Five days in January cost as much as the remaining 360 days combined.",
          "color": "#007BEA"},
@@ -1031,7 +1039,7 @@ with tab9:
          "color": "#A8DADC"},
         {"number": "147", "title": "Shortage pricing triggered nearly every 2 weeks",
          "detail": "PJM triggered shortage pricing (prices spike to signal scarcity) on 147 five-minute intervals across 28 separate days in 2025. Shortage events are supposed to be rare emergencies. At 28 days, they happened roughly every other week — a sign of structural grid stress.",
-         "color": "#DC2626"},
+         "color": "#BD2066"},
     ]
 
     for i in range(0, len(facts), 2):
@@ -1139,7 +1147,7 @@ with tab10:
     top_zones = zones.sort_values("Gen", ascending=False).head(10)
     fig_top = go.Figure(go.Bar(
         y=top_zones["Zone"], x=top_zones["Gen"], orientation="h",
-        marker_color=["#3D9A66" if n > 0 else "#DC2626" for n in top_zones["Net"]],
+        marker_color=["#3D9A66" if n > 0 else "#BD2066" for n in top_zones["Net"]],
         text=[f"{g:,.0f} GWh" for g in top_zones["Gen"]],
         textposition="outside",
         customdata=top_zones["Full_Name"].values,
