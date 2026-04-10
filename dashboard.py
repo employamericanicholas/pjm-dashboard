@@ -443,9 +443,8 @@ with tab1:
     st.subheader("About This Dashboard")
     info_col1, info_col2, info_col3 = st.columns(3)
     with info_col1:
-        st.markdown("**PJM 2025 Market Dashboard**")
-        st.markdown("2025 State of the Market")
         st.markdown("**Published:** March 12, 2026  \n**Source:** Monitoring Analytics, LLC — Independent Market Monitor for PJM")
+        st.markdown("**Reports:**  \n[Volume 1 — State of the Market 2025](https://www.monitoringanalytics.com/reports/PJM_State_of_the_Market/2025/2025-som-pjm-vol1.pdf)  \n[Volume 2 — State of the Market 2025](https://www.monitoringanalytics.com/reports/PJM_State_of_the_Market/2025/2025-som-pjm-vol2.pdf)")
     with info_col2:
         st.markdown("**What is PJM?**")
         st.markdown("PJM Interconnection operates the world's largest competitive electricity market serving 65 million people across 13 states + DC with ~184 GW of installed capacity.")
