@@ -10,7 +10,7 @@ st.set_page_config(
     page_title="PJM 2025 Market Dashboard",
     page_icon="⚡",
     layout="wide",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
 )
 
 # ── Styling ────────────────────────────────────────────────────────────────────
@@ -25,8 +25,9 @@ st.markdown("""
     .stApp, [data-testid="stAppViewContainer"] {
         background-color: #F9F7F5 !important;
     }
-    [data-testid="stSidebar"] { display: none !important; }
-    [data-testid="stSidebarCollapsedControl"] { display: none !important; }
+    [data-testid="stSidebar"], [data-testid="stSidebarContent"] {
+        background-color: #F9F7F5 !important;
+    }
     h1, h2, h3, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
         font-family: 'Montserrat', sans-serif !important;
         font-weight: 700 !important;
@@ -349,19 +350,23 @@ hist_load_gwh = [265398, 312899, 327533, 438874, 684592, 696165, 715524,
                  778624, 755053, 784182, 810894]
 hist_load_df = pd.DataFrame({"Year": hist_load_years, "GWh": hist_load_gwh})
 
-# ── Header ─────────────────────────────────────────────────────────────────────
-hdr_logo, hdr_title = st.columns([1, 5])
-with hdr_logo:
-    st.image("employ_america_logo.png", width=160)
-with hdr_title:
-    st.markdown("""
-    <div style="padding: 8px 0 0 8px;">
-        <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:22px;color:#191E3A;line-height:1.2;">PJM 2025 Market Dashboard</div>
-        <div style="font-size:13px;color:#6b7280;margin-top:4px;">2025 State of the Market &nbsp;·&nbsp; Published March 12, 2026 &nbsp;·&nbsp; Source: Monitoring Analytics, LLC (Independent Market Monitor for PJM)</div>
-    </div>
-    """, unsafe_allow_html=True)
-
-st.divider()
+# ── Sidebar ────────────────────────────────────────────────────────────────────
+with st.sidebar:
+    st.image("employ_america_logo.png")
+    st.markdown("---")
+    st.markdown("### PJM 2025 Market Dashboard")
+    st.markdown("#### 2025 State of the Market")
+    st.markdown("**Published:** March 12, 2026")
+    st.markdown("**Source:** Monitoring Analytics, LLC  \nIndependent Market Monitor for PJM")
+    st.divider()
+    st.markdown("**What is PJM?**")
+    st.markdown(
+        "PJM Interconnection operates the world's largest competitive electricity market "
+        "serving 65 million people across 13 states + DC with ~184 GW of installed capacity."
+    )
+    st.divider()
+    st.markdown("**Delivery Year:** June 1 – May 31")
+    st.markdown("**Coverage:** DE, IL, IN, KY, MD, MI, NJ, NC, OH, PA, TN, VA, WV, DC")
 
 # ── Tabs ───────────────────────────────────────────────────────────────────────
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs([
