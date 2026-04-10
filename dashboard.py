@@ -28,7 +28,7 @@ st.markdown("""
     [data-testid="stSidebar"], [data-testid="stSidebarContent"] {
         background-color: #F9F7F5 !important;
     }
-    [data-testid="stSidebarContent"] { padding-top: 1rem !important; }
+    [data-testid="stSidebarContent"] { padding-top: 0 !important; }
     h1, h2, h3, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
         font-family: 'Montserrat', sans-serif !important;
         font-weight: 700 !important;
