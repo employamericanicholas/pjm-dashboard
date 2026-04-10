@@ -10,7 +10,7 @@ st.set_page_config(
     page_title="PJM 2025 Market Dashboard",
     page_icon="⚡",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
 # ── Styling ────────────────────────────────────────────────────────────────────
@@ -25,12 +25,9 @@ st.markdown("""
     .stApp, [data-testid="stAppViewContainer"] {
         background-color: #F9F7F5 !important;
     }
-    [data-testid="stSidebar"], [data-testid="stSidebarContent"] {
-        background-color: #F9F7F5 !important;
-    }
-    [data-testid="stSidebarContent"] { padding-top: 0 !important; margin-top: 0 !important; }
-    [data-testid="stSidebar"] > div:first-child { padding-top: 0 !important; margin-top: 0 !important; }
-    section[data-testid="stSidebar"] > div { padding-top: 0 !important; }
+    [data-testid="stSidebar"] { display: none !important; }
+    [data-testid="stSidebarCollapsedControl"] { display: none !important; }
+    [data-testid="collapsedControl"] { display: none !important; }
     h1, h2, h3, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
         font-family: 'Montserrat', sans-serif !important;
         font-weight: 700 !important;
@@ -353,9 +350,8 @@ hist_load_gwh = [265398, 312899, 327533, 438874, 684592, 696165, 715524,
                  778624, 755053, 784182, 810894]
 hist_load_df = pd.DataFrame({"Year": hist_load_years, "GWh": hist_load_gwh})
 
-# ── Sidebar ────────────────────────────────────────────────────────────────────
-with st.sidebar:
-    st.image("employ_america_logo.png")
+# ── Logo ───────────────────────────────────────────────────────────────────────
+st.image("employ_america_logo.png", width=180)
 
 # ── Tabs ───────────────────────────────────────────────────────────────────────
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs([
