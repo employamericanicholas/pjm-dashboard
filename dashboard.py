@@ -86,6 +86,12 @@ EA_BRIGHT_ONG  = "#FF591F"
 EA_PINK        = "#BD2066"
 EA_PURPLE      = "#8A2B9C"
 
+PLOTLY_CONFIG = {
+    "displaylogo": False,
+    "modeBarButtonsToRemove": [],
+    "toImageButtonOptions": {"format": "png"},
+}
+
 def styled_chart(fig, height=420):
     fig.update_layout(
         paper_bgcolor=PLOT_BG,
@@ -99,7 +105,8 @@ def styled_chart(fig, height=420):
             bordercolor="#aaaaaa",
         ),
         height=height,
-        margin=dict(l=20, r=20, t=52, b=32),
+        margin=dict(l=20, r=20, t=52, b=52),
+        modebar=dict(orientation="h", bgcolor="rgba(0,0,0,0)", color="#aaaaaa", activecolor="#007BEA"),
     )
     fig.update_xaxes(
         gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR,
@@ -415,7 +422,7 @@ with tab1:
             marker=dict(size=12, color="#EF8E48", symbol="star"),
         ))
         fig.update_layout(title="Real-Time Load-Weighted Average LMP", showlegend=True)
-        st.plotly_chart(styled_chart(fig), width='stretch')
+        st.plotly_chart(styled_chart(fig), config=PLOTLY_CONFIG, width="stretch")
 
     with col_right:
         st.subheader("Key 2025 Findings")
@@ -481,7 +488,7 @@ with tab2:
             hovertemplate="<b>%{x}</b><br>%{y:.0f} TWh<extra></extra>"
         ))
         fig2.update_layout(title="Annual Real-Time Load (TWh)", yaxis_title="TWh")
-        st.plotly_chart(styled_chart(fig2), width='stretch')
+        st.plotly_chart(styled_chart(fig2), config=PLOTLY_CONFIG, width="stretch")
 
     with col2:
         st.subheader("Monthly LMP: On-Peak vs Off-Peak (2025)")
@@ -496,7 +503,7 @@ with tab2:
             name="On-Peak", marker_color="#EF8E48",
         ))
         fig3.update_layout(title="2025 Monthly LMP ($/MWh)", barmode="group", yaxis_title="$/MWh")
-        st.plotly_chart(styled_chart(fig3), width='stretch')
+        st.plotly_chart(styled_chart(fig3), config=PLOTLY_CONFIG, width="stretch")
 
     st.divider()
     col3, col4 = st.columns(2)
@@ -512,7 +519,7 @@ with tab2:
                                   line=dict(color="#EF8E48", width=2.5),
                                   fill="tonexty", fillcolor="rgba(244,162,97,0.1)"))
         fig4.update_layout(title="Avg Monthly LMP: 2024 vs 2025 ($/MWh)", yaxis_title="$/MWh")
-        st.plotly_chart(styled_chart(fig4), width='stretch')
+        st.plotly_chart(styled_chart(fig4), config=PLOTLY_CONFIG, width="stretch")
 
     with col4:
         st.subheader("Price Distribution Context")
@@ -525,7 +532,7 @@ with tab2:
         ))
         fig5.update_layout(title="2025 Hours by Price Range (%)", yaxis_title="% of Hours",
                            xaxis_tickangle=-30)
-        st.plotly_chart(styled_chart(fig5), width='stretch')
+        st.plotly_chart(styled_chart(fig5), config=PLOTLY_CONFIG, width="stretch")
 
     st.divider()
     st.subheader("Key Energy Market Statistics (2025)")
@@ -564,7 +571,7 @@ with tab3:
             tiling=dict(packing="squarify", pad=3),
         ))
         fig_tree_gen.update_layout(title=f"Total: {total_gwh:,.0f} GWh", margin=dict(t=44, l=4, r=4, b=4))
-        st.plotly_chart(styled_chart(fig_tree_gen, height=480), width='stretch')
+        st.plotly_chart(styled_chart(fig_tree_gen, height=480), config=PLOTLY_CONFIG, width="stretch")
 
     with col2:
         st.subheader("Installed Capacity by Fuel — Dec 31, 2025 (MW)")
@@ -583,7 +590,7 @@ with tab3:
             tiling=dict(packing="squarify", pad=3),
         ))
         fig_tree_cap.update_layout(title=f"Total: {total_mw:,.0f} MW", margin=dict(t=44, l=4, r=4, b=4))
-        st.plotly_chart(styled_chart(fig_tree_cap, height=480), width='stretch')
+        st.plotly_chart(styled_chart(fig_tree_cap, height=480), config=PLOTLY_CONFIG, width="stretch")
 
     st.divider()
 
@@ -600,7 +607,7 @@ with tab3:
         barmode="stack", title="Monthly Generation Stack (GWh)",
         yaxis_title="GWh", legend=dict(orientation="h", y=-0.15)
     )
-    st.plotly_chart(styled_chart(fig_area, height=450), width='stretch')
+    st.plotly_chart(styled_chart(fig_area, height=450), config=PLOTLY_CONFIG, width="stretch")
 
     st.divider()
 
@@ -616,7 +623,7 @@ with tab3:
         hovertemplate="<b>%{y}</b><br>Change: %{x:.1f}%<extra></extra>"
     ))
     fig_bar.update_layout(title="% Change in Generation Output vs 2024", xaxis_title="% Change")
-    st.plotly_chart(styled_chart(fig_bar, height=380), width='stretch')
+    st.plotly_chart(styled_chart(fig_bar, height=380), config=PLOTLY_CONFIG, width="stretch")
 
     st.divider()
     st.subheader("Detailed Generation Table: 2024 vs 2025")
@@ -701,7 +708,7 @@ with tab4:
             margin=dict(l=0, r=0, t=44, b=0),
             font=dict(color="#333333", size=14),
         )
-        st.plotly_chart(fig_map, width='stretch')
+        st.plotly_chart(fig_map, config=PLOTLY_CONFIG, width='stretch')
 
     with col_info:
         st.subheader("System Totals")
@@ -741,7 +748,7 @@ with tab4:
         xaxis_title="GWh",
         legend=dict(orientation="h", y=-0.08)
     )
-    st.plotly_chart(styled_chart(fig_zone_bar, height=560), width='stretch')
+    st.plotly_chart(styled_chart(fig_zone_bar, height=560), config=PLOTLY_CONFIG, width="stretch")
 
     st.divider()
     st.subheader("Zonal Data Table (2025 GWh)")
@@ -780,7 +787,7 @@ with tab5:
             title="BRA Clearing Price Spike: $28.92 → $333.44/MW-Day",
             yaxis_title="$/MW-Day",
         )
-        st.plotly_chart(styled_chart(fig_bra, height=400), width='stretch')
+        st.plotly_chart(styled_chart(fig_bra, height=400), config=PLOTLY_CONFIG, width="stretch")
 
     with col2:
         st.subheader("Capacity Market Context")
@@ -827,7 +834,7 @@ with tab5:
             barmode="group", title="Installed Capacity Jan vs Dec 2025 (GW)",
             yaxis_title="GW"
         )
-        st.plotly_chart(styled_chart(fig_cap_change), width='stretch')
+        st.plotly_chart(styled_chart(fig_cap_change), config=PLOTLY_CONFIG, width="stretch")
 
     with col4:
         st.subheader("Reserve Margin (June 1, 2025)")
@@ -851,7 +858,7 @@ with tab5:
             number={"valueformat": ",.0f", "suffix": " MW"},
         ))
         fig_gauge.update_layout(paper_bgcolor=PLOT_BG, font=dict(color="#333333"), height=380)
-        st.plotly_chart(fig_gauge, width='stretch')
+        st.plotly_chart(fig_gauge, config=PLOTLY_CONFIG, width='stretch')
 
     st.divider()
     st.subheader("BRA Cleared Capacity (MW UCAP) by Delivery Year")
@@ -867,7 +874,7 @@ with tab5:
         hovertemplate="<b>%{x}</b><br>%{y:.0f} GW cleared<extra></extra>"
     ))
     fig_cleared.update_layout(title="Total Cleared UCAP per BRA (GW)", yaxis_title="GW")
-    st.plotly_chart(styled_chart(fig_cleared, height=350), width='stretch')
+    st.plotly_chart(styled_chart(fig_cleared, height=350), config=PLOTLY_CONFIG, width="stretch")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 6: COST ANALYSIS
@@ -900,7 +907,7 @@ with tab6:
         )
         fig_cost.update_traces(texttemplate="$%{y:.2f}", textposition="outside")
         fig_cost.update_layout(title="$/MWh by Component: 2024 vs 2025", yaxis_title="$/MWh")
-        st.plotly_chart(styled_chart(fig_cost), width='stretch')
+        st.plotly_chart(styled_chart(fig_cost), config=PLOTLY_CONFIG, width="stretch")
 
     with col2:
         st.subheader("2025 Total Cost Composition")
@@ -915,7 +922,7 @@ with tab6:
             hovertemplate="<b>%{label}</b><br>$%{value:.2f}/MWh<br>%{percent}<extra></extra>"
         )
         fig_pie_cost.update_layout(title="Total: $80.90/MWh (excl. other minor items)", showlegend=False)
-        st.plotly_chart(styled_chart(fig_pie_cost), width='stretch')
+        st.plotly_chart(styled_chart(fig_pie_cost), config=PLOTLY_CONFIG, width="stretch")
 
     st.divider()
     st.subheader("What's Driving Costs Up?")
@@ -960,7 +967,7 @@ with tab6:
         yaxis_title="$/MWh",
         legend=dict(orientation="h", y=-0.12),
     )
-    st.plotly_chart(styled_chart(fig_hist_cost, height=400), width='stretch')
+    st.plotly_chart(styled_chart(fig_hist_cost, height=400), config=PLOTLY_CONFIG, width="stretch")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 7: HISTORICAL TRENDS
@@ -985,7 +992,7 @@ with tab7:
         fig_lmp_hist.add_annotation(x=2022, y=80.14, text="2022 peak<br>$80.14", showarrow=True, arrowhead=2, ax=40, ay=-30, font=dict(size=11))
         fig_lmp_hist.add_annotation(x=2025, y=50.73, text="2025<br>$50.73", showarrow=True, arrowhead=2, ax=-40, ay=-30, font=dict(size=11))
         fig_lmp_hist.update_layout(title="Real-Time LMP ($/MWh) — 28-Year History", yaxis_title="$/MWh")
-        st.plotly_chart(styled_chart(fig_lmp_hist), width='stretch')
+        st.plotly_chart(styled_chart(fig_lmp_hist), config=PLOTLY_CONFIG, width="stretch")
 
     with col2:
         st.subheader("Total Real-Time Load (2001–2025)")
@@ -996,7 +1003,7 @@ with tab7:
         ))
         fig_load_hist.add_annotation(x=2025, y=820, text="810.9 TWh (2025)", showarrow=True, arrowhead=2, ax=-50, ay=-30, font=dict(size=11))
         fig_load_hist.update_layout(title="Annual Energy Delivered (TWh)", yaxis_title="TWh")
-        st.plotly_chart(styled_chart(fig_load_hist), width='stretch')
+        st.plotly_chart(styled_chart(fig_load_hist), config=PLOTLY_CONFIG, width="stretch")
 
     st.divider()
     col3, col4 = st.columns(2)
@@ -1020,7 +1027,7 @@ with tab7:
             barmode="stack", title="Total Wholesale Cost Stack ($/MWh)",
             yaxis_title="$/MWh", legend=dict(orientation="h", y=-0.12)
         )
-        st.plotly_chart(styled_chart(fig_cost_hist7), width='stretch')
+        st.plotly_chart(styled_chart(fig_cost_hist7), config=PLOTLY_CONFIG, width="stretch")
 
     with col4:
         st.subheader("BRA Capacity Prices by Delivery Year")
@@ -1033,7 +1040,7 @@ with tab7:
             hovertemplate="<b>%{x}</b><br>$%{y:.2f}/MW-Day<extra></extra>"
         ))
         fig_bra7.update_layout(title="BRA Clearing Price by Delivery Year ($/MW-Day)", yaxis_title="$/MW-Day")
-        st.plotly_chart(styled_chart(fig_bra7), width='stretch')
+        st.plotly_chart(styled_chart(fig_bra7), config=PLOTLY_CONFIG, width="stretch")
 
     st.divider()
     st.subheader("Projected Reserve Margins (2025–2030)")
@@ -1058,7 +1065,7 @@ with tab7:
         title="Projected Reserve Margin vs. Required (%) — Falling Below Target by 2029/30",
         yaxis_title="Reserve Margin (%)", yaxis_range=[10, 25]
     )
-    st.plotly_chart(styled_chart(fig_reserve, height=380), width='stretch')
+    st.plotly_chart(styled_chart(fig_reserve, height=380), config=PLOTLY_CONFIG, width="stretch")
 
     st.divider()
     st.subheader("Year-Over-Year Key Metrics Summary")
@@ -1333,7 +1340,7 @@ with tab10:
                 groupclick="toggleitem",
             ),
         )
-        st.plotly_chart(fig_plants, width='stretch')
+        st.plotly_chart(fig_plants, config=PLOTLY_CONFIG, width='stretch')
 
         if not df_show.empty:
             st.divider()
@@ -1351,7 +1358,7 @@ with tab10:
                     textposition="outside",
                 ))
                 fig_fuel_eia.update_layout(xaxis_title="TWh", showlegend=False)
-                st.plotly_chart(styled_chart(fig_fuel_eia, height=360), width='stretch')
+                st.plotly_chart(styled_chart(fig_fuel_eia, height=360), config=PLOTLY_CONFIG, width="stretch")
 
             with col2:
                 st.subheader("Plant Count by Fuel Type")
@@ -1365,7 +1372,7 @@ with tab10:
                     textposition="outside",
                 ))
                 fig_count.update_layout(xaxis_title="Number of Plants", showlegend=False)
-                st.plotly_chart(styled_chart(fig_count, height=360), width='stretch')
+                st.plotly_chart(styled_chart(fig_count, height=360), config=PLOTLY_CONFIG, width="stretch")
 
             st.divider()
             st.subheader("Top 20 Operating Plants by Generation (2023)")
@@ -1462,7 +1469,7 @@ with tab11:
             xaxis_title="GWh",
             yaxis=dict(autorange="reversed"),
         )
-        st.plotly_chart(styled_chart(fig_rank, height=max(400, top_n * 26)), width='stretch')
+        st.plotly_chart(styled_chart(fig_rank, height=max(400, top_n * 26)), config=PLOTLY_CONFIG, width="stretch")
 
         st.divider()
 
@@ -1486,7 +1493,7 @@ with tab11:
             yaxis=dict(autorange="reversed", categoryorder="total ascending"),
             legend=dict(orientation="h", y=-0.15),
         )
-        st.plotly_chart(styled_chart(fig_mix, height=480), width='stretch')
+        st.plotly_chart(styled_chart(fig_mix, height=480), config=PLOTLY_CONFIG, width="stretch")
 
         st.divider()
 
