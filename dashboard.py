@@ -54,7 +54,7 @@ st.markdown("""
     [data-testid="stToolbar"] { display: none !important; }
     header[data-testid="stHeader"] { display: none !important; height: 0 !important; min-height: 0 !important; }
     .stApp > header { display: none !important; }
-    .block-container { padding-top: 1rem !important; }
+    .block-container { padding-top: 0.25rem !important; }
     [data-testid="collapsedControl"] { display: none !important; }
     [data-testid="stSidebarCollapseButton"] { display: none !important; }
     section[data-testid="stSidebarNav"] { display: none !important; }
