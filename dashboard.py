@@ -449,7 +449,6 @@ with tab1:
         st.markdown("**What is PJM?**")
         st.markdown("PJM Interconnection operates the world's largest competitive electricity market serving 65 million people across 13 states + DC with ~184 GW of installed capacity.")
     with info_col3:
-        st.markdown("**Delivery Year:** June 1 – May 31")
         st.markdown("**Coverage:** DE, IL, IN, KY, MD, MI, NJ, NC, OH, PA, TN, VA, WV, DC")
 
     st.divider()
