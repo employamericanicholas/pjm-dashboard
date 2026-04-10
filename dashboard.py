@@ -351,7 +351,7 @@ hist_load_gwh = [265398, 312899, 327533, 438874, 684592, 696165, 715524,
 hist_load_df = pd.DataFrame({"Year": hist_load_years, "GWh": hist_load_gwh})
 
 # ── Logo ───────────────────────────────────────────────────────────────────────
-st.image("employ_america_logo.png", width=180)
+st.image("employ_america_logo.png", width=320)
 
 # ── Tabs ───────────────────────────────────────────────────────────────────────
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs([
