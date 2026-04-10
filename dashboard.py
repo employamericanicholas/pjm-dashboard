@@ -48,6 +48,8 @@ st.markdown("""
     .kpi-delta-warn { font-size: 12px; color: #BD2066; margin-top: 4px; }
     .callout { background: #EFF6FF; border-left: 4px solid #007BEA; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #191E3A; }
     .callout-red { background: #FEF2F2; border-left: 4px solid #BD2066; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #191E3A; }
+    [data-testid="stToolbar"] { display: none !important; }
+    header[data-testid="stHeader"] { display: none !important; }
     .callout-green { background: #F0FDF4; border-left: 4px solid #008A6A; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #191E3A; }
     div[data-testid="stTab"] button { font-size: 14px; font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; }
 </style>
