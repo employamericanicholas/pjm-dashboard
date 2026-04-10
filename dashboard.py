@@ -48,6 +48,8 @@ st.markdown("""
     .kpi-delta-warn { font-size: 12px; color: #BD2066; margin-top: 4px; }
     .callout { background: #EFF6FF; border-left: 4px solid #007BEA; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #191E3A; }
     .callout-red { background: #FEF2F2; border-left: 4px solid #BD2066; border-radius: 4px; padding: 12px 16px; margin: 8px 0; font-size: 14px; color: #191E3A; }
+    .modebar-container { top: auto !important; bottom: 0 !important; }
+    .modebar { background: transparent !important; }
     [data-testid="stToolbar"] { display: none !important; }
     header[data-testid="stHeader"] { display: none !important; height: 0 !important; min-height: 0 !important; }
     .stApp > header { display: none !important; }
@@ -106,7 +108,6 @@ def styled_chart(fig, height=420):
         ),
         height=height,
         margin=dict(l=20, r=20, t=52, b=52),
-        modebar=dict(orientation="h", bgcolor="rgba(0,0,0,0)", color="#aaaaaa", activecolor="#007BEA"),
     )
     fig.update_xaxes(
         gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR,
