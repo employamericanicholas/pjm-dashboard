@@ -376,7 +376,7 @@ tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs([
 # TAB 1: OVERVIEW
 # ══════════════════════════════════════════════════════════════════════════════
 with tab1:
-    st.markdown("## 2025 PJM State of the Market — At a Glance")
+    st.markdown("## 2025 PJM State of the Market")
     st.markdown("*Data covers the PJM wholesale electricity market for calendar year 2025.*")
 
     c1, c2, c3, c4, c5 = st.columns(5)
