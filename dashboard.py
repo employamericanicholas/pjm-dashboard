@@ -1,4 +1,5 @@
 import os
+import base64
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
@@ -351,7 +352,10 @@ hist_load_gwh = [265398, 312899, 327533, 438874, 684592, 696165, 715524,
 hist_load_df = pd.DataFrame({"Year": hist_load_years, "GWh": hist_load_gwh})
 
 # ── Logo ───────────────────────────────────────────────────────────────────────
-st.image("employ_america_logo.png", width=320)
+_logo_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "employ_america_logo.png")
+with open(_logo_path, "rb") as _f:
+    _logo_b64 = base64.b64encode(_f.read()).decode()
+st.markdown(f'<img src="data:image/png;base64,{_logo_b64}" style="width:320px;height:auto;" />', unsafe_allow_html=True)
 
 # ── Tabs ───────────────────────────────────────────────────────────────────────
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs([
