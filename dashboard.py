@@ -440,17 +440,18 @@ with tab1:
         """, unsafe_allow_html=True)
 
     st.divider()
-    with st.container():
-        info_col1, info_col2, info_col3 = st.columns(3)
-        with info_col1:
-            st.markdown("**PJM 2025 Market Dashboard — 2025 State of the Market**")
-            st.markdown("**Published:** March 12, 2026  \n**Source:** Monitoring Analytics, LLC — Independent Market Monitor for PJM")
-        with info_col2:
-            st.markdown("**What is PJM?**")
-            st.markdown("PJM Interconnection operates the world's largest competitive electricity market serving 65 million people across 13 states + DC with ~184 GW of installed capacity.")
-        with info_col3:
-            st.markdown("**Delivery Year:** June 1 – May 31")
-            st.markdown("**Coverage:** DE, IL, IN, KY, MD, MI, NJ, NC, OH, PA, TN, VA, WV, DC")
+    st.subheader("About This Dashboard")
+    info_col1, info_col2, info_col3 = st.columns(3)
+    with info_col1:
+        st.markdown("**PJM 2025 Market Dashboard**")
+        st.markdown("2025 State of the Market")
+        st.markdown("**Published:** March 12, 2026  \n**Source:** Monitoring Analytics, LLC — Independent Market Monitor for PJM")
+    with info_col2:
+        st.markdown("**What is PJM?**")
+        st.markdown("PJM Interconnection operates the world's largest competitive electricity market serving 65 million people across 13 states + DC with ~184 GW of installed capacity.")
+    with info_col3:
+        st.markdown("**Delivery Year:** June 1 – May 31")
+        st.markdown("**Coverage:** DE, IL, IN, KY, MD, MI, NJ, NC, OH, PA, TN, VA, WV, DC")
 
     st.divider()
     st.subheader("PJM System Snapshot — 2024 vs 2025")
