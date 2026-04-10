@@ -356,20 +356,6 @@ hist_load_df = pd.DataFrame({"Year": hist_load_years, "GWh": hist_load_gwh})
 # ── Sidebar ────────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.image("employ_america_logo.png")
-    st.markdown("---")
-    st.markdown("### PJM 2025 Market Dashboard")
-    st.markdown("#### 2025 State of the Market")
-    st.markdown("**Published:** March 12, 2026")
-    st.markdown("**Source:** Monitoring Analytics, LLC  \nIndependent Market Monitor for PJM")
-    st.divider()
-    st.markdown("**What is PJM?**")
-    st.markdown(
-        "PJM Interconnection operates the world's largest competitive electricity market "
-        "serving 65 million people across 13 states + DC with ~184 GW of installed capacity."
-    )
-    st.divider()
-    st.markdown("**Delivery Year:** June 1 – May 31")
-    st.markdown("**Coverage:** DE, IL, IN, KY, MD, MI, NJ, NC, OH, PA, TN, VA, WV, DC")
 
 # ── Tabs ───────────────────────────────────────────────────────────────────────
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs([
@@ -452,6 +438,19 @@ with tab1:
         up 6.3% from the prior year.
         </div>
         """, unsafe_allow_html=True)
+
+    st.divider()
+    with st.container():
+        info_col1, info_col2, info_col3 = st.columns(3)
+        with info_col1:
+            st.markdown("**PJM 2025 Market Dashboard — 2025 State of the Market**")
+            st.markdown("**Published:** March 12, 2026  \n**Source:** Monitoring Analytics, LLC — Independent Market Monitor for PJM")
+        with info_col2:
+            st.markdown("**What is PJM?**")
+            st.markdown("PJM Interconnection operates the world's largest competitive electricity market serving 65 million people across 13 states + DC with ~184 GW of installed capacity.")
+        with info_col3:
+            st.markdown("**Delivery Year:** June 1 – May 31")
+            st.markdown("**Coverage:** DE, IL, IN, KY, MD, MI, NJ, NC, OH, PA, TN, VA, WV, DC")
 
     st.divider()
     st.subheader("PJM System Snapshot — 2024 vs 2025")
